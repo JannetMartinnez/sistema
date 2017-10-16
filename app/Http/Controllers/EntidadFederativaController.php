@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Municipio;
 
 class EntidadFederativaController extends AppBaseController
 {
@@ -152,4 +153,13 @@ class EntidadFederativaController extends AppBaseController
 
         return redirect(route('entidadFederativas.index'));
     }
+
+    public function getMunicipios(Request $request,$id)
+    {
+       if($request->ajax()){
+           $municipios=Municipio::municipios($id);
+           return response()->json($municipios);
+       }
+    }
+
 }

@@ -7,13 +7,14 @@ use Eloquent as Model;
 /**
  * Class EntidadFederativa
  * @package App\Models
- * @version September 29, 2017, 1:55 pm UTC
+ * @version October 4, 2017, 12:30 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
  * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
  * @property string clave_entidad
  * @property string nombre_entidad
  * @property string abreviatura
+ * @property integer pais_id
  */
 class EntidadFederativa extends Model
 {
@@ -28,7 +29,8 @@ class EntidadFederativa extends Model
     public $fillable = [
         'clave_entidad',
         'nombre_entidad',
-        'abreviatura'
+        'abreviatura',
+        'pais_id'
     ];
 
     /**
@@ -40,7 +42,8 @@ class EntidadFederativa extends Model
         'id' => 'integer',
         'clave_entidad' => 'string',
         'nombre_entidad' => 'string',
-        'abreviatura' => 'string'
+        'abreviatura' => 'string',
+        'pais_id' => 'integer'
     ];
 
     /**

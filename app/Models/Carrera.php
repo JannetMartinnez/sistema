@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Carrera
  * @package App\Models
- * @version September 29, 2017, 1:56 pm UTC
+ * @version October 3, 2017, 12:01 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
  * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
@@ -98,5 +98,4 @@ class Carrera extends Model
     {
         return $this->hasMany(\App\Models\AspirantesGenerale::class);
     }
-
 }

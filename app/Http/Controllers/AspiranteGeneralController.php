@@ -7,11 +7,15 @@ use App\Http\Requests\UpdateAspiranteGeneralRequest;
 use App\Repositories\AspiranteGeneralRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\User;
+use App\Models\Pais;
+use App\Models\Municipio;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use App\Models\EntidadFederativa;
 
 class AspiranteGeneralController extends AppBaseController
 {
@@ -34,6 +38,7 @@ class AspiranteGeneralController extends AppBaseController
         $this->aspiranteGeneralRepository->pushCriteria(new RequestCriteria($request));
         $aspiranteGenerals = $this->aspiranteGeneralRepository->all();
 
+
         return view('aspirante_generals.index')
             ->with('aspiranteGenerals', $aspiranteGenerals);
     }
@@ -45,7 +50,11 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function create()
     {
-        return view('aspirante_generals.create');
+        $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
+        $paises=Pais::orderBy('pais')->pluck('pais','id');
+        $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
+        
+        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios'));
     }
 
     /**
@@ -57,28 +66,39 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function store(CreateAspiranteGeneralRequest $request)
     {
-
-        //Al crear un aspirante, también crearemos un usuario para el
         $input = $request->all();
-
         //Obtenemos el email del aspirante
         $email=$input['correo_elect_dom_actual'];
-        $nombre=$input['apellidos_aspirante'].' '.$input['nombres_aspirante'];
-        //Crear un objeto usuario
 
+        $nombre=Str::Upper(trim($input['apellido_paterno_aspirante'].' '.$input['apellido_materno_aspirante'].' '.$input['nombres_aspirante']));
+
+        //Crear un objeto usuario
         User::create([
-            'name' => Str::upper(trim($nombre)),
+            'name' => $nombre,
             'email' => $email,
             'password' => bcrypt('123'),
         ]);
-        $flight = User::where('email',$email)->first();
 
-        $id=$flight->id;
-        //echo "El valor de id del usuario es".$flight;
-
+        $id=User::where('email',$email)->first();
+        $input['usuario_id']=$id->id;        
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
+   
+        //Enviar correo electrónico al usuario
+        //Creamos un arreglo asociativo con los daatos que vamos a enviar
+        $data['email']=$input['correo_elect_dom_actual'];
+        $data['password']= '123';
 
-        Flash::success('Aspirante Generales agregado con éxito.');
+        Mail::send('emails.message',$data, function ($message) use ($data){
+            $message->from('aletse00@gmail.com', 'ITSLP');
+            $message->subject('Asunto: Recibe su usuario y contraseña');
+
+            //$message->to($request->email);
+            $message->to($data['email'],'Computo');
+
+        });
+
+        $ojo='Aspirante Genereal guardado éxitosamente '.$email;
+        Flash::success($ojo);
 
         return redirect(route('aspiranteGenerals.index'));
     }
