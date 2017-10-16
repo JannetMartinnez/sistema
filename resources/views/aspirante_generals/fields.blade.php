@@ -1,4 +1,24 @@
+<div>
+<h3>Nombre del aspirante</h3>
+<!-- Apellidos Aspirante Field -->
+<div class="form-group col-sm-6">
+    {!! Form::text('apellidos_aspirante', null, ['class' => 'form-control']) !!}
+</div>
+<!-- Nombres Aspirante Field -->
+<div class="form-group col-sm-6" style="{color:red;}">
+    {!! Form::text('nombres_aspirante', null, ['class' => 'form-control']) !!}
+</div>
+</div>
 
+<div style="{color:red;}">
+    <!-- Fecha Nacimiento Asp Field -->
+    <div  class="form-group col-sm-6">
+        {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento Asp:') !!}
+        {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<hr></hr>
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
