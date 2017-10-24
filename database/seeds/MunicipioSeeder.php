@@ -13,21 +13,21 @@ class MunicipioSeeder extends Seeder
     public function run()
     {
         $mun=new Municipio();
-$mun->nombre_municipio='AGUASCALIENTES';
-$mun->clave_entidad=1 ;
-$ef_id = DB::table('entidades_federativas')->where('clave_entidad',1 )->first();
-$id=$ef_id->id;
-$mun->entidades_federativas_id=$id;
-$mun->save();
+		$mun->nombre_municipio='AGUASCALIENTES';
+		$mun->clave_entidad=1 ;
+		$ef_id = DB::table('entidades_federativas')->where('clave_entidad',1 )->first();
+		$id=$ef_id->id;
+		$mun->entidades_federativas_id=$id;
+		$mun->save();
 
 
-$mun=new Municipio();
-$mun->nombre_municipio='ASIENTOS';
-$mun->clave_entidad=1 ;
-$ef_id = DB::table('entidades_federativas')->where('clave_entidad',1 )->first();
-$id=$ef_id->id;
-$mun->entidades_federativas_id=$id;
-$mun->save();
+		$mun=new Municipio();
+		$mun->nombre_municipio='ASIENTOS';
+		$mun->clave_entidad=1 ;
+		$ef_id = DB::table('entidades_federativas')->where('clave_entidad',1 )->first();
+		$id=$ef_id->id;
+		$mun->entidades_federativas_id=$id;
+		$mun->save();
 
 
 $mun=new Municipio();

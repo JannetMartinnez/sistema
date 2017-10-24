@@ -1,8 +1,9 @@
-<table class="table table-responsive" id="entidadFederativas-table">
+<table class="table table-bordered table-striped" id="entidadFederativas-table">
     <thead>
         <th>Clave Entidad</th>
         <th>Nombre Entidad</th>
         <th>Abreviatura</th>
+        <th>Pais Id</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
@@ -11,6 +12,7 @@
             <td>{!! $entidadFederativa->clave_entidad !!}</td>
             <td>{!! $entidadFederativa->nombre_entidad !!}</td>
             <td>{!! $entidadFederativa->abreviatura !!}</td>
+            <td>{!! $entidadFederativa->pais_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['entidadFederativas.destroy', $entidadFederativa->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

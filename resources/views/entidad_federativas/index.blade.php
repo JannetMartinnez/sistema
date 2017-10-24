@@ -1,23 +1,19 @@
 @extends('layouts.app')
-
+@section('title','Lista de Entidad Federativas')
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left">Entidad Federativas</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('entidadFederativas.create') !!}">Add New</a>
-        </h1>
-    </section>
-    <div class="content">
-        <div class="clearfix"></div>
-
+    <div class="clearfix"></div>
         @include('flash::message')
-
-        <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
-                    @include('entidad_federativas.table')
-            </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <i class="fa fa-list-ul-alt" aria-hidden="true"></i>
+            <strong>@yield('title')</strong><a 
+            href="{!! route('entidadFederativas.create') !!}" class="btn btn-itslp pull-right">@lang('global.app_add_new')</a>
         </div>
+        <div class="panel-body table-responsive">
+            @include('entidad_federativas.table')
+        </div>
+
     </div>
 @endsection
 

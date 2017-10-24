@@ -107,7 +107,8 @@ class AspiranteGeneral extends Model
         'nombres_tutor',
         'apellido_paterno_tutor',
         'apellido_materno_tutor',
-        'usuario_id'
+        'usuario_id',
+        'tipo_modalidad_id'
     ];
 
     /**
@@ -157,7 +158,8 @@ class AspiranteGeneral extends Model
         'nombres_tutor' => 'string',
         'apellido_paterno_tutor' => 'string',
         'apellido_materno_tutor' => 'string',
-        'usuario_id' => 'integer'
+        'usuario_id' => 'integer',
+        'tipo_modalidad_id' => 'integer'
     ];
 
     /**
@@ -193,5 +195,13 @@ class AspiranteGeneral extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function modalidad()
+    {
+        return $this->belongsTo(\App\Models\Modalidad::class);
     }
 }

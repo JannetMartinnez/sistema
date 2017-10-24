@@ -7,26 +7,21 @@ use Eloquent as Model;
 /**
  * Class Carrera
  * @package App\Models
- * @version October 3, 2017, 12:01 am UTC
+ * @version October 20, 2017, 5:56 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
- * @property \Illuminate\Database\Eloquent\Collection AspirantesGenerale
+ * @property \App\Models\Organigrama organigrama
  * @property string nivel_escolar
  * @property string clave_oficial
+ * @property string clave_cosnet
  * @property string nombre_carrera
  * @property string nombre_reducido
  * @property string siglas
- * @property integer carga_maxima
- * @property integer carga_minima
  * @property date fecha_inicio
  * @property date fecha_termino
- * @property string clave_cosnet
  * @property integer creditos_totales
- * @property string titulo_entrega
- * @property string clave
- * @property string nivel
- * @property string consecturivo_carrera
- * @property string area_academica
+ * @property integer carga_maxima
+ * @property integer carga_minima
+ * @property integer area_id
  */
 class Carrera extends Model
 {
@@ -41,20 +36,16 @@ class Carrera extends Model
     public $fillable = [
         'nivel_escolar',
         'clave_oficial',
+        'clave_cosnet',
         'nombre_carrera',
         'nombre_reducido',
         'siglas',
-        'carga_maxima',
-        'carga_minima',
         'fecha_inicio',
         'fecha_termino',
-        'clave_cosnet',
         'creditos_totales',
-        'titulo_entrega',
-        'clave',
-        'nivel',
-        'consecturivo_carrera',
-        'area_academica'
+        'carga_maxima',
+        'carga_minima',
+        'area_id'
     ];
 
     /**
@@ -66,20 +57,16 @@ class Carrera extends Model
         'id' => 'integer',
         'nivel_escolar' => 'string',
         'clave_oficial' => 'string',
+        'clave_cosnet' => 'string',
         'nombre_carrera' => 'string',
         'nombre_reducido' => 'string',
         'siglas' => 'string',
-        'carga_maxima' => 'integer',
-        'carga_minima' => 'integer',
         'fecha_inicio' => 'date',
         'fecha_termino' => 'date',
-        'clave_cosnet' => 'string',
         'creditos_totales' => 'integer',
-        'titulo_entrega' => 'string',
-        'clave' => 'string',
-        'nivel' => 'string',
-        'consecturivo_carrera' => 'string',
-        'area_academica' => 'string'
+        'carga_maxima' => 'integer',
+        'carga_minima' => 'integer',
+        'area_id' => 'integer'
     ];
 
     /**
@@ -92,10 +79,10 @@ class Carrera extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function aspirantesGenerales()
+    public function organigrama()
     {
-        return $this->hasMany(\App\Models\AspirantesGenerale::class);
+        return $this->belongsTo(\App\Models\Organigrama::class);
     }
 }

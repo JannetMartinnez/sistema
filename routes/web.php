@@ -29,8 +29,36 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 
 
+
+
+Route::resource('aspiranteGenerals', 'AspiranteGeneralController');
+
 Route::resource('entidadFederativas', 'EntidadFederativaController');
+
+Route::resource('pais', 'PaisController');
+
+Route::resource('municipios', 'MunicipioController');
+
+Route::get('aspiranteGenerals/municipios/{id}', 'EntidadFederativaController@getMunicipios');
+
+
+
+Route::resource('organigramas', 'OrganigramaController');
+
+
+
+Route::resource('organigramas', 'OrganigramaController');
 
 Route::resource('carreras', 'CarreraController');
 
-Route::resource('aspiranteGenerals', 'AspiranteGeneralController');
+
+
+Route::resource('preparatoriaProcedencias', 'PreparatoriaProcedenciaController');
+
+Route::resource('carreraOfertadas', 'CarreraOfertadaController');
+
+Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
+
+Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
+
+Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');

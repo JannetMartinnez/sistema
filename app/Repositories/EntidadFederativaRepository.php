@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class EntidadFederativaRepository
  * @package App\Repositories
- * @version September 29, 2017, 1:55 pm UTC
+ * @version October 4, 2017, 12:30 am UTC
  *
  * @method EntidadFederativa findWithoutFail($id, $columns = ['*'])
  * @method EntidadFederativa find($id, $columns = ['*'])
@@ -22,7 +22,8 @@ class EntidadFederativaRepository extends BaseRepository
     protected $fieldSearchable = [
         'clave_entidad',
         'nombre_entidad',
-        'abreviatura'
+        'abreviatura',
+        'pais_id'
     ];
 
     /**

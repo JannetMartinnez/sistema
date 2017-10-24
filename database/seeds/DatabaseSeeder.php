@@ -16,5 +16,10 @@ class DatabaseSeeder extends Seeder
         //$this->call(PaisesSeeder::class);
         //$this->call(EntidadFederativaSeeder::class);
         //$this->call(MunicipioSeeder::class);
+        //$this->call(OrganigramaSeeder::class);
+        //$this->call(PreparatoriaSeeder::class);
+        //$this->call(Preparatoria2Seeder::class);
+        //$this->call(CarreraSeeder::class);
+        $this->call(Preparatoria3Seeder::class);
     }
 }

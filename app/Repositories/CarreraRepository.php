@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class CarreraRepository
  * @package App\Repositories
- * @version September 29, 2017, 1:56 pm UTC
+ * @version October 20, 2017, 5:56 pm UTC
  *
  * @method Carrera findWithoutFail($id, $columns = ['*'])
  * @method Carrera find($id, $columns = ['*'])
@@ -22,20 +22,16 @@ class CarreraRepository extends BaseRepository
     protected $fieldSearchable = [
         'nivel_escolar',
         'clave_oficial',
+        'clave_cosnet',
         'nombre_carrera',
         'nombre_reducido',
         'siglas',
-        'carga_maxima',
-        'carga_minima',
         'fecha_inicio',
         'fecha_termino',
-        'clave_cosnet',
         'creditos_totales',
-        'titulo_entrega',
-        'clave',
-        'nivel',
-        'consecturivo_carrera',
-        'area_academica'
+        'carga_maxima',
+        'carga_minima',
+        'area_id'
     ];
 
     /**
