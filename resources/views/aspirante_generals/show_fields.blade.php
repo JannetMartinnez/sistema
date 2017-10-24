@@ -4,30 +4,6 @@
     <p>{!! $aspiranteGeneral->id !!}</p>
 </div>
 
-<!-- Users Id Field -->
-<div class="form-group">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    <p>{!! $aspiranteGeneral->users_id !!}</p>
-</div>
-
-<!-- Entidades Federativas Id Field -->
-<div class="form-group">
-    {!! Form::label('entidades_federativas_id', 'Entidades Federativas Id:') !!}
-    <p>{!! $aspiranteGeneral->entidades_federativas_id !!}</p>
-</div>
-
-<!-- Carreras Id Field -->
-<div class="form-group">
-    {!! Form::label('carreras_id', 'Carreras Id:') !!}
-    <p>{!! $aspiranteGeneral->carreras_id !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $aspiranteGeneral->created_at !!}</p>
-</div>
-
 <!-- Folio Solicitud Field -->
 <div class="form-group">
     {!! Form::label('folio_solicitud', 'Folio Solicitud:') !!}
@@ -46,16 +22,16 @@
     <p>{!! $aspiranteGeneral->ficha !!}</p>
 </div>
 
-<!-- Curp Asp 2 Field -->
+<!-- Apellido Paterno Aspirante Field -->
 <div class="form-group">
-    {!! Form::label('curp_asp_2', 'Curp Asp 2:') !!}
-    <p>{!! $aspiranteGeneral->curp_asp_2 !!}</p>
+    {!! Form::label('apellido_paterno_aspirante', 'Apellido Paterno Aspirante:') !!}
+    <p>{!! $aspiranteGeneral->apellido_paterno_aspirante !!}</p>
 </div>
 
-<!-- Apellidos Aspirante Field -->
+<!-- Apellido Materno Aspirante Field -->
 <div class="form-group">
-    {!! Form::label('apellidos_aspirante', 'Apellidos Aspirante:') !!}
-    <p>{!! $aspiranteGeneral->apellidos_aspirante !!}</p>
+    {!! Form::label('apellido_materno_aspirante', 'Apellido Materno Aspirante:') !!}
+    <p>{!! $aspiranteGeneral->apellido_materno_aspirante !!}</p>
 </div>
 
 <!-- Nombres Aspirante Field -->
@@ -76,28 +52,10 @@
     <p>{!! $aspiranteGeneral->sexo_asp !!}</p>
 </div>
 
-<!-- Estado Civil Asp Field -->
+<!-- Escuela Procedencia Id Field -->
 <div class="form-group">
-    {!! Form::label('estado_civil_asp', 'Estado Civil Asp:') !!}
-    <p>{!! $aspiranteGeneral->estado_civil_asp !!}</p>
-</div>
-
-<!-- Tipo Escuela Field -->
-<div class="form-group">
-    {!! Form::label('tipo_escuela', 'Tipo Escuela:') !!}
-    <p>{!! $aspiranteGeneral->tipo_escuela !!}</p>
-</div>
-
-<!-- Clave Escuela Field -->
-<div class="form-group">
-    {!! Form::label('clave_escuela', 'Clave Escuela:') !!}
-    <p>{!! $aspiranteGeneral->clave_escuela !!}</p>
-</div>
-
-<!-- Escuela Procedencia Field -->
-<div class="form-group">
-    {!! Form::label('escuela_procedencia', 'Escuela Procedencia:') !!}
-    <p>{!! $aspiranteGeneral->escuela_procedencia !!}</p>
+    {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia Id:') !!}
+    <p>{!! $aspiranteGeneral->escuela_procedencia_id !!}</p>
 </div>
 
 <!-- Promedio Bachillerato Field -->
@@ -130,16 +88,16 @@
     <p>{!! $aspiranteGeneral->codigo_postal !!}</p>
 </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $aspiranteGeneral->updated_at !!}</p>
-</div>
-
 <!-- Carrera Op1 Id Field -->
 <div class="form-group">
     {!! Form::label('carrera_op1_id', 'Carrera Op1 Id:') !!}
     <p>{!! $aspiranteGeneral->carrera_op1_id !!}</p>
+</div>
+
+<!-- Carrera Op2 Id Field -->
+<div class="form-group">
+    {!! Form::label('carrera_op2_id', 'Carrera Op2 Id:') !!}
+    <p>{!! $aspiranteGeneral->carrera_op2_id !!}</p>
 </div>
 
 <!-- Nacionalidad Asp Field -->
@@ -152,12 +110,6 @@
 <div class="form-group">
     {!! Form::label('curp_asp', 'Curp Asp:') !!}
     <p>{!! $aspiranteGeneral->curp_asp !!}</p>
-</div>
-
-<!-- Carrera Op2 Id Field -->
-<div class="form-group">
-    {!! Form::label('carrera_op2_id', 'Carrera Op2 Id:') !!}
-    <p>{!! $aspiranteGeneral->carrera_op2_id !!}</p>
 </div>
 
 <!-- Entidad Federativa Proc Id Field -->
@@ -202,10 +154,16 @@
     <p>{!! $aspiranteGeneral->correo_elect_dom_actual !!}</p>
 </div>
 
-<!-- Telefono Dom Actual Field -->
+<!-- Telefono Fijo Dom Actual Field -->
 <div class="form-group">
-    {!! Form::label('telefono_dom_actual', 'Telefono Dom Actual:') !!}
-    <p>{!! $aspiranteGeneral->telefono_dom_actual !!}</p>
+    {!! Form::label('telefono_fijo_dom_actual', 'Telefono Fijo Dom Actual:') !!}
+    <p>{!! $aspiranteGeneral->telefono_fijo_dom_actual !!}</p>
+</div>
+
+<!-- Telefono Cel Aspirante Field -->
+<div class="form-group">
+    {!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}
+    <p>{!! $aspiranteGeneral->telefono_cel_aspirante !!}</p>
 </div>
 
 <!-- Zona Proc Aspirante Field -->
@@ -226,10 +184,16 @@
     <p>{!! $aspiranteGeneral->nombres_padre !!}</p>
 </div>
 
-<!-- Apellidos Padre Field -->
+<!-- Apellido Paterno Padre Field -->
 <div class="form-group">
-    {!! Form::label('apellidos_padre', 'Apellidos Padre:') !!}
-    <p>{!! $aspiranteGeneral->apellidos_padre !!}</p>
+    {!! Form::label('apellido_paterno_padre', 'Apellido Paterno Padre:') !!}
+    <p>{!! $aspiranteGeneral->apellido_paterno_padre !!}</p>
+</div>
+
+<!-- Apellido Materno Padre Field -->
+<div class="form-group">
+    {!! Form::label('apellido_materno_padre', 'Apellido Materno Padre:') !!}
+    <p>{!! $aspiranteGeneral->apellido_materno_padre !!}</p>
 </div>
 
 <!-- Vive Padre Field -->
@@ -244,10 +208,16 @@
     <p>{!! $aspiranteGeneral->nombres_madre !!}</p>
 </div>
 
-<!-- Apellidos Madre Field -->
+<!-- Apellido Paterno Madre Field -->
 <div class="form-group">
-    {!! Form::label('apellidos_madre', 'Apellidos Madre:') !!}
-    <p>{!! $aspiranteGeneral->apellidos_madre !!}</p>
+    {!! Form::label('apellido_paterno_madre', 'Apellido Paterno Madre:') !!}
+    <p>{!! $aspiranteGeneral->apellido_paterno_madre !!}</p>
+</div>
+
+<!-- Apellido Materno Madre Field -->
+<div class="form-group">
+    {!! Form::label('apellido_materno_madre', 'Apellido Materno Madre:') !!}
+    <p>{!! $aspiranteGeneral->apellido_materno_madre !!}</p>
 </div>
 
 <!-- Vive Madre Field -->
@@ -262,15 +232,33 @@
     <p>{!! $aspiranteGeneral->nombres_tutor !!}</p>
 </div>
 
-<!-- Apellidos Tutor Field -->
+<!-- Apellido Paterno Tutor Field -->
 <div class="form-group">
-    {!! Form::label('apellidos_tutor', 'Apellidos Tutor:') !!}
-    <p>{!! $aspiranteGeneral->apellidos_tutor !!}</p>
+    {!! Form::label('apellido_paterno_tutor', 'Apellido Paterno Tutor:') !!}
+    <p>{!! $aspiranteGeneral->apellido_paterno_tutor !!}</p>
+</div>
+
+<!-- Apellido Materno Tutor Field -->
+<div class="form-group">
+    {!! Form::label('apellido_materno_tutor', 'Apellido Materno Tutor:') !!}
+    <p>{!! $aspiranteGeneral->apellido_materno_tutor !!}</p>
 </div>
 
 <!-- Usuario Id Field -->
 <div class="form-group">
     {!! Form::label('usuario_id', 'Usuario Id:') !!}
     <p>{!! $aspiranteGeneral->usuario_id !!}</p>
+</div>
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $aspiranteGeneral->created_at !!}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $aspiranteGeneral->updated_at !!}</p>
 </div>
 

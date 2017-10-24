@@ -1,23 +1,19 @@
 @extends('layouts.app')
-
+@section('title','Lista de Aspirantes')
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left">Aspirante Generals</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('aspiranteGenerals.create') !!}">Add New</a>
-        </h1>
-    </section>
-    <div class="content">
-        <div class="clearfix"></div>
-
+    <div class="clearfix"></div>
         @include('flash::message')
-
-        <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
-                    @include('aspirante_generals.table')
-            </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <i class="fa fa-list-ul-alt" aria-hidden="true"></i>
+            <strong>@yield('title')</strong><a 
+            href="{!! route('aspiranteGenerals.create') !!}" class="btn btn-itslp pull-right">@lang('global.app_add_new')</a>
         </div>
+        <div class="panel-body table-responsive">
+            @include('aspirante_generals.table')
+        </div>
+
     </div>
 @endsection
 
