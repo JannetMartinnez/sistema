@@ -191,4 +191,8 @@ class AspiranteGeneralController extends AppBaseController
 
         return redirect(route('aspiranteGenerals.index'));
     }
+
+    public function registro(){
+        return view('aspirante_generals.createRegistro');
+    }
 }

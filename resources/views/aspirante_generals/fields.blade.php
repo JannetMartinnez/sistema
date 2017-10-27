@@ -19,12 +19,50 @@ $(function() {
  
 </script>
 
-Paises
-{!! Form::select('paises',$paises) !!}
-Entidades Federativas
- {!! Form::select('entidadesFederativas',$entidadesFederativas,null,['id'=>'state']) !!}
-Municipios
- {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,['id'=>'town']) !!}
+<div style="border-color: red;
+            border-style: double;">
+        <!-- Apellido Paterno Aspirante Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('apellido_paterno_aspirante', 'Apellido Paterno Aspirante:') !!}
+            {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Apellido Materno Aspirante Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('apellido_materno_aspirante', 'Apellido Materno Aspirante:') !!}
+            {!! Form::text('apellido_materno_aspirante', null, ['class' => 'form-control']) !!}
+        </div>
+        <!-- Nombres Aspirante Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('nombres_aspirante', 'Nombres Aspirante:') !!}
+            {!! Form::text('nombres_aspirante', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Fecha Nacimiento Asp Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento Asp:') !!}
+            {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
+        </div>
+
+
+        Paises
+        {!! Form::select('paises',$paises) !!}
+        Entidades Federativas
+         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,['id'=>'state']) !!}
+
+                <!-- Municipio Nac Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('municipio_nac', 'Municipio Nac:') !!}
+            {!! Form::text('municipio_nac', null, ['class' => 'form-control']) !!}
+        </div>
+
+</div>
+
+</hr>
+
+        Municipios
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,['id'=>'town']) !!}
+
 
 <div class="form-group col-sm-6">
     {!! Form::label('folio_solicitud', 'Folio Solicitud:') !!}
@@ -43,29 +81,7 @@ Municipios
     {!! Form::number('ficha', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Apellido Paterno Aspirante Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_paterno_aspirante', 'Apellido Paterno Aspirante:') !!}
-    {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Apellido Materno Aspirante Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_materno_aspirante', 'Apellido Materno Aspirante:') !!}
-    {!! Form::text('apellido_materno_aspirante', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Nombres Aspirante Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombres_aspirante', 'Nombres Aspirante:') !!}
-    {!! Form::text('nombres_aspirante', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Fecha Nacimiento Asp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento Asp:') !!}
-    {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Sexo Asp Field -->
 <div class="form-group col-sm-6">
@@ -102,11 +118,7 @@ Municipios
     {!! Form::text('calle_dom_actual', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Municipio Nac Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('municipio_nac', 'Municipio Nac:') !!}
-    {!! Form::text('municipio_nac', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Codigo Postal Field -->
 <div class="form-group col-sm-6">
@@ -129,7 +141,7 @@ Municipios
 <!-- Modalidad Asp Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('modalidad', 'Modalidad:') !!}
-    {!! Form::text('modalidad', null, ['class' => 'form-control']) !!}
+    {!! Form::text('tipo_modalidad_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Nacionalidad Asp Field -->
@@ -184,6 +196,12 @@ Municipios
 <div class="form-group col-sm-6">
     {!! Form::label('correo_elect_dom_actual', 'Correo Elect Dom Actual:') !!}
     {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Numero seguro social Dom Actual Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('numero_seguro_social', 'Número del Seguro Social:') !!}
+    {!! Form::text('numero_seguro_social', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Telefono Fijo Dom Actual Field -->

@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 Route::resource('aspiranteGenerals', 'AspiranteGeneralController');
 
+Route::get('registro', 'AspiranteGeneralController@registro');
+
 Route::resource('entidadFederativas', 'EntidadFederativaController');
 
 Route::resource('pais', 'PaisController');
@@ -59,6 +61,3 @@ Route::resource('carreraOfertadas', 'CarreraOfertadaController');
 
 Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
 
-Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
-
-Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
