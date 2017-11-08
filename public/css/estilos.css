@@ -367,3 +367,21 @@ input[type="checkbox"], input[type="radio"] {
 .panel-default > .panel-heading .btn_reg:hover{
 	color: #7d222b;
 }
+.titulos{
+	margin-top: 0px;
+	padding-top: 0px;
+	text-align: center;
+	color: black;
+	font-size: 22px;
+	font-family: 'soberanasans-bold', sans-serif;
+	font-weight:700;
+    background-color:#ffA500; border: 2px solid;"  
+
+
+
+}
+.encAl{
+	position: float;
+	float: :left;
+}
+

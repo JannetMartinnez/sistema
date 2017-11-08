@@ -13,6 +13,8 @@ use Response;
 use App\User;
 use App\Models\Pais;
 use App\Models\Municipio;
+use App\Models\CarreraOfertada;
+use App\Models\PreparatoriaProcedencia;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\EntidadFederativa;
@@ -53,8 +55,9 @@ class AspiranteGeneralController extends AppBaseController
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
         $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
-        
-        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios'));
+        $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
+        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
+            'carreraOfertada'));
     }
 
     /**

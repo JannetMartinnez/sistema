@@ -3,7 +3,8 @@
 @section('content')
     <h3 class="page-title titulopag"></h3>
          @include('adminlte-templates::common.errors')
-    <div class="panel panel-default">
+ <div class="col-md-10">
+       <div class="panel panel-default">
        <div class="panel-heading text-center">
             <a href="{{ route('aspiranteGenerals.index') }}" class="btn_reg pull-left"  data-toggle="tooltip" data-placement="right" title="Regresar"><i class="fa fa-arrow-circle-left"></i></a>
             <strong><i class="fa fa-plus" aria-hidden="true"></i> @yield('title')</strong>
@@ -16,5 +17,11 @@
             {!! Form::close() !!}
         </div>
     </div>
+</div>
+
+<aside class="titulos" class="col-md-10">
+    Avisos
+
+    </aside>
 @endsection
 

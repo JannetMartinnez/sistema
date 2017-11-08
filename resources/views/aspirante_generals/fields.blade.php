@@ -18,299 +18,373 @@ $(function() {
 });
  
 </script>
-
-<div style="border-color: red;
-            border-style: double;">
-        <!-- Apellido Paterno Aspirante Field -->
-        <div class="form-group col-sm-6">
-            {!! Form::label('apellido_paterno_aspirante', 'Apellido Paterno Aspirante:') !!}
-            {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control']) !!}
+<div class="row encAl">
+ <div class= "col-xs-12 col-md-2 encAl">    
+ <div class="container-fluid continer2 encAl"> 
+<img class="img-responsive img-" src="{{url('img/img94joktmu76583.jpg')}}">
+<a href=""><caption><center><h6 <i class="fa fa-camera" aria-hidden="true"</i>Cambiar Imagen</h6></center></caption></a>
+    
         </div>
 
+      </div>
+             <div class="col-xs-12 col-md-10 encAl">
+
+        <!-- Apellido Paterno Aspirante Field  nombres y datos   -->
+
+
+        <center><h3 class="titulos">Datos del aspirante</h3></center>
+
+    
+<!-- CAMPO DEL ASPIRANTE-->
+        <div  class="form-group col-sm-3 encAl">
+           <center> {!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante') !!}</center>
+        </div>
+        <div  class="form-group col-sm-3 encAl">
+            {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}
+        </div>
         <!-- Apellido Materno Aspirante Field -->
-        <div class="form-group col-sm-6">
-            {!! Form::label('apellido_materno_aspirante', 'Apellido Materno Aspirante:') !!}
-            {!! Form::text('apellido_materno_aspirante', null, ['class' => 'form-control']) !!}
+        <div  class="form-group col-sm-3 encAl">
+            {!! Form::text('apellido_materno_aspirante', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}
         </div>
         <!-- Nombres Aspirante Field -->
-        <div class="form-group col-sm-6">
-            {!! Form::label('nombres_aspirante', 'Nombres Aspirante:') !!}
-            {!! Form::text('nombres_aspirante', null, ['class' => 'form-control']) !!}
+        <div class="form-group col-sm-3 encAl">   
+            {!! Form::text('nombres_aspirante', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
         </div>
 
+        <div class="row encAl">
         <!-- Fecha Nacimiento Asp Field -->
-        <div class="form-group col-sm-6">
-            {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento Asp:') !!}
+        <div class="form-group col-sm-4 ">
+            <center>{!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento') !!}</center>
             {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
         </div>
 
-
-        Paises
-        {!! Form::select('paises',$paises) !!}
-        Entidades Federativas
-         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,['id'=>'state']) !!}
-
-                <!-- Municipio Nac Field -->
-        <div class="form-group col-sm-6">
-            {!! Form::label('municipio_nac', 'Municipio Nac:') !!}
-            {!! Form::text('municipio_nac', null, ['class' => 'form-control']) !!}
-        </div>
-
-</div>
-
-</hr>
-
-        Municipios
-         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,['id'=>'town']) !!}
-
-
-<div class="form-group col-sm-6">
-    {!! Form::label('folio_solicitud', 'Folio Solicitud:') !!}
-    {!! Form::number('folio_solicitud', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Periodo Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('periodo', 'Periodo:') !!}
-    {!! Form::text('periodo', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ficha Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ficha', 'Ficha:') !!}
-    {!! Form::number('ficha', null, ['class' => 'form-control']) !!}
-</div>
-
-
-
-<!-- Sexo Asp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('sexo_asp', 'Sexo Asp:') !!}
-    <select class='form-control'>
+        <!-- Sexo Asp Field -->
+        <div class="form-group col-sm-4 ">
+        <center>{!! Form::label('sexo_asp', 'Sexo') !!}</center>
+        <select class='form-control'>
         <option>Seleccione Sexo</option>
         <option value="M">Masculino</option>
         <option value="F">Femenino</option>
-    </select>
+        </select>
+        </div>
+    
+
+        <!-- Curp Asp Field -->
+        <div class="form-group col-sm-4 ">
+        <center>{!! Form::label('curp_asp', 'Curp') !!}</center>
+        {!! Form::text('curp_asp', null, ['class' => 'form-control']) !!}
+        </div>
+         </div>
 
 </div>
+        <!--  Asp estado civil  %%%%Field -->
+        <div class="form-group col-sm-4">
+        <center>{!! Form::label('estado_civil', 'Estado Civil') !!}</center>
+        <select class='form-control'>
+        <option>Selecciona el estado civil</option>
+        <option value="S">Soltero(a)</option>
+        <option value="C">Casado(a)</option>
+        <option value="D">Divorciado(a)</option>
+        <option value="v">viudo(a)</option>
+        </select>
+        </div>
 
-<!-- Escuela Procedencia Id Field -->
+         <!-- Correo Elect Dom Actual Field -->
+        <div class="form-group col-sm-4">
+        <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
+        {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
+        </div>
+        <!-- %%Telefono Fijo Dom Actual Field -->
+        <div class="form-group col-sm-4">
+        <center> {!! Form::label('telefono_fijo', 'Teléfono') !!}</center>
+        {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Fijo']) !!}
+        </div>
+        <!-- %%Telefono Movil Dom Actual Field -->
+        <div class="form-group col-sm-2">
+        <center>{!! Form::label('movil', 'Celular') !!}</center>
+        {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Movil']) !!}<br>
+        </div>
+        <!-- Numero del seguro social fields%%%%-->
+        <div class="form-group col-sm-2 ">
+        <center>{!! Form::label('numero_s_s', 'N.S.S') !!}</center>
+        {!! Form::text('numero_s_s', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- pais-->
+        <div class="form-group col-sm-2">
+        <center> {!! Form::label('pais', 'Pais' )!!} </center>
+        {!! Form::select('paises',$paises,null,array('class'=>'form-control')) !!}
+        </div>
+
+       
+        <!--Entidades Federativas-->
+        <div class="form-group col-sm-3">
+        <center> {!! Form::label('entidad_federativa','Estado de Nacimiento')!!}</center>
+         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
+        </div>
+         <!--Municipios-->
+        <div class="form-group col-sm-2">
+         <center>{!! Form::label('municipio','Municipio')!!}</center>
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
+        </div>
+
+        <!--CAMPO DE CARRERAS-->
+
+        <!-- Carrera Op1 Id Field -->
+          <div class="form-gropup col-sm-12"> 
+                <center><h3 class="titulos">Carreras en Orden de Preferencia</h3></center>
 <div class="form-group col-sm-6">
-    {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia Id:') !!}
-    {!! Form::text('escuela_procedencia_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Promedio Bachillerato Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('promedio_bachillerato', 'Promedio Bachillerato:') !!}
-    {!! Form::number('promedio_bachillerato', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Anio Termino Bachillerato Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('anio_termino_bachillerato', 'Anio Termino Bachillerato:') !!}
-    {!! Form::number('anio_termino_bachillerato', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Calle Dom Actual Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('calle_dom_actual', 'Calle Dom Actual:') !!}
-    {!! Form::text('calle_dom_actual', null, ['class' => 'form-control']) !!}
-</div>
-
-
-
-<!-- Codigo Postal Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('codigo_postal', 'Codigo Postal:') !!}
-    {!! Form::number('codigo_postal', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Carrera Op1 Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('carrera_op1_id', 'Carrera Op1 Id:') !!}
-    {!! Form::number('carrera_op1_id', null, ['class' => 'form-control']) !!}
+   <center> {!! Form::label('carrera_op1_id', 'Opción 1:') !!}</center>
+    {!! Form::select('carrera_op1_id', $carreraOfertada) !!}
 </div>
 
 <!-- Carrera Op2 Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('carrera_op2_id', 'Carrera Op2 Id:') !!}
-    {!! Form::number('carrera_op2_id', null, ['class' => 'form-control']) !!}
+   <center> {!! Form::label('carrera_op2_id', 'Opción 2:') !!}</center>
+    {!! Form::select('carrera_op2_id', $carreraOfertada) !!}
 </div>
 
-<!-- Modalidad Asp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('modalidad', 'Modalidad:') !!}
-    {!! Form::text('tipo_modalidad_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Nacionalidad Asp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nacionalidad_asp', 'Nacionalidad Asp:') !!}
-    {!! Form::text('nacionalidad_asp', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Curp Asp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('curp_asp', 'Curp Asp:') !!}
-    {!! Form::text('curp_asp', null, ['class' => 'form-control']) !!}
-</div>
+<!--PREPARATORIA DE PROCEDENCIA-->
 
 <!-- Entidad Federativa Proc Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa Proc Id:') !!}
-    {!! Form::number('entidad_federativa_proc_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Municipio Proc Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('municipio_proc_id', 'Municipio Proc Id:') !!}
-    {!! Form::number('municipio_proc_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Entidad Federativa Dom Actual Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa Dom Actual Id:') !!}
-    {!! Form::number('entidad_federativa_dom_actual_id', null, ['class' => 'form-control']) !!}
-</div>
-
+   <div class="form-gropup col-sm-12"> 
+        <center><h3 class="titulos">Preparatoria de Procedencia</h3></center>
+<div class="form-group col-sm-3">
+        <center> {!! Form::label('entidad_federativa','Estado de Nacimiento')!!}</center>
+         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
+        </div>
 <!-- Municipio Dom Actual Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('municipio_dom_actual_id', 'Municipio Dom Actual Id:') !!}
-    {!! Form::number('municipio_dom_actual_id', null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-2">
+         <center>{!! Form::label('municipio','Municipio')!!}</center>
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
+        </div>
+
+
+<!-- Escuela Procedencia Id Field -->
+<div class="form-group col-sm-5">
+   <center> {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia Id:') !!}
+    {!! Form::text('escuela_procedencia_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Codigo Postal Dom Actual Field -->
+<!-- Año Termino Bachillerato Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('codigo_postal_dom_actual', 'Codigo Postal Dom Actual:') !!}
-    {!! Form::number('codigo_postal_dom_actual', null, ['class' => 'form-control']) !!}
+    <center> {!! Form::label('anio_termino_bachillerato', 'Año De Egreso:') !!}</center>
+    {!! Form::number('anio_termino_bachillerato', null, ['class' => 'form-control']) !!}
+</div>
+<!-- Promedio Bachillerato Field -->
+<div class="form-group col-sm-6">
+  <center>  {!! Form::label('promedio_bachillerato', 'Promedio Bachillerato:') !!}</center>
+    {!! Form::number('promedio_bachillerato', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Colonia Dom Actual Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('colonia_dom_actual', 'Colonia Dom Actual:') !!}
-    {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control']) !!}
+
+
+</div>
+<!--DATOS DEL PADRE-->
+        <!--datos del padre-->
+        <div class="form-gropup col-sm-4"> 
+         <center><h3 class="titulos" >Datos del padre</h3></center>
+         <div class="form-gropup col-sm-8">
+         {!! Form::text('apellido_paterno_padre', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
+         {!! Form::text('apellido_materno_padre', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
+         {!! Form::text('nombres_padre', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
+        </div>
+         <!-- Vive Padre Field -->
+        <class="form-group col-sm-2">
+        {!! Form::label('vive_padre', 'Vive') !!}<br>
+        <label class="checkbox-inline">
+         <input type="checkbox" id="cbox1" value="second_checkbox"> <label for="cbox2">Si</label><br>
+         <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">No</label>
+         </label>
+
+
+        
+         </div>
+         <!--datos de la madre-->
+         <div class="form-gropup col-sm-4"> 
+         <center><h3 class="titulos" >Datos de la madre</h3></center>
+            <div class="form-gropup col-sm-8">
+         {!! Form::text('apellido_paterno_madre', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
+         {!! Form::text('apellido_materno_madre', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
+         {!! Form::text('nombres_madre', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
+        </div>
+               <!-- Vive Madre Field -->
+        <class="form-group col-sm-2">
+        {!! Form::label('vive_madre', 'Vive ') !!}<br>
+        <label class="checkbox-inline">
+   
+        <input type="checkbox" id="cbox1" value="second_checkbox"> <label for="cbox2">Si</label><br>
+         <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">No</label>
+        </label>
+
+
+     
+
+         </div>
+         <!--datos del tutor-->
+         <div class="form-gropup col-sm-4"> 
+         <center><h3 class="titulos"  >Datos del tutor</h3></center>
+            <div class="form-gropup col-sm-8">
+         {!! Form::text('apellido_paterno_tutor', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
+         {!! Form::text('apellido_materno_tutor', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
+         {!! Form::text('nombres_tutor', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}<br>
+        </div>
+                      <!-- Vive Tutor Field -->
+        <class="form-group col-sm-2">
+        {!! Form::label('vive_tutor', 'Vive ') !!}<br>
+         <label class="checkbox-inline">
+         <input type="checkbox" id="cbox1" value="second_checkbox"> <label for="cbox2">Si</label><br>
+         <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">No</label>
+         </label>
+
+         
+
+         </div>
+        
+         <div class="form-gropup col-sm-12">
+         <center><h3 class="titulos"  >Domicilio Actual</h3></center>
+         </div>
+
+
+
+        <!-- Calle Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center>{!! Form::label('calle_dom_actual', 'Calle Dom Actual:') !!}</center>
+        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Codigo Postal Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        {!! Form::label('codigo_postal_dom_actual', 'Codigo Postal Dom Actual:') !!}
+        {!! Form::number('codigo_postal_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+
+
+
+          <!-- Entidad Federativa Dom Actual Id Field -->
+<div class="form-group col-sm-3">
+    {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa Dom Actual Id:') !!}
+    {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
 </div>
 
-<!-- Correo Elect Dom Actual Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('correo_elect_dom_actual', 'Correo Elect Dom Actual:') !!}
-    {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control']) !!}
-</div>
+        <!-- Municipio Proc Id Field -->
+        <div class="form-group col-sm-3">
+        <center>{!! Form::label('municipio_proc_id', 'Municipio de Procedencia') !!}</center>
+        {!! Form::number('municipio_proc_id', null, ['class' => 'form-control']) !!}
+        </div>
 
-<!-- Numero seguro social Dom Actual Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('numero_seguro_social', 'Número del Seguro Social:') !!}
-    {!! Form::text('numero_seguro_social', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Telefono Fijo Dom Actual Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('telefono_fijo_dom_actual', 'Telefono Fijo Dom Actual:') !!}
-    {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control']) !!}
-</div>
+     
+        <!-- Colonia Dom Actual Field -->
+        <div class="form-group col-sm-2">
+        <center>{!! Form::label('colonia_dom_actual', 'Colonia Dom Actual:') !!}</center>
+        {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+
+          <!-- Correo Elect Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
+        {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
+        </div>
+
 
 <!-- Telefono Cel Aspirante Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}
+<div class="form-group col-sm-3">
+    <center>{!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}</center>
     {!! Form::text('telefono_cel_aspirante', null, ['class' => 'form-control']) !!}
 </div>
 
+
 <!-- Zona Proc Aspirante Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}
     {!! Form::number('zona_proc_aspirante', null, ['class' => 'form-control']) !!}
 </div>
 
+        <!-- Submit Field -->
+        <div   class="form-group col-sm-12 ">
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        <a href="{!! route('aspiranteGenerals.index') !!}" class=" btn btn-default">Cancel</a>
+        </div>
+
+
+
+
+
+
+
+        <!-- recordar
+        Paises
+        {!! Form::select('paises',$paises) !!}
+        Entidades Federativas
+         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,['id'=>'state']) !!}
+           
+     
+         recordar
+        Municipios
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,['id'=>'town']) !!}
+-->
+
+</hr>
+      
+<input id="invisible_id" name="invisible" type="hidden" value="secret">
+
+<div class="form-group col-sm-6">
+    {!! Form::hidden('folio_solicitud', 'Folio Solicitud:') !!}
+    {!! Form::hidden('folio_solicitud', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Periodo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::hidden('periodo', 'Periodo:') !!}
+    {!! Form::hidden('periodo', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ficha Field -->
+<div class="form-group col-sm-6">
+    {!! Form::hidden('ficha', 'Ficha:') !!}
+    {!! Form::hidden('ficha', null, ['class' => 'form-control']) !!}
+</div>
+
+
+
+
+
+
+
+<!-- Modalidad Asp Field -->
+<div class="form-group col-sm-6">
+    {!! Form::hidden('modalidad', 'Modalidad:') !!}
+    {!! Form::hidden('modalidad', null, ['class' => 'form-control']) !!}
+</div>
+
+
+
+
+
+
+
 <!-- Oportunidades Aspirante Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('oportunidades_aspirante', 'Oportunidades Aspirante:') !!}
+    {!! Form::hidden('oportunidades_aspirante', 'Oportunidades Aspirante:') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('oportunidades_aspirante', false) !!}
-        {!! Form::checkbox('oportunidades_aspirante', '1', null) !!} 1
+        {!! Form::hidden('oportunidades_aspirante', '1', null) !!} <!--1-->
     </label>
 </div>
 
-<!-- Nombres Padre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombres_padre', 'Nombres Padre:') !!}
-    {!! Form::text('nombres_padre', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Apellido Paterno Padre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_paterno_padre', 'Apellido Paterno Padre:') !!}
-    {!! Form::text('apellido_paterno_padre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Materno Padre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_materno_padre', 'Apellido Materno Padre:') !!}
-    {!! Form::text('apellido_materno_padre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Vive Padre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('vive_padre', 'Vive Padre:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('vive_padre', false) !!}
-        {!! Form::checkbox('vive_padre', '1', null) !!} 1
-    </label>
-</div>
-
-<!-- Nombres Madre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombres_madre', 'Nombres Madre:') !!}
-    {!! Form::text('nombres_madre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Paterno Madre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_paterno_madre', 'Apellido Paterno Madre:') !!}
-    {!! Form::text('apellido_paterno_madre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Materno Madre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_materno_madre', 'Apellido Materno Madre:') !!}
-    {!! Form::text('apellido_materno_madre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Vive Madre Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('vive_madre', 'Vive Madre:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('vive_madre', false) !!}
-        {!! Form::checkbox('vive_madre', '1', null) !!} 1
-    </label>
-</div>
-
-<!-- Nombres Tutor Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombres_tutor', 'Nombres Tutor:') !!}
-    {!! Form::text('nombres_tutor', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Paterno Tutor Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_paterno_tutor', 'Apellido Paterno Tutor:') !!}
-    {!! Form::text('apellido_paterno_tutor', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Materno Tutor Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_materno_tutor', 'Apellido Materno Tutor:') !!}
-    {!! Form::text('apellido_materno_tutor', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Usuario Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('usuario_id', 'Usuario Id:') !!}
-    {!! Form::number('usuario_id', null, ['class' => 'form-control']) !!}
+    {!! Form::hidden('usuario_id', 'Usuario Id:') !!}
+    {!! Form::hidden('usuario_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('aspiranteGenerals.index') !!}" class="btn btn-default">Cancel</a>
-</div>
+ <!-- Nacionalidad Asp Field -->
+        <div class="form-group col-sm-2">
+{!! Form::hidden('nacionalidad_asp', 'Nacionalidad ') !!}
+        {!! Form::hidden('nacionalidad_asp', null, ['class' => 'form-control']) !!}
+        </div>

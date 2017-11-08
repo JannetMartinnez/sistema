@@ -39,7 +39,6 @@ use Eloquent as Model;
  * @property integer codigo_postal_dom_actual
  * @property string colonia_dom_actual
  * @property string correo_elect_dom_actual
- * @property string numero_seguro_social
  * @property string telefono_fijo_dom_actual
  * @property string telefono_cel_aspirante
  * @property integer zona_proc_aspirante
@@ -91,7 +90,6 @@ class AspiranteGeneral extends Model
         'entidad_federativa_dom_actual_id',
         'municipio_dom_actual_id',
         'codigo_postal_dom_actual',
-        'numero_seguro_social',
         'colonia_dom_actual',
         'correo_elect_dom_actual',
         'telefono_fijo_dom_actual',
@@ -145,7 +143,6 @@ class AspiranteGeneral extends Model
         'codigo_postal_dom_actual' => 'integer',
         'colonia_dom_actual' => 'string',
         'correo_elect_dom_actual' => 'string',
-        'numero_seguro_social' => 'string',
         'telefono_fijo_dom_actual' => 'string',
         'telefono_cel_aspirante' => 'string',
         'zona_proc_aspirante' => 'integer',

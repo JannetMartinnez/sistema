@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(PreparatoriaSeeder::class);
         //$this->call(Preparatoria2Seeder::class);
         //$this->call(CarreraSeeder::class);
-        //$this->call(Preparatoria3Seeder::class);
-         $this->call(TipoModalidadSeeder::class);
+        $this->call(Preparatoria3Seeder::class);
     }
 }

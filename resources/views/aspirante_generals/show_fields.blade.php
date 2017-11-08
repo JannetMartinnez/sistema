@@ -24,8 +24,8 @@
 
 <!-- Apellido Paterno Aspirante Field -->
 <div class="form-group">
-    {!! Form::label('apellido_paterno_aspirante', 'Apellido Paterno Aspirante:') !!}
-    <p>{!! $aspiranteGeneral->apellido_paterno_aspirante !!}</p>
+    {!! Form::label('nombre_aspirante', 'Nombre del Aspirante:') !!}
+    <p>{!! $aspiranteGeneral->nombre_aspirante !!}</p>
 </div>
 
 <!-- Apellido Materno Aspirante Field -->
@@ -46,10 +46,16 @@
     <p>{!! $aspiranteGeneral->fecha_nacimiento_asp !!}</p>
 </div>
 
+<!-- Curp Asp Field -->
+<div class="form-group">
+    {!! Form::label('curp_asp', 'Curp Asp:') !!}
+    <p>{!! $aspiranteGeneral->curp_asp !!}</p>
+</div>
+
 <!-- Sexo Asp Field -->
 <div class="form-group">
-    {!! Form::label('sexo_asp', 'Sexo Asp:') !!}
-    <p>{!! $aspiranteGeneral->sexo_asp !!}</p>
+    {!! Form::label('genero_asp', 'Genero Asp:') !!}
+    <p>{!! $aspiranteGeneral->genero_asp !!}</p>
 </div>
 
 <!-- Escuela Procedencia Id Field -->
@@ -106,11 +112,6 @@
     <p>{!! $aspiranteGeneral->nacionalidad_asp !!}</p>
 </div>
 
-<!-- Curp Asp Field -->
-<div class="form-group">
-    {!! Form::label('curp_asp', 'Curp Asp:') !!}
-    <p>{!! $aspiranteGeneral->curp_asp !!}</p>
-</div>
 
 <!-- Entidad Federativa Proc Id Field -->
 <div class="form-group">
