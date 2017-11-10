@@ -19,8 +19,11 @@
     </div>
 </div>
 
-<aside class="titulos" class="col-md-10">
-    Avisos
+<aside class="col-md-2">
+    <h3 class="titulos" >Avisos</h3>
+    Excelente días, tardes o noches, maestra aqui su grupo fregon de Programación jeje, se le hicieron los cambios que pidio de las carreras, acomodo y reduccion de algunos campos.<br><br>
+
+    Atte: Los programadores 
 
     </aside>
 @endsection

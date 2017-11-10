@@ -36,9 +36,9 @@ $(function() {
 
     
 <!-- CAMPO DEL ASPIRANTE-->
-        <div  class="form-group col-sm-3 encAl">
-           <center> {!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante') !!}</center>
-        </div>
+       <center> <div   class= align="right" "form-group col-sm-3 encAl" ></center>
+         <center> {!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante') !!}</center>
+        </div><br>
         <div  class="form-group col-sm-3 encAl">
             {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}
         </div>
@@ -53,13 +53,13 @@ $(function() {
 
         <div class="row encAl">
         <!-- Fecha Nacimiento Asp Field -->
-        <div class="form-group col-sm-4 ">
+        <div class="form-group col-sm-3 ">
             <center>{!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento') !!}</center>
             {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Sexo Asp Field -->
-        <div class="form-group col-sm-4 ">
+        <div class="form-group col-sm-3 ">
         <center>{!! Form::label('sexo_asp', 'Sexo') !!}</center>
         <select class='form-control'>
         <option>Seleccione Sexo</option>
@@ -70,7 +70,7 @@ $(function() {
     
 
         <!-- Curp Asp Field -->
-        <div class="form-group col-sm-4 ">
+        <div class="form-group col-sm-3 ">
         <center>{!! Form::label('curp_asp', 'Curp') !!}</center>
         {!! Form::text('curp_asp', null, ['class' => 'form-control']) !!}
         </div>
@@ -78,7 +78,7 @@ $(function() {
 
 </div>
         <!--  Asp estado civil  %%%%Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
         <center>{!! Form::label('estado_civil', 'Estado Civil') !!}</center>
         <select class='form-control'>
         <option>Selecciona el estado civil</option>
@@ -90,12 +90,12 @@ $(function() {
         </div>
 
          <!-- Correo Elect Dom Actual Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
         <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
         {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
         </div>
         <!-- %%Telefono Fijo Dom Actual Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-2">
         <center> {!! Form::label('telefono_fijo', 'Teléfono') !!}</center>
         {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Fijo']) !!}
         </div>
@@ -111,7 +111,7 @@ $(function() {
         </div>
 
         <!-- pais-->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
         <center> {!! Form::label('pais', 'Pais' )!!} </center>
         {!! Form::select('paises',$paises,null,array('class'=>'form-control')) !!}
         </div>
@@ -123,25 +123,87 @@ $(function() {
          {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
         </div>
          <!--Municipios-->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
          <center>{!! Form::label('municipio','Municipio')!!}</center>
          {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
         </div>
 
+
+         <div class="form-gropup col-sm-12">
+         <center><h3 class="titulos"  >Domicilio Actual</h3></center>
+         </div>
+
+
+
+        <!-- Calle Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center>{!! Form::label('calle_dom_actual', 'Calle Dom Actual:') !!}</center><br>
+        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+           <!-- Colonia Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center>{!! Form::label('colonia_dom_actual', 'Colonia Dom Actual:') !!}</center><br>
+        {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Codigo Postal Dom Actual Field -->
+        <div class="form-group col-sm-2">
+        {!! Form::label('codigo_postal_dom_actual', 'Codigo Postal Dom Actual:') !!}
+        {!! Form::number('codigo_postal_dom_actual', null, ['class' => 'form-control']) !!}
+        </div>
+
+
+
+          <!-- Entidad Federativa Dom Actual Id Field -->
+<div class="form-group col-sm-3">
+    {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa Dom Actual Id:') !!}
+    {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
+</div>
+
+        <!-- Municipio Proc Id Field -->
+             <div class="form-group col-sm-3">
+         <center>{!! Form::label('municipio','Municipio Dom Actual')!!}</center>
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
+        </div>
+
+     
+
+          <!-- Correo Elect Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
+        {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
+        </div>
+
+
+<!-- Telefono Cel Aspirante Field -->
+<div class="form-group col-sm-3">
+    <center>{!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}</center>
+    {!! Form::text('telefono_cel_aspirante', null, ['class' => 'form-control']) !!}
+</div>
+
+
+<!-- Zona Proc Aspirante Field -->
+<div class="form-group col-sm-3">
+   <center> {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}</center>
+    {!! Form::number('zona_proc_aspirante', null, ['class' => 'form-control']) !!}
+</div>
+
+
         <!--CAMPO DE CARRERAS-->
 
         <!-- Carrera Op1 Id Field -->
-          <div class="form-gropup col-sm-12"> 
-                <center><h3 class="titulos">Carreras en Orden de Preferencia</h3></center>
+          <div class="col-sm-12 form-inline"> 
+                <center><h3 class= "titulos" >Carreras en Orden de Preferencia</h3></center>
 <div class="form-group col-sm-6">
-   <center> {!! Form::label('carrera_op1_id', 'Opción 1:') !!}</center>
-    {!! Form::select('carrera_op1_id', $carr) !!}
+            {!! Form::label('carrera_op1_id', 'Opción 1:') !!}
+            {!! Form::select('carrera_op1_id', $carr) !!}
 </div>
 
 <!-- Carrera Op2 Id Field -->
 <div class="form-group col-sm-6">
-   <center> {!! Form::label('carrera_op2_id', 'Opción 2:') !!}</center>
-    {!! Form::select('carrera_op2_id', $carreraOfertada) !!}
+            {!! Form::label('carrera_op2_id', 'Opción 2:') !!}
+            {!! Form::select('carrera_op2_id', $carr) !!}
+
 </div>
 
 </div>
@@ -237,71 +299,8 @@ $(function() {
          <label class="checkbox-inline">
          <input type="checkbox" id="cbox1" value="second_checkbox"> <label for="cbox2">Si</label><br>
          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">No</label>
-         </label>
-
-         
-
          </div>
         
-         <div class="form-gropup col-sm-12">
-         <center><h3 class="titulos"  >Domicilio Actual</h3></center>
-         </div>
-
-
-
-        <!-- Calle Dom Actual Field -->
-        <div class="form-group col-sm-3">
-        <center>{!! Form::label('calle_dom_actual', 'Calle Dom Actual:') !!}</center>
-        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Codigo Postal Dom Actual Field -->
-        <div class="form-group col-sm-3">
-        {!! Form::label('codigo_postal_dom_actual', 'Codigo Postal Dom Actual:') !!}
-        {!! Form::number('codigo_postal_dom_actual', null, ['class' => 'form-control']) !!}
-        </div>
-
-
-
-          <!-- Entidad Federativa Dom Actual Id Field -->
-<div class="form-group col-sm-3">
-    {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa Dom Actual Id:') !!}
-    {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
-</div>
-
-        <!-- Municipio Proc Id Field -->
-        <div class="form-group col-sm-3">
-        <center>{!! Form::label('municipio_proc_id', 'Municipio de Procedencia') !!}</center>
-        {!! Form::number('municipio_proc_id', null, ['class' => 'form-control']) !!}
-        </div>
-
-
-     
-        <!-- Colonia Dom Actual Field -->
-        <div class="form-group col-sm-2">
-        <center>{!! Form::label('colonia_dom_actual', 'Colonia Dom Actual:') !!}</center>
-        {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control']) !!}
-        </div>
-
-          <!-- Correo Elect Dom Actual Field -->
-        <div class="form-group col-sm-3">
-        <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
-        {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
-        </div>
-
-
-<!-- Telefono Cel Aspirante Field -->
-<div class="form-group col-sm-3">
-    <center>{!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}</center>
-    {!! Form::text('telefono_cel_aspirante', null, ['class' => 'form-control']) !!}
-</div>
-
-
-<!-- Zona Proc Aspirante Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}
-    {!! Form::number('zona_proc_aspirante', null, ['class' => 'form-control']) !!}
-</div>
 
         <!-- Submit Field -->
         <div   class="form-group col-sm-12 ">
