@@ -56,8 +56,11 @@ class AspiranteGeneralController extends AppBaseController
         $paises=Pais::orderBy('pais')->pluck('pais','id');
         $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
         $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
+
+        $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada'));
+            'carreraOfertada','carr'));
     }
 
     /**

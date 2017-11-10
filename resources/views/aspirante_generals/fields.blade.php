@@ -135,7 +135,7 @@ $(function() {
                 <center><h3 class="titulos">Carreras en Orden de Preferencia</h3></center>
 <div class="form-group col-sm-6">
    <center> {!! Form::label('carrera_op1_id', 'Opción 1:') !!}</center>
-    {!! Form::select('carrera_op1_id', $carreraOfertada) !!}
+    {!! Form::select('carrera_op1_id', $carr) !!}
 </div>
 
 <!-- Carrera Op2 Id Field -->
