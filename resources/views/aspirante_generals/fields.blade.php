@@ -86,6 +86,10 @@ $(function() {
         <option value="C">Casado(a)</option>
         <option value="D">Divorciado(a)</option>
         <option value="v">viudo(a)</option>
+        <option value="S">separado(a)</option>
+        <option value="U">union libre</option>
+        
+
         </select>
         </div>
 
