@@ -16,12 +16,47 @@ $(function() {
       console.log('hola');
     });
 });
- 
+
+
 </script>
-<div class="row encAl">
- <div class= "col-xs-12 col-md-2 encAl">    
+<div class="container">
+<br>
+<div class="row">
+    <div class="col-md-10">
+
+        <div role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentacion" class="active"><a href="#seccion1" aria-controls="seccion1" 
+                    data-toggle="tab" role="tab">Datos Generales</a></li>
+
+                       <li role="presentacion"><a href="#seccion2" aria-controls="seccion2" 
+                    data-toggle="tab" role="tab">Datos Escolares</a></li>
+
+                       <li role="presentacion" ><a href="#seccion3" aria-controls="seccion3" 
+                    data-toggle="tab" role="tab">Datos de Salud</a></li>
+
+                       <li role="presentacion" ><a href="#seccion4" aria-controls="seccion4" 
+                    data-toggle="tab" role="tab">Documentos</a></li>
+
+                       <li role="presentacion" ><a href="#seccion5" aria-controls="seccion5" 
+                    data-toggle="tab" role="tab">Datos Socieconomicos</a></li>
+
+                </ul>
+                </div>
+</div>
+</div>
+</div>
+                <div class="tab-content">
+                    <!--Datos Genrales-->
+                <div role="tabpanel" class="tab-pane active" id="seccion1"><br>
+
+
+                        <!--datos generales-->
+
+<div class="row encAl ">
+ <div class= "col-xs-12 col-md-2 encAl ">    
  <div class="container-fluid continer2 encAl"> 
-<img class="img-responsive img-" src="{{url('img/img94joktmu76583.jpg')}}">
+<img class="img-responsive img- fimag" src="{{url('img/img94joktmu76583.jpg')}}">
 <a href=""><caption><center><h6 <i class="fa fa-camera" aria-hidden="true"</i>Cambiar Imagen</h6></center></caption></a>
     
         </div>
@@ -55,7 +90,7 @@ $(function() {
         <!-- Fecha Nacimiento Asp Field -->
         <div class="form-group col-sm-3 ">
             <center>{!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento') !!}</center>
-            {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
+                   {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Sexo Asp Field -->
@@ -81,13 +116,13 @@ $(function() {
         <div class="form-group col-sm-3">
         <center>{!! Form::label('estado_civil', 'Estado Civil') !!}</center>
         <select class='form-control'>
-        <option>Selecciona el estado civil</option>
+        <option>Seleciona</option>
         <option value="S">Soltero(a)</option>
         <option value="C">Casado(a)</option>
         <option value="D">Divorciado(a)</option>
-        <option value="v">viudo(a)</option>
-        <option value="S">separado(a)</option>
-        <option value="U">union libre</option>
+        <option value="v">Viudo(a)</option>
+        <option value="S">Separado(a)</option>
+        <option value="U">Union libre</option>
         
 
         </select>
@@ -111,7 +146,7 @@ $(function() {
         <!-- Numero del seguro social fields%%%%-->
         <div class="form-group col-sm-2 ">
         <center>{!! Form::label('numero_s_s', 'N.S.S') !!}</center>
-        {!! Form::text('numero_s_s', null, ['class' => 'form-control']) !!}
+        {!! Form::text('numero_s_s', null, ['class' => 'form-control','placeholder'=>'Numero de Seguro']) !!}
         </div>
 
         <!-- pais-->
@@ -170,26 +205,15 @@ $(function() {
          {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
         </div>
 
-     
-
-          <!-- Correo Elect Dom Actual Field -->
-        <div class="form-group col-sm-3">
-        <center> {!! Form::label('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
-        {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
-        </div>
-
-
-<!-- Telefono Cel Aspirante Field -->
-<div class="form-group col-sm-3">
-    <center>{!! Form::label('telefono_cel_aspirante', 'Telefono Cel Aspirante:') !!}</center>
-    {!! Form::text('telefono_cel_aspirante', null, ['class' => 'form-control']) !!}
-</div>
-
-
 <!-- Zona Proc Aspirante Field -->
 <div class="form-group col-sm-3">
    <center> {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}</center>
-    {!! Form::number('zona_proc_aspirante', null, ['class' => 'form-control']) !!}
+     <select class='form-control'>
+        <option>Selecciona tu Zona</option>
+        <option value="R">Rural</option>
+        <option value="U">Urbano</option>
+        </select>
+        
 </div>
 
 
@@ -312,6 +336,112 @@ $(function() {
         <a href="{!! route('aspiranteGenerals.index') !!}" class=" btn btn-default">Cancel</a>
         </div>
 
+</div>  
+
+<!--Separadorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+<!--Datos Escolares-->  
+    <div role="tabpanel" class="tab-pane" id="seccion2">
+
+           <div class="form-gropup col-sm-12"> 
+        <center><h3 class="titulos">Preparatoria de Procedencia</h3></center>
+<div class="form-group col-sm-4">
+        <center> {!! Form::label('entidad_federativa','Estado de Nacimiento')!!}</center>
+         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
+        </div>
+<!-- Municipio Dom Actual Id Field -->
+<div class="form-group col-sm-4">
+         <center>{!! Form::label('municipio','Municipio de Procedencia')!!}</center>
+         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
+        </div>
+
+<!-- Escuela Procedencia Id Field -->
+<div class="form-group col-sm-4">
+   <center> {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia :') !!}
+    {!! Form::text('escuela_procedencia_id', null, ['class' => 'form-control']) !!}
+</div>
+<!--Tipo de Bachillerato-->
+<div class="form-group col-sm-4">
+         <center>{!! Form::label('tipo','Tipo de Bachillerato')!!}</center>
+         {!! Form::select('tipo',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
+     </div>
+
+<!-- Año Termino Bachillerato Field -->
+<div class="form-group col-sm-4">
+    <center> {!! Form::label('anio_termino_bachillerato', 'Año De Egreso:') !!}</center>
+    {!! Form::number('anio_termino_bachillerato', null, ['class' => 'form-control']) !!}
+</div>
+<!-- Promedio Bachillerato Field -->
+<div class="form-group col-sm-4">
+  <center>  {!! Form::label('promedio_bachillerato', 'Promedio General:') !!}</center>
+    {!! Form::number('promedio_bachillerato', null, ['class' => 'form-control']) !!}
+</div>
+     <!-- Cuentas Con Beca -->
+        <div class="form-group col-sm-3">
+        {!! Form::label('Cuenta_Beca', 'Cuentas con Beca') !!}<br>
+        <label class="checkbox-inline">
+         <input type="checkbox" id="cbox1" value="second_checkbox form-inline"> <label for="cbox2">Si</label><br>
+         <input type="checkbox" id="cbox2" value="second_checkbox form-inline"> <label for="cbox2">No</label>
+         </label>
+     </div>
+
+            <!-- Tu Familia Pertenece al Programa Oportunidades -->
+        <div class="form-group col-sm-9">
+        {!! Form::label('Programa_Oportunidades', '¿Tu Familia Cuenta Con El Programa Oportunidades?') !!}<br>
+        <label class="checkbox-inline">
+         <input type="checkbox" id="cbox1" value="second_checkbox form-inline"> <label for="cbox2">Si</label><br>
+         <input type="checkbox" id="cbox2" value="second_checkbox form-inline"> <label for="cbox2">No</label>
+         </label>
+     </div>
+
+<!-- Quien Te la Otorgo -->
+<div class="form-group col-sm-4">
+  <center>  {!! Form::label('otorgada', '¿Quien te la Otorgo?:') !!}</center>
+    {!! Form::number('otorgada', null, ['class' => 'form-control']) !!}
+</div>
+
+
+          <div class="col-sm-12 form-inline"> 
+                <center><h3 class= "titulos" >Carreras en Orden de Preferencia</h3></center>
+<div class="form-group col-sm-6">
+            {!! Form::label('carrera_op1_id', 'Opción 1:') !!}
+            {!! Form::select('carrera_op1_id', $carr) !!}
+</div>
+
+<!-- Carrera Op2 Id Field -->
+<div class="form-group col-sm-6">
+            {!! Form::label('carrera_op2_id', 'Opción 2:') !!}
+            {!! Form::select('carrera_op2_id', $carr) !!}
+
+</div>
+
+</div>
+
+
+</div>
+</div>
+<!--Separadorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+<!--Datos de Salud-->
+ <div role="tabpanel" class="tab-pane" id="seccion3">
+<h3>sammy</h3>
+</div>
+<!--Separadorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+<!--Documentos-->
+ <div role="tabpanel" class="tab-pane" id="seccion4">
+<h3>jesus</h3>
+</div>
+<!--Separadorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+<!--Datos Socieconimicos-->
+ <div role="tabpanel" class="tab-pane" id="seccion5">
+<h3>eric</h3>
+</div>
+
+
+<!--Cierre del Programa con Div-->
+</div>
+
+
+
+
 
 
 
@@ -390,4 +520,15 @@ $(function() {
         <div class="form-group col-sm-2">
 {!! Form::hidden('nacionalidad_asp', 'Nacionalidad ') !!}
         {!! Form::hidden('nacionalidad_asp', null, ['class' => 'form-control']) !!}
+        </div>
+
+         <!-- Correo Elect Dom Actual Field -->
+        <div class="form-group col-sm-3">
+        <center> {!! Form::hidden('correo_elect_dom_actual', 'Correo Electronico') !!}</center>
+        {!! Form::hidden('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
+        </div>
+        <!-- %%Telefono Fijo Dom Actual Field -->
+        <div class="form-group col-sm-2">
+        <center> {!! Form::hidden('telefono_fijo', 'Teléfono') !!}</center>
+        {!! Form::hidden('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Fijo']) !!}
         </div>

@@ -371,12 +371,11 @@ input[type="checkbox"], input[type="radio"] {
 	margin-top: 0px;
 	padding-top: 0px;
 	text-align: center;
-	color: black;
-	font-size: 22px;
+	color: white;
+	font-size: 18px;
 	font-family: 'soberanasans-bold', sans-serif;
 	font-weight:700;
-    background-color:#ffA500; border: 2px solid;"  
-
+    background-color:#800000; border: 3px solid;" 
 
 
 }
@@ -384,4 +383,7 @@ input[type="checkbox"], input[type="radio"] {
 	position: float;
 	float: :left;
 }
-
+.fimag{
+	border-style: solid;
+	border-width: 3px;
+}

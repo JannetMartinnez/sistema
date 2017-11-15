@@ -21,9 +21,14 @@
 
 <aside class="col-md-2">
     <h3 class="titulos" >Avisos</h3>
-    Excelente días, tardes o noches, maestra aqui su grupo fregon de Programación jeje, se le hicieron los cambios que pidio de las carreras, acomodo y reduccion de algunos campos.<br><br>
+     Aquí quiero que se vea la ayuda pero en la parte izquierda arriba de alguna imagen tenue y que de la siguiente información:
 
-    Atte: Los programadores 
+    El Instituto Tecnológico de San Luis Potosí te da la más cordial bienvenida. 
+En este momento eres ASPIRANTE a ingresar a éste INSTITUTO. 
+Si eres nuevo, deberas llenar los datos iniciales y obligatorios como son: el apellido paterno, materno, nombre del aspirante, número de seguro social y correo electrónico.
+NOTA: El correo electrónico es requerido ya que en el vas a recibir tu usuario y contraseña, referencia bancaria y ficha de exámen ingreso.
+Una vez que tengas tu usuario y contraseña, deberás continuar llenando tus datos generales, datos socioeconómicos y de salud.
+Más información en www.itslp.edu.mx en la sección de Aspirantes.
 
     </aside>
 @endsection
