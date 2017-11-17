@@ -43,6 +43,8 @@ Route::resource('municipios', 'MunicipioController');
 
 Route::get('aspiranteGenerals/municipios/{id}', 'EntidadFederativaController@getMunicipios');
 
+Route::get('aspiranteGenerals/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
+
 
 
 Route::resource('organigramas', 'OrganigramaController');

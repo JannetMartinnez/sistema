@@ -382,8 +382,15 @@ input[type="checkbox"], input[type="radio"] {
 .encAl{
 	position: float;
 	float: :left;
+
 }
 .fimag{
 	border-style: solid;
 	border-width: 3px;
+}
+.select_gd{
+	max-width: 60%;
+}
+.rad{
+padding-left: 1em; 	
 }

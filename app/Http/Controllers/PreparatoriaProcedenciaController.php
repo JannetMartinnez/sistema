@@ -6,6 +6,8 @@ use App\Http\Requests\CreatePreparatoriaProcedenciaRequest;
 use App\Http\Requests\UpdatePreparatoriaProcedenciaRequest;
 use App\Repositories\PreparatoriaProcedenciaRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\PreparatoriaProcedencia;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -151,5 +153,14 @@ class PreparatoriaProcedenciaController extends AppBaseController
         Flash::success('Preparatoria Procedencia deleted successfully.');
 
         return redirect(route('preparatoriaProcedencias.index'));
+    }
+    public function getPreparatoria(Request $request,$id)
+    {       
+       if($request->ajax()){
+           /*$preparatorias=PreparatoriaProcedencia::entidades($id);*/
+             $preparatorias=PreparatoriaProcedencia::where('entidades_federativas_id',$id)->get();
+           return response()->json($preparatorias);
+       }
+
     }
 }
