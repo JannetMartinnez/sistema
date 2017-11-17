@@ -72,6 +72,19 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function store(CreateAspiranteGeneralRequest $request)
     {
+	//Validar datos en laravel 5.5
+      $request->validate([
+            'correo_elect_dom_actual'=>'required',
+            'apellido_paterno_aspirante'=>'required',
+            'apellido_materno_aspirante'=>'required',
+            'nombres_aspirante'=>'required',
+            'numero_seguro_social'=>'required',
+            'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
+            'correo_elect_dom_actual' => 'required|min:6|required', 
+            'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual',
+
+        ]);
+
         $input = $request->all();
         //Obtenemos el email del aspirante
         $email=$input['correo_elect_dom_actual'];
