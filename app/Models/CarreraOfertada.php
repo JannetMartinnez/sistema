@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use DB;
+
 /**
  * Class CarreraOfertada
  * @package App\Models
@@ -59,10 +60,14 @@ class CarreraOfertada extends Model
     {
         return $this->belongsTo(\App\Models\Carrera::class);
     }
-    public static function consu(){
+
+public static function consu(){
         return DB::table('carreras_ofertadas')
         ->join('carreras','carreras_ofertadas.carreras_id','=','carreras.id')
         ->select('carreras_ofertadas.*','carreras.nombre_carrera')
         ->orderby('carreras_id')->get();
-    }
+
+}
+
+
 }

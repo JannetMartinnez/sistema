@@ -13,8 +13,8 @@ use Response;
 use App\User;
 use App\Models\Pais;
 use App\Models\Municipio;
-use App\Models\CarreraOfertada;
 use App\Models\PreparatoriaProcedencia;
+use App\Models\CarreraOfertada;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\EntidadFederativa;
@@ -55,12 +55,13 @@ class AspiranteGeneralController extends AppBaseController
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
         $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
-        $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
+        //
+        $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
+        //
+         $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
+         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
 
-        $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
-
-        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','carr'));
+        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios','prepas','carreraOfertada','carr'));
     }
 
     /**
@@ -70,20 +71,20 @@ class AspiranteGeneralController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateAspiranteGeneralRequest $request)
+    public function store(Request $request)
     {
-	//Validar datos en laravel 5.5
-      $request->validate([
-            'correo_elect_dom_actual'=>'required',
-            'apellido_paterno_aspirante'=>'required',
-            'apellido_materno_aspirante'=>'required',
-            'nombres_aspirante'=>'required',
-            'numero_seguro_social'=>'required',
-            'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
-            'correo_elect_dom_actual' => 'required|min:6|required', 
-            'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual',
+     //validar datos//
+     $request->validate([
+     'nombres_aspirante'=>'required',
+     'apellido_paterno_aspirante'=>'required',
+     'apellido_materno_aspirante'=>'required']);
+ 
+     //'numero_seguro_social_confirmacion'=>'required|min:6|same:numero_seguro_social',//
 
-        ]);
+
+
+
+
 
         $input = $request->all();
         //Obtenemos el email del aspirante

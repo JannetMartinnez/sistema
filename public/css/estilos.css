@@ -368,29 +368,20 @@ input[type="checkbox"], input[type="radio"] {
 	color: #7d222b;
 }
 .titulos{
-	margin-top: 0px;
-	padding-top: 0px;
-	text-align: center;
-	color: white;
-	font-size: 18px;
-	font-family: 'soberanasans-bold', sans-serif;
-	font-weight:700;
-    background-color:#800000; border: 3px solid;" 
-
-
+	background-color:#6b031f;
+	color:#ffffff; 
+	font-size:16px;
+	padding:5px 10px;
+	margin-top:0px;  
 }
-.encAl{
-	position: float;
-	float: :left;
-
-}
-.fimag{
+.yimg{
 	border-style: solid;
-	border-width: 3px;
-}
-.select_gd{
-	max-width: 60%;
+	border-width: 2px;
+	border-color: #6b031f;
 }
 .rad{
 padding-left: 1em; 	
 }
+
+
+
