@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Requests\CreateAspiranteGeneralRequest;
+use App\Http\Requests\StroreAspiranteGeneralRequest;
 use App\Http\Requests\UpdateAspiranteGeneralRequest;
 use App\Repositories\AspiranteGeneralRepository;
 use App\Http\Controllers\AppBaseController;
@@ -13,11 +14,16 @@ use Response;
 use App\User;
 use App\Models\Pais;
 use App\Models\Municipio;
-use App\Models\PreparatoriaProcedencia;
 use App\Models\CarreraOfertada;
+use App\Models\Carrera;
+use App\Models\PreparatoriaProcedencia;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\EntidadFederativa;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Silber\Bouncer\Bouncer;
+use Illuminate\Support\Facades\Auth;
+use \Validatore;
 
 class AspiranteGeneralController extends AppBaseController
 {
@@ -55,13 +61,12 @@ class AspiranteGeneralController extends AppBaseController
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
         $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
-        //
-        $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
-        //
-         $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
-         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+        $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
-        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios','prepas','carreraOfertada','carr'));
+        $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+
+        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
+            'carreraOfertada','carr'));
     }
 
     /**
@@ -73,17 +78,6 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function store(Request $request)
     {
-     //validar datos//
-     $request->validate([
-     'nombres_aspirante'=>'required',
-     'apellido_paterno_aspirante'=>'required',
-     'apellido_materno_aspirante'=>'required']);
- 
-     //'numero_seguro_social_confirmacion'=>'required|min:6|same:numero_seguro_social',//
-
-
-
-
 
 
         $input = $request->all();
@@ -91,26 +85,39 @@ class AspiranteGeneralController extends AppBaseController
         $email=$input['correo_elect_dom_actual'];
 
         $nombre=Str::Upper(trim($input['apellido_paterno_aspirante'].' '.$input['apellido_materno_aspirante'].' '.$input['nombres_aspirante']));
-
+        function aleatorio($cantidad){
+        	$caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        	$cadena = "";
+        	for($i=0;$i<$cantidad;$i++){
+        		$cadena .= substr($caracteres,rand(0,strlen($caracteres)),1);
+        	}
+        	return $cadena;
+        }
         //Crear un objeto usuario
         User::create([
             'name' => $nombre,
             'email' => $email,
+            //'password' => bcrypt(aleatorio(10)),
             'password' => bcrypt('123'),
-        ]);
 
-        $id=User::where('email',$email)->first();
-        $input['usuario_id']=$id->id;        
+        ]);
+        $role=3;
+        $user=User::where('email',$email)->first();
+        $user->assign($role);
+        $id=$user->id;
+        $input['usuario_id']=$id;
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
-   
+
         //Enviar correo electrónico al usuario
         //Creamos un arreglo asociativo con los daatos que vamos a enviar
         $data['email']=$input['correo_elect_dom_actual'];
+        //$data['password']= aleatorio(10);
         $data['password']= '123';
 
         Mail::send('emails.message',$data, function ($message) use ($data){
+            //$message->from('contacto@itslp.edu.mx', 'ITSLP');
             $message->from('aletse00@gmail.com', 'ITSLP');
-            $message->subject('Asunto: Recibe su usuario y contraseña');
+            $message->subject('Usuario y contraseña ITSLP');
 
             //$message->to($request->email);
             $message->to($data['email'],'Computo');
@@ -119,8 +126,16 @@ class AspiranteGeneralController extends AppBaseController
 
         $ojo='Aspirante Genereal guardado éxitosamente '.$email;
         Flash::success($ojo);
+        if($user->allow('alta_preregistro')){ 
+            return redirect('http://www.itslp.edu.mx/index.php/aspirantes/educacion-presencial/proceso-de-admision');
 
-        return redirect(route('aspiranteGenerals.index'));
+        }
+        else
+        {
+            return redirect(route('aspiranteGenerals.index'));     
+        }
+        
+
     }
 
     /**

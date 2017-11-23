@@ -28,10 +28,21 @@
             </a>
         </li>
         @endcan
+        @can('alta_preregistro');
+        <li>
+            <a href="{{ route('aspiranteGenerals.create') }}">
+                <i class="fa fa-plus"></i>
+                <span class="title">
+                   Crear
+                </span>
+            </a>
+        </li>
+        @endcan
 
     </ul>
 </li>
 
+@can('crear_ aspirantes_generales');
 <li class="treeview">
     <a href="#">
         <i class="fa fa-map-marker"></i>
@@ -95,3 +106,4 @@
     <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
 </li>
 
+ @endcan
