@@ -95,7 +95,7 @@ $(function() {
         </div>
         <!-- Nombres Aspirante Field -->
         <div class="form-group col-sm-4">   
-            {!! Form::text('nombres_aspirante', null, ['class' => 'form-control','placeholder'=>'Nombre']) !!}
+            {!! Form::text('nombres_aspirante', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
         </div>
 
         
@@ -108,7 +108,7 @@ $(function() {
         <div class="form-group col-sm-3">
         {!! Form::label('sexo_asp', 'Sexo:') !!}
         <select class='form-control'>
-        <option>Seleccione Sexo</option>
+        <option>Seleccione</option>
         <option value="M">Masculino</option>
         <option value="F">Femenino</option>
         </select>
@@ -122,11 +122,11 @@ $(function() {
         <div class="form-group col-sm-3">
         {!! Form::label('estado_civil', 'Estado Civil:') !!}
         <select class='form-control'>
-        <option>Selecciona el estado civil</option>
+        <option>Seleccione</option>
         <option value="S">Soltero(a)</option>
         <option value="C">Casado(a)</option>
         <option value="D">Divorciado(a)</option>
-        <option value="v">viudo(a)</option>
+        <option value="V">Viudo(a)</option>
         </select>
         </div>
  </div>
@@ -135,17 +135,17 @@ $(function() {
 
          <!-- Correo Elect Dom Actual Field -->
         <div class="form-group col-sm-3">
-        {!! Form::label('correo_elect_dom_actual', 'Correo Electronico:') !!}
+        {!! Form::label('correo_elect_dom_actual', 'Correo Electrónico:') !!}
         {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
         </div>
         <!-- %%Telefono Fijo Dom Actual Field -->
         <div class="form-group col-sm-3">
-        {!! Form::label('telefono_fijo', 'Telefono Fijo:') !!}
+        {!! Form::label('telefono_fijo', 'Teléfono Fijo:') !!}
         {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.(52)+8164085']) !!}
         </div>
         <!-- %%Telefono movil Dom Actual Field -->
         <div class="form-group col-sm-3">
-        {!! Form::label('movil', 'Movil') !!}
+        {!! Form::label('movil', 'Móvil') !!}
         {!! Form::text('telefono_fijo_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.(52)+4442124367']) !!}
         </div>
         <!-- Numero del seguro social fields%%%%-->
@@ -153,38 +153,16 @@ $(function() {
         {!! Form::label('numero_s_s', 'N.S.S') !!}
         {!! Form::text('numero_s_s', null, ['class' => 'form-control','placeholder'=>'Ej.63 84 92 0482 2']) !!}
         </div>
+        <!--DIRECCION ACTUAL/////////////////////////////////////////////////-->
 
+       <div class="col-sm-12">
+             <center><h3 class="titulos">Dirección Actual</h3></center>
+        </div>  
         <!-- pais-->
         <div class="form-group  col-sm-4">
-        {!! Form::label('pais', 'Pais:' )!!}<br>
+        {!! Form::label('pais', 'País:' )!!}<br>
         {!! Form::select('paises',$paises,null,array('class'=>'form-control')) !!}
         </div>
-<!--Entidades Federativas-->
-        <div class="form-group  col-sm-4">
-         {!! Form::label('entidad_federativa','Entidad Federativa:')!!}<br>
-         {!! Form::select('entidadesFederativas',$entidadesFederativas,null,array('class'=>'form-control', 'id'=>'state')) !!}
-        </div>
-<!--Municipios-->
-        <div class="form-group col-sm-4">
-         {!! Form::label('municipio','Municipio:')!!}<br>
-         {!! Form::select('municipios',['placeholder'=>'Seleccione'],null,array('class'=>'form-control','id'=>'town')) !!}
-        </div>
-
-<!--DIRECCION ACTUAL/////////////////////////////////////////////////-->
-
-<div class="col-sm-12">
-         <center><h3 class="titulos">Direccion Actual</h3></center>
-</div>    
-<div class="col-sm-10">
-         <!-- Calle Dom Actual Field -->
-        {!! Form::label('calle_dom_actual', 'Calle con numero:') !!}
-        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.Valentin Amador #894']) !!}
-         </div>
-<div class="col-sm-2">
-         <!-- NUMERO EXTERIOR Y/O INTERIOR Actual Field -->
-        {!! Form::label('numero_ext_int', 'Num Ext.:') !!}
-        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.#728']) !!}
-         </div>
          
 <!--Entidad Federativa Dom Actual Id Field-->
         <div class="form-group col-sm-3">
@@ -199,29 +177,40 @@ $(function() {
          {!! Form::select('municipio_dom_actual_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'town_da')) !!}
 
 
+         </div> 
+<div class="col-sm-10">
+         <!-- Calle Dom Actual Field -->
+        {!! Form::label('calle_dom_actual', 'Calle:') !!}
+        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.Valentin Amador']) !!}
          </div>
+<div class="col-sm-2">
+         <!-- NUMERO EXTERIOR Y/O INTERIOR Actual Field -->
+        {!! Form::label('numero_ext_int', 'Num Ext.:') !!}
+        {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.#728']) !!}
+         </div>
+
         <!--codigo Postal Dom Actual Field-->
         <div class="form-group col-sm-3">
-        {!! Form::label('codigo_postal_dom_actual', 'Codigo Postal:') !!}
+        {!! Form::label('codigo_postal_dom_actual', 'Código Postal:') !!}
         {!! Form::text('codigo_postal_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.19823']) !!}
         </div>
        
         <!-- Colonia Dom Actual Field -->
         <div class="form-group col-sm-3">
         {!! Form::label('colonia_dom_actual', 'Colonia:') !!}
-        {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.Sanantonio']) !!}
+        {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.San Antonio']) !!}
         </div>
 <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
         <div class="col-sm-12">
         <center><h3 class="titulos">Carreras en Orden de Preferencia</h3></center>
         <!--Carrera Op1 Id Field--> 
         <div class="form-group col-sm-6 form-inline">
-        {!! Form::label('carrera_op1_id', 'Carrera Op1 Id:') !!}
+        {!! Form::label('carrera_op1_id', 'Opción 1:') !!}
         {!! Form::select('carrera_op1_id',$carr) !!}
         </div>
         <!--Carrera Op2 Id Field-->
         <div class="form-group col-sm-6 form-inline">
-        {!! Form::label('carrera_op2_id', 'Carrera Op2 Id:') !!}
+        {!! Form::label('carrera_op2_id', 'Opción 2:') !!}
         {!! Form::select('carrera_op2_id',$carr)!!}
         </div>
         </div>
@@ -232,13 +221,13 @@ $(function() {
 
         <!--Entidad Federativa Proc Id Field-->
         <div class="col-sm-6">
-        {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa Proc Id:') !!}
+        {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa:') !!}
    
         {!! Form::select('entidad_federativa_proc_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_p')) !!}   
         </div>
         <!--Escuela Procedencia Id Field-->
         <div class="col-sm-6">
-        {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia Id:') !!}
+        {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia:') !!}
     
         {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!} 
 
@@ -250,10 +239,10 @@ $(function() {
        {!! Form::label('modalidad', 'Modalidad:') !!}
         <select class='form-control'>
         <option>Seleccione</option>
-        <option value="u">1 años</option>
-        <option value="d">2 años</option>
-        <option value="t">3 años</option>
-        <option value="a">Abierta</option>
+        <option value="1">Escolarizada</option>
+        <option value="2">Educación Distancia</option>
+        <option value="3">Mixta</option>
+        <option value="4">Postgrado</option>
         </select>
         </div>
         
@@ -317,15 +306,7 @@ $(function() {
          {!! Form::text('apellido_materno_tutor', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
          {!! Form::text('nombres_tutor', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
           <!--Vive Tutor Field-->
-          <div class="form-gropup col-sm-12">
-          {!! Form::label('vive_tutor','Vive Tutor:') !!}
-          <label class="rad">
-          {!! Form::label('vive_tutor','Si:') !!}
-          {!! Form::radio('vive_tutor',true) !!}
-          {!! Form::label('vive_tutor','No:') !!}
-          {!! Form::radio('vive_tutor',false) !!}
-          </label>
-          </div>
+
          </div>
         
          

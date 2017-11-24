@@ -78,6 +78,36 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function store(Request $request)
     {
+    
+        $user = Auth::user();
+        //Si es aspirante validar doble el seguro y correo
+        //Validar datos en laravel 5.5
+
+        //if($user->isAn('aspirante')){
+        if ( Auth::check() )
+        {
+            //De lo contrario validara sin doble correo y seguro social
+            $request->validate([
+            'correo_elect_dom_actual'=>'required',
+            'apellido_paterno_aspirante'=>'required',
+            'apellido_materno_aspirante'=>'required',
+            'nombres_aspirante'=>'required',
+            'numero_seguro_social'=>'required',
+            'correo_elect_dom_actual' => 'required|min:6|required'
+        ]);
+        }
+        else{
+            $request->validate([
+                'correo_elect_dom_actual'=>'required',
+                'apellido_paterno_aspirante'=>'required',
+                'apellido_materno_aspirante'=>'required',
+                'nombres_aspirante'=>'required',
+                'numero_seguro_social'=>'required',
+                'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
+                'correo_elect_dom_actual' => 'required|min:6|required', 
+                'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual'
+            ]);  
+        }
 
 
         $input = $request->all();

@@ -8,6 +8,15 @@
     <h1 class="text-center">Preregistro del aspirante </h1>
     <div class="clearfix">&nbsp;</div>
     <div class="clearfix">&nbsp;</div>
+    @if ($errors->count() > 0)
+        <div class="note note-danger">
+            <ul class="list-unstyled">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+     @endif
               {!! Form::open(['route' => 'aspiranteGenerals.store']) !!}
 
                 <!-- Apellido Paterno Aspirante Field -->
