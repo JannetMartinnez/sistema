@@ -63,3 +63,6 @@ Route::resource('carreraOfertadas', 'CarreraOfertadaController');
 
 Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
 
+
+
+Route::resource('nivelEstudios', 'NivelEstudioController');

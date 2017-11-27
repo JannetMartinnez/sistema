@@ -37,7 +37,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $email=$user->email;
         $id_usu=$user->id;
-
+dd($email);
         if($user->isAn('aspirante')){
             $aspi=AspiranteGeneral::where('usuario_id',$id_usu)->first();
             $id_aspi=$aspi->id;

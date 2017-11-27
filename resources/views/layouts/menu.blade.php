@@ -106,4 +106,7 @@
     <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
 </li>
 
- @endcan
+ @endcan<li class="{{ Request::is('nivelEstudios*') ? 'active' : '' }}">
+    <a href="{!! route('nivelEstudios.index') !!}"><i class="fa fa-edit"></i><span>NivelEstudios</span></a>
+</li>
+

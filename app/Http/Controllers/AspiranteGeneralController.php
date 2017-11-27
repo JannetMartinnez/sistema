@@ -136,11 +136,13 @@ class AspiranteGeneralController extends AppBaseController
         $user->assign($role);
         $id=$user->id;
         $input['usuario_id']=$id;
+        
+        //Crea un aspirante
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
 
         //Enviar correo electrónico al usuario
         //Creamos un arreglo asociativo con los daatos que vamos a enviar
-        $data['email']=$input['correo_elect_dom_actual'];
+        /*$data['email']=$input['correo_elect_dom_actual'];
         //$data['password']= aleatorio(10);
         $data['password']= '123';
 
@@ -152,7 +154,7 @@ class AspiranteGeneralController extends AppBaseController
             //$message->to($request->email);
             $message->to($data['email'],'Computo');
 
-        });
+        });*/
 
         $ojo='Aspirante Genereal guardado éxitosamente '.$email;
         Flash::success($ojo);

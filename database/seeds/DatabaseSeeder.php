@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Database\seeds\NivelSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(PreparatoriaSeeder::class);
         //$this->call(Preparatoria2Seeder::class);
         //$this->call(CarreraSeeder::class);
-        $this->call(Preparatoria3Seeder::class);
+        //$this->call(Preparatoria3Seeder::class);
+        //$this->call(NivelSeeder::class);
     }
 }
