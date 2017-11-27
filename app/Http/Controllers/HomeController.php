@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\AspiranteGeneral;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AppBaseController;
+use Flash;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Response;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Silber\Bouncer\Bouncer;
+use \Validatore;
 
 class HomeController extends Controller
 {
@@ -24,6 +34,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $email=$user->email;
+        $id_usu=$user->id;
+
+        if($user->isAn('aspirante')){
+            $aspi=AspiranteGeneral::where('usuario_id',$id_usu)->first();
+            $id_aspi=$aspi->id;
+              
+            return redirect('aspiranteGenerals/$id_aspi/edit');
+        }
+        else
+        {
+          return view('home');
+        }
+       
     }
 }
