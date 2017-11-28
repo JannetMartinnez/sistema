@@ -47,7 +47,6 @@ dd($email);
         else
         {
           return view('home');
-        }
-       
+     
     }
 }
