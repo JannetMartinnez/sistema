@@ -66,3 +66,17 @@ Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
 
 
 Route::resource('nivelEstudios', 'NivelEstudioController');
+
+Route::resource('deQuienDependes', 'DeQuienDependeController');
+
+Route::resource('quienVivesActuals', 'QuienVivesActualController');
+
+Route::resource('casaVives', 'CasaViveController');
+
+Route::resource('ocupacionPadres', 'OcupacionPadreController');
+
+Route::resource('estadoUnionPadres', 'EstadoUnionPadreController');
+
+Route::resource('estudioPadres', 'EstudioPadreController');
+
+Route::resource('aspiranteSocioecomicos', 'AspiranteSocioecomicoController');

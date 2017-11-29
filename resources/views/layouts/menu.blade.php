@@ -110,3 +110,31 @@
     <a href="{!! route('nivelEstudios.index') !!}"><i class="fa fa-edit"></i><span>NivelEstudios</span></a>
 </li>
 
+<li class="{{ Request::is('deQuienDependes*') ? 'active' : '' }}">
+    <a href="{!! route('deQuienDependes.index') !!}"><i class="fa fa-edit"></i><span>DeQuienDependes</span></a>
+</li>
+
+<li class="{{ Request::is('quienVivesActuals*') ? 'active' : '' }}">
+    <a href="{!! route('quienVivesActuals.index') !!}"><i class="fa fa-edit"></i><span>QuienVivesActuals</span></a>
+</li>
+
+<li class="{{ Request::is('casaVives*') ? 'active' : '' }}">
+    <a href="{!! route('casaVives.index') !!}"><i class="fa fa-edit"></i><span>CasaVives</span></a>
+</li>
+
+<li class="{{ Request::is('ocupacionPadres*') ? 'active' : '' }}">
+    <a href="{!! route('ocupacionPadres.index') !!}"><i class="fa fa-edit"></i><span>OcupacionPadres</span></a>
+</li>
+
+<li class="{{ Request::is('estadoUnionPadres*') ? 'active' : '' }}">
+    <a href="{!! route('estadoUnionPadres.index') !!}"><i class="fa fa-edit"></i><span>EstadoUnionPadres</span></a>
+</li>
+
+<li class="{{ Request::is('estudioPadres*') ? 'active' : '' }}">
+    <a href="{!! route('estudioPadres.index') !!}"><i class="fa fa-edit"></i><span>EstudioPadres</span></a>
+</li>
+
+<li class="{{ Request::is('aspiranteSocioecomicos*') ? 'active' : '' }}">
+    <a href="{!! route('aspiranteSocioecomicos.index') !!}"><i class="fa fa-edit"></i><span>AspiranteSocioecomicos</span></a>
+</li>
+
