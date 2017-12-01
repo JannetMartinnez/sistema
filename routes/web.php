@@ -80,3 +80,5 @@ Route::resource('estadoUnionPadres', 'EstadoUnionPadreController');
 Route::resource('estudioPadres', 'EstudioPadreController');
 
 Route::resource('aspiranteSocioecomicos', 'AspiranteSocioecomicoController');
+
+Route::resource('numerosPalabras', 'NumerosPalabrasController');

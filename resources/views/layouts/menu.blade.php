@@ -138,3 +138,7 @@
     <a href="{!! route('aspiranteSocioecomicos.index') !!}"><i class="fa fa-edit"></i><span>AspiranteSocioecomicos</span></a>
 </li>
 
+<li class="{{ Request::is('numerosPalabras*') ? 'active' : '' }}">
+    <a href="{!! route('numerosPalabras.index') !!}"><i class="fa fa-edit"></i><span>NumerosPalabras</span></a>
+</li>
+

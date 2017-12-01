@@ -43,30 +43,9 @@ $(function() {
 });
  
 </script>
-<!--dddddddddddddddddddddd-->
 
-   <br>
-   <div class="row">
-   <div class="col-md-12">
-    
-    <div role="tabpanel">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab">Datos Generales</a></li>
-
-        <li role="presentation"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab">Datos Socioeconomicos</a></li>
-
-        <li role="presentation"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Datos de Salud</a></li> 
-      
-        <li role="presentation"><a href="#seccion4" aria-controls="seccion3" data-toggle="tab" role="tab">Documentos</a></li> 
-
-      </ul>
-    </div> 
-   </div>
-     </div> 
-<div class="tab-content">
 <!--DATOS DE ASPIRANTE/////////////////////////////////////////////-->
-<!--datos generales-->
-<div role="tabpanel" class="tab-pane active" id="seccion1"><br>
+
 <!--datos generales-->
     <div class="row">
 
@@ -308,40 +287,6 @@ $(function() {
           <!--Vive Tutor Field-->
 
          </div>
-        
-         
-</div>
-
-<!-- datos escolares-->
- <div role="tabpanel" class="tab-pane" id="seccion2"><br>
-
-    
-</div>
-
-
-<!--datos de salud-->
-<div role="tabpanel" class="tab-pane" id="seccion3">
-<h3>seeseses3</h3>
-</div>
-
-<div role="tabpanel" class="tab-pane" id="seccion4">
-<h3>seeseses4</h3>
-</div>
-
-
-
-   </div> 
-
-<!--dddddddddddddddddddd-->
-
-
-
-
-
-
-
-
-
         <!-- recordar
         Paises
         {!! Form::select('paises',$paises) !!}

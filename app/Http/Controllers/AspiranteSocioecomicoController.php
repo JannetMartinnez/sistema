@@ -10,7 +10,15 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+//
+use App\Models\EstudioPadre;
+use App\Models\QuienVivesActual;
+use App\Models\ocupacion_padres;
+use App\Models\CasaVive;
+use App\Models\NumerosPalabras;
+use App\Models\EstadoUnionPadre;
+use App\Models\DeQuienDepende;
+//
 class AspiranteSocioecomicoController extends AppBaseController
 {
     /** @var  AspiranteSocioecomicoRepository */
@@ -43,7 +51,18 @@ class AspiranteSocioecomicoController extends AppBaseController
      */
     public function create()
     {
-        return view('aspirante_socioecomicos.create');
+        //
+        $estudios=EstudioPadre::orderBy('id')->pluck('descripcion','id');
+        $quienvives=QuienVivesActual::orderBy('id')->pluck('descripcion','id');
+       //
+        $ocupacionpadres=ocupacion_padres::orderBy('id')->pluck('desripcion','id');
+        //la tabla esta mal escrito el campo es descripcion en la tabla ocupacion__padres
+        $casavives=CasaVive::orderBy('id')->pluck('descripcion','id');
+        $numerospalabras=NumerosPalabras::orderBy('id')->pluck('descripcion','id');
+        $estadounion=EstadoUnionPadre::orderBy('id')->pluck('descripcion','id');
+        $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
+
+        return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes'));
     }
 
     /**
