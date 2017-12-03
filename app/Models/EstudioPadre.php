@@ -54,4 +54,11 @@ class EstudioPadre extends Model
         return $this->hasMany(\App\Models\AspiranteSocioeconomico::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function aspiranteSocioeconomicos()
+    {
+        return $this->hasMany(\App\Models\AspiranteSocioeconomico::class);
+    }
 }

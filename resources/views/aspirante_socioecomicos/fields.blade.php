@@ -1,162 +1,105 @@
-
-<div class="row">
-<!--FOTO DEL ASPIRANTE-->
-<div class=" col-xs-12 col-md-2">
-<center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
-</div>
-<br>
-<div class ="col-xs-12 col-md-2 sep">
-         <center><h3 class="titulos sinp">No.Control S.E.P</h3></center>
-         <center>{!! Form::label('curp_asp', '12180675') !!}<center>      
-</div>
-<div class ="col-xs-12 col-md-4 sep">
-        <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
-        <center>{!! Form::label('curp_asp', 'VAZQUEZ ASPEITIA JESUS') !!}</center>       
-</div>
-<div class ="col-xs-12 col-md-2 sep">
-        <center><h3 class="titulos sinp">Semestre</h3></center>
-        <center>{!! Form::label('curp_asp', '1') !!}</center>      
-</div>
-<div class ="col-xs-12 col-md-2 sepizq">
-        <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
-        <center>{!! Form::label('curp_asp', 'AGO-DIC/2017') !!}</center>
-</div>
-<div class ="col-xs-12 col-md-5 sep">
-        <center><h3 class="titulos sinp">Carrera</h3></center>
-        <center>{!! Form::label('curp_asp', 'TECNOLOGIAS DE LA INFORMACION Y DE LAS COMUNICACIO') !!}</center>
-</div>
-<div class ="col-xs-12 col-md-5 sepizq">
-        <center><h3 class="titulos sinp">Especialidad</h3></center>
-        <center>{!! Form::label('curp_asp','INGENIERÍA EN SISTEMAS COMPUTACIONALES') !!}</center>
-</div>
-</div>
-<!--Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido -->
-<div class="row">
-<div class="col-xs-12 col-sm-6 sepder">
-<center><h3 class="titulos">Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido</h3></center>
-       <!-- Nivel Estudios Padres Id Field -->
-       <div class="form-group col-xs-12 col-sm-12 sep">
-       <h3 class="titulos">Padre</h3>
-       {!! Form::select('nivel_estudios_padres_id',$estudios,null,array('class'=>'form-control')) !!}      
-       </div>
-       <!-- Nivel Estudios Madres Id Field -->
-       <div class="form-group col-xs-12 col-sm-12 sep">
-       <h3 class="titulos">Madre</h3>
-       {!! Form::select('nivel_estudios_madres_id',$estudios,null,array('class'=>'form-control')) !!}      
-</div>
-</div>
-
-<div class="col-xs-12 col-sm-2 sep">
-<center><h3 class="titulos">Con quien vives actualmente</h3></center>
-<!-- Quien Vives Actual Id Field -->
-    {!! Form::select('quien_vives_actual_id',$quienvives,null,array('class' => 'form-control')) !!}
-
-</div>
-<div class="col-xs-12 col-sm-4 sepizq">
-<center><h3 class="titulos">Ingresos Familiares Mensuales</h3></center>
-<!-- Ingresos Padre Field -->
-<div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
-    {!! Form::label('ingresos_padre', 'Padre:')!!}
-
-    {!! Form::text('ingresos_padre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ingresos Madre Field -->
-<div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
-    {!! Form::label('ingresos_madre', 'Madre:') !!}
-    {!! Form::text('ingresos_madre', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ingresos Hermanos Field -->
-<div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
-    {!! Form::label('ingresos_hermanos', 'Hermanos:') !!}
-    {!! Form::text('ingresos_hermanos', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ingresos Propios Field -->
-<div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
-    {!! Form::label('ingresos_propios', 'Propios:') !!}
-    {!! Form::text('ingresos_propios', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ingresos Otros Field -->
-<div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
-    {!! Form::label('ingresos_otros', 'Otros:') !!}
-    {!! Form::text('ingresos_otros', null,['class' => 'form-control','all']) !!}
-</div>
-
-
-
-
-</div>
-
-</div>
-<!--///////////¿Cual es la ocupación o Trabajo de tus padres o tutores ?-->
-<div class="col-xs-12 col-sm-6 sep">
-<center><h3 class="titulos ">¿Cual es la ocupación o Trabajo de tus padres o tutores ?</h3></center>
-<!-- Ocupacion Padre Id Field -->
-<div class="form-group col-xs-12 col-sm-6 sep">
-    {!! Form::label('ocupacion_padre_id', 'Padre') !!}
-    {!! Form::select('ocupacion_padre_id',$ocupacionpadres,null,array('class' => 'form-control')) !!}
-</div>
-
-<!-- Ocupacion Madre Id Field -->
-<div class="form-group col-xs-12 col-sm-6 sep">
-    {!! Form::label('ocupacion_madre_id', 'Madre:') !!}
-    {!! Form::select('ocupacion_madre_id',$ocupacionpadres,null,array('class' => 'form-control')) !!}
-</div>
-</div>
-<div class="col-xs-12 col-sm-6 sep">
-<center><h3 class="titulos ">.</h3></center>
-<!-- De Quien Dependes Id Field -->
-<div class="form-group col-xs-12 col-sm-6 sep">
-    {!! Form::label('de_quien_dependes_id', 'De Quien Dependes:') !!}
-    {!! Form::select('de_quien_dependes_id',$quiendependes,null,array('class' => 'form-control')) !!}
-</div>
-
-<!-- Casa Vives Id Field -->
-<div class="form-group col-xs-12 col-sm-6 sep">
-    {!! Form::label('casa_vives_id', 'La casa donde vives es:') !!}
-    {!! Form::select('casa_vives_id',$casavives,null,array('class' => 'form-control')) !!}
-</div>
-</div>
-
-
-<!--¿Cuántos cuartos tiene la casa. (Sin contar baños ni pasillos )//////-->
-
- <!-- Cuartos Personas Id Field -->
-<div  class="col-xs-12 col-sm-3 sep">
-   <center><h3 class="titulos ">¿Cuántos cuartos tiene la casa?</h3></center>
-    {!! Form::select('cuartos_personas_id',$numerospalabras,null,array('class' => 'form-control')) !!}
-</div>   
-
-
-    <!-- Personas Casas Id Field -->
-<div class="col-xs-12 col-sm-3 sep">
-    <center><h3 class="titulos ">¿Cuántas personas viven en la casa?</h3></center>
-    {!! Form::select('personas_casas_id',$numerospalabras,null,array('class' => 'form-control')) !!}
-</div>
-
-    <!-- Personas Dependen Id Field -->
-<div class="form-group col-xs-12 col-sm-6 sep">
-    <center><h3 class="titulos ">¿Cuantas personas incluyéndote a ti,dependen económicamente del principal?</h3></center>
-    {!! Form::select('personas_dependen_id',$numerospalabras,null,array('class' => 'form-control')) !!}
-</div>
-
-
-
-
-<!-- Aspirantes Generales Id Field 
+<!-- Aspirantes Generales Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
     {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
 </div>
-Estado Union Padres Id Field 
+
+<!-- Nivel Estudios Padres Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('nivel_estudios_padres_id', 'Nivel Estudios Padres Id:') !!}
+    {!! Form::number('nivel_estudios_padres_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Nivel Estudios Madres Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('nivel_estudios_madres_id', 'Nivel Estudios Madres Id:') !!}
+    {!! Form::number('nivel_estudios_madres_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Quien Vives Actual Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('quien_vives_actual_id', 'Quien Vives Actual Id:') !!}
+    {!! Form::number('quien_vives_actual_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ingresos Padre Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ingresos_padre', 'Ingresos Padre:') !!}
+    {!! Form::number('ingresos_padre', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ingresos Madre Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ingresos_madre', 'Ingresos Madre:') !!}
+    {!! Form::number('ingresos_madre', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ingresos Hermanos Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ingresos_hermanos', 'Ingresos Hermanos:') !!}
+    {!! Form::number('ingresos_hermanos', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ingresos Propios Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ingresos_propios', 'Ingresos Propios:') !!}
+    {!! Form::number('ingresos_propios', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ingresos Otros Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ingresos_otros', 'Ingresos Otros:') !!}
+    {!! Form::number('ingresos_otros', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ocupacion Padre Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ocupacion_padre_id', 'Ocupacion Padre Id:') !!}
+    {!! Form::number('ocupacion_padre_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Ocupacion Madre Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ocupacion_madre_id', 'Ocupacion Madre Id:') !!}
+    {!! Form::number('ocupacion_madre_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- De Quien Dependes Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('de_quien_dependes_id', 'De Quien Dependes Id:') !!}
+    {!! Form::number('de_quien_dependes_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Casa Vives Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('casa_vives_id', 'Casa Vives Id:') !!}
+    {!! Form::number('casa_vives_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Cuartos Personas Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('cuartos_personas_id', 'Cuartos Personas Id:') !!}
+    {!! Form::number('cuartos_personas_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Personas Casas Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('personas_casas_id', 'Personas Casas Id:') !!}
+    {!! Form::number('personas_casas_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Personas Dependen Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('personas_dependen_id', 'Personas Dependen Id:') !!}
+    {!! Form::number('personas_dependen_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Estado Union Padres Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('estado_union_padres_id', 'Estado Union Padres Id:') !!}
-    {!! Form::select('estado_union_padres_id',$estadounion,null,array('class' => 'form-control')) !!}
+    {!! Form::number('estado_union_padres_id', null, ['class' => 'form-control']) !!}
 </div>
--->
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

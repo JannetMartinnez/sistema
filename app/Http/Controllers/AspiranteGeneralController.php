@@ -64,9 +64,10 @@ class AspiranteGeneralController extends AppBaseController
         $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+        $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
 
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','carr'));
+            'carreraOfertada','prepas','carr'));
     }
 
     /**
@@ -197,7 +198,7 @@ class AspiranteGeneralController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+   public function edit($id)
     {
         $aspiranteGeneral = $this->aspiranteGeneralRepository->findWithoutFail($id);
 
@@ -206,20 +207,18 @@ class AspiranteGeneralController extends AppBaseController
 
             return redirect(route('aspiranteGenerals.index'));
         }
-
-
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
+        
         $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
-        $carreraOfertada=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
-        $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+        $carrerasOf=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
-        return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','carr'));
+         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','carr','aspiranteGeneral'));
+        $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
+
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','aspiranteGeneral'));
     }
 
     /**
