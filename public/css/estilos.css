@@ -382,6 +382,26 @@ input[type="checkbox"], input[type="radio"] {
 .rad{
 padding-left: 1em; 	
 }
-
-
-
+/*estilos datos socioeconoicos*/
+.sep{
+padding-right: 1px;
+padding-left: 1px;
+}
+.sepizq{
+padding-left: 1px;
+}
+.sepder{
+padding-right: 1px;
+}
+.sinp{
+	margin-bottom: 0px; 
+}
+.sinp1{
+	margin-bottom: 2px; 
+}
+.inglb{
+width:85px; 	
+}
+.lettam{
+	background-color:blue; 
+}
