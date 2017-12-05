@@ -11,7 +11,7 @@
 </div>
 <div class ="col-xs-12 col-md-4 sep">
         <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
-        <center>{!! Form::label('curp_asp', 'VAZQUEZ ASPEITIA JESUS') !!}</center>       
+        <center>{!! Form::label('curp_asp',$nombre) !!}</center>       
 </div>
 <div class ="col-xs-12 col-md-2 sep">
         <center><h3 class="titulos sinp">Semestre</h3></center>
@@ -52,8 +52,11 @@
     {!! Form::select('quien_vives_actual_id',$quienvives,null,array('class' => 'form-control')) !!}
 
 </div>
+
+<!--ingesso familiares mensuales//////////////////////////////-->
 <div class="col-xs-12 col-sm-4 sepizq">
 <center><h3 class="titulos">Ingresos Familiares Mensuales</h3></center>
+
 <!-- Ingresos Padre Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_padre', 'Padre:',array('class'=>'inglb'))!!}
@@ -82,12 +85,8 @@
 <!-- Ingresos Otros Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_otros', 'Otros:',array('class'=>'inglb')) !!}
-    {!! Form::text('ingresos_otros', null,['class' => 'form-control','all']) !!}
+    {!! Form::text('ingresos_otros', null,['class' => 'form-control']) !!}
 </div>
-
-
-
-
 </div>
 
 </div>
