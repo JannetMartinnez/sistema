@@ -95,16 +95,26 @@ $(function() {
           <!-- Sexo Asp Field -->
           <div class="form-group col-sm-3">
             {!! Form::label('sexo_asp', 'Sexo:') !!}
-            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!};
+            <select class='form-control'>
+            <option>Seleccione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            </select>
           </div>
           <!-- Curp Asp Field -->
           <div class="form-group col-sm-3">
             {!! Form::label('curp_asp', 'Curp:') !!}
             {!! Form::text('curp_asp', null, ['class' => 'form-control','placeholder'=>'Ej.RIRE870211']) !!}
           </div>
-          <div class="form-group col-sm-2">
+          <div class="form-group col-sm-3">
             {!! Form::label('estado_civil_asp_id', 'Estado Civil:') !!}
-            {!! Form::select('edo_civil',$edo_civil,null,array('class'=>'form-control')) !!}
+            <select class='form-control'>
+            <option>Seleccione</option>
+            <option value="1">Soltero(a)</option>
+            <option value="2">Casado(a)</option>
+            <option value="3">Divorciado(a)</option>
+            <option value="4">Viudo(a)</option>
+            </select>
           </div>
         </div>
     </div>
@@ -125,7 +135,7 @@ $(function() {
     {!! Form::text('telefono_cel_aspirante', null, ['class' => 'form-control','placeholder'=>'Ej.(52)+4442124367']) !!}
     </div>
     <!-- Numero del seguro social fields%%%%-->
-    <div class="form-group col-sm-2">
+    <div class="form-group col-sm-3">
     {!! Form::label('numero_seguro_social', 'N.S.S') !!}
     {!! Form::text('numero_seguro_social', null, ['class' => 'form-control','placeholder'=>'Ej.63 84 92 0482 2']) !!}
     </div>
@@ -135,9 +145,9 @@ $(function() {
          <center><h3 class="titulos">Dirección Actual</h3></center>
     </div>  
     <!-- pais-->
-    <div class="form-group  col-sm-2">
+    <div class="form-group  col-sm-4">
       {!! Form::label('pais_asp_id', 'País:' )!!}<br>
-      {!! Form::select('pais_asp_id',$paises,154,array('class'=>'form-control')) !!}
+      {!! Form::select('pais_asp_id',$paises,null,array('class'=>'form-control')) !!}
     </div>
      
     <!--Entidad Federativa Dom Actual Id Field-->
@@ -146,14 +156,19 @@ $(function() {
       {!! Form::select('entidad_federativa_dom_actual_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_da')) !!}
     </div>
     <!--Municipio Dom Actual Id Field-->
-    <div class="form-group col-sm-4">
+    <div class="form-group col-sm-3">
        {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
        {!! Form::select('municipio_dom_actual_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'town_da')) !!}
     </div> 
     <div class="col-sm-10">
        <!-- Calle Dom Actual Field -->
-      {!! Form::label('calle_dom_actual', 'Calle con Número:') !!}
-      {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.Valentin Amador #200-1']) !!}
+      {!! Form::label('calle_dom_actual', 'Calle:') !!}
+      {!! Form::text('calle_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.Valentin Amador']) !!}
+    </div>
+    <div class="col-sm-2">
+       <!-- NUMERO EXTERIOR Y/O INTERIOR Actual Field -->
+      {!! Form::label('numero_ext_int', 'Num Ext.:') !!}
+      {!! Form::text('numero_ext_int', null, ['class' => 'form-control','placeholder'=>'Ej.#728']) !!}
     </div>
 
     <!--codigo Postal Dom Actual Field-->
@@ -169,8 +184,7 @@ $(function() {
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('zona_proc_aspirante_id', 'Zona Proc Aspirante:') !!}
-        
-        {!! Form::select('zona_proc_aspirante_id',$zona_proc,null,array('class'=>'form-control')) !!}
+        {!! Form::number('zona_proc_aspirante_id', null, ['class' => 'form-control']) !!}
     </div>
     <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
     <div class="col-sm-12">
@@ -200,6 +214,7 @@ $(function() {
       <!--Escuela Procedencia Id Field-->
       <div class="col-sm-6">
         {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia:') !!}
+
         {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!} 
       </div>
       <!--Modalidad Asp Field-->

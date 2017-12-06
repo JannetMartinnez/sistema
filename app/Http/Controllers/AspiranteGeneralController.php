@@ -16,9 +16,7 @@ use App\Models\Pais;
 use App\Models\Municipio;
 use App\Models\CarreraOfertada;
 use App\Models\Carrera;
-use App\Models\EstadoCivil;
 use App\Models\PreparatoriaProcedencia;
-use App\Models\ZonaProcedencia;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\EntidadFederativa;
@@ -67,10 +65,9 @@ class AspiranteGeneralController extends AppBaseController
 
         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
         $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
-        $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
-        $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
+
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','prepas','carr','edo_civil','zona_proc'));
+            'carreraOfertada','prepas','carr'));
     }
 
     /**
@@ -220,10 +217,8 @@ class AspiranteGeneralController extends AppBaseController
          $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
 
         $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
-        $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
-        $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','aspiranteGeneral'));
     }
 
     /**
