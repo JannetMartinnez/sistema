@@ -98,3 +98,7 @@ Route::resource('estadoCivils', 'EstadoCivilController');
 
 
 Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
+
+Route::resource('estadoCivils', 'EstadoCivilController');
+
+Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
