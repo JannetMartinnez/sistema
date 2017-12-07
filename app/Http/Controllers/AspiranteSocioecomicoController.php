@@ -66,7 +66,11 @@ class AspiranteSocioecomicoController extends AppBaseController
         $aspirante_general=AspiranteGeneral::where('id',174)->first();
         //campos a traer{    
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
-        return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre'));
+        
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $folio=$solicitud+1;
+
+        return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio'));
          //}
     }
 

@@ -15,13 +15,13 @@ function calcular_total() {
 
 <div class="row">
 <!--FOTO DEL ASPIRANTE-->
-<div class=" col-xs-12 col-md-2">
+<div class="form-group col-xs-12 col-md-2">
 <center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
 </div>
 <br>
 <div class ="col-xs-12 col-md-2 sep">
-         <center><h3 class="titulos sinp">No.Control S.E.P</h3></center>
-         <center>{!! Form::label('curp_asp', '12180675') !!}<center>      
+         <center><h3 class="titulos sinp">No.Solicitud</h3></center>
+         <center>{!! Form::label('curp_asp',$folio) !!}<center>      
 </div>
 <div class ="col-xs-12 col-md-4 sep">
         <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
@@ -46,7 +46,7 @@ function calcular_total() {
 </div>
 <!--Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido -->
 <div class="row">
-<div class="col-xs-12 col-sm-6 sepder">
+<div class="form-group col-xs-12 col-sm-6 sepder">
 <center><h3 class="titulos">Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido</h3></center>
        <!-- Nivel Estudios Padres Id Field -->
        <div class="form-group col-xs-12 col-sm-12 sep">
@@ -60,7 +60,7 @@ function calcular_total() {
 </div>
 </div>
 
-<div class="col-xs-12 col-sm-2 sep">
+<div class="form-group col-xs-12 col-sm-2 sep">
 <center><h3 class="titulos">Con quien vives actualmente</h3></center>
 <!-- Quien Vives Actual Id Field -->
     {!! Form::select('quien_vives_actual_id',$quienvives,null,array('class' => 'form-control')) !!}
@@ -68,7 +68,7 @@ function calcular_total() {
 </div>
 
 <!--ingesso familiares mensuales//////////////////////////////-->
-<div class="col-xs-12 col-sm-4 sepizq">
+<div class="form-group col-xs-12 col-sm-4 sepizq">
 <center><h3 class="titulos">Ingresos Familiares Mensuales</h3></center>
 
 <!-- Ingresos Padre Field -->
