@@ -159,3 +159,7 @@
     <a href="{!! route('zonaProcedencias.index') !!}"><i class="fa fa-edit"></i><span>ZonaProcedencias</span></a>
 </li>
 
+<li class="{{ Request::is('aspiranteSaluds*') ? 'active' : '' }}">
+    <a href="{!! route('aspiranteSaluds.index') !!}"><i class="fa fa-edit"></i><span>AspiranteSaluds</span></a>
+</li>
+
