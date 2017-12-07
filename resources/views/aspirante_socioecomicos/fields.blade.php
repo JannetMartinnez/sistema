@@ -1,3 +1,17 @@
+<script>
+function calcular_total() {
+  console.log('si cargo');
+  suma_ing = 0;
+  $(".ingtx").each(
+    function(index, value) {
+      if(isNaN(eval($(this).val())))$(this).val(0);
+      suma_ing = suma_ing + eval($(this).val());
+      $("#totaling").val(suma_ing);
+    }
+  );
+  return false;
+}
+</script>
 
 <div class="row">
 <!--FOTO DEL ASPIRANTE-->
@@ -61,32 +75,37 @@
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_padre', 'Padre:',array('class'=>'inglb'))!!}
 
-    {!! Form::text('ingresos_padre', null,['class' =>'form-control']) !!}
+    {!! Form::text('ingresos_padre', null,['class' =>'form-control ingtx','onchange'=>'calcular_total()']) !!}
 </div>
 
 <!-- Ingresos Madre Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_madre', 'Madre:',array('class'=>'inglb')) !!}
-    {!! Form::text('ingresos_madre', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ingresos_madre', null, ['class' => 'form-control ingtx','onchange'=>'calcular_total()']) !!}
 </div>
 
 <!-- Ingresos Hermanos Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_hermanos', 'Hermanos:',array('class'=>'inglb')) !!}
-    {!! Form::text('ingresos_hermanos', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ingresos_hermanos', null, ['class' => 'form-control ingtx','onchange'=>'calcular_total()']) !!}
 </div>
 
 <!-- Ingresos Propios Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_propios', 'Propios:',array('class'=>'inglb')) !!}
-    {!! Form::text('ingresos_propios', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ingresos_propios', null, ['class' => 'form-control ingtx','onchange'=>'calcular_total()']) !!}
 </div>
 
 <!-- Ingresos Otros Field -->
 <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
     {!! Form::label('ingresos_otros', 'Otros:',array('class'=>'inglb')) !!}
-    {!! Form::text('ingresos_otros', null,['class' => 'form-control']) !!}
+    {!! Form::text('ingresos_otros', null,['class' => 'form-control ingtx','onchange'=>'calcular_total()']) !!}
 </div>
+    <!-- total -->
+    <div class="form-group col-xs-12 col-sm-12 form-inline sinp1">
+    {!! Form::label('ingresos_total', 'total:',array('class'=>'inglb')) !!}
+    {!! Form::text('ingresos_total', null,['class' => 'form-control','id'=>'totaling']) !!}
+    </div>
 </div>
 
 </div>

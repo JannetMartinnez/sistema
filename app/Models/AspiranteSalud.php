@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class AspiranteSalud
  * @package App\Models
- * @version December 7, 2017, 5:03 pm UTC
+ * @version December 7, 2017, 5:54 pm UTC
  *
  * @property \App\Models\AspirantesGenerale aspirantesGenerale
  * @property string tipo_sangre
@@ -33,7 +33,7 @@ use Eloquent as Model;
 class AspiranteSalud extends Model
 {
 
-    public $table = 'aspirante_salud';
+    public $table = 'aspirantes_salud';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
