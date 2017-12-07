@@ -142,3 +142,12 @@
     <a href="{!! route('numerosPalabras.index') !!}"><i class="fa fa-edit"></i><span>NumerosPalabras</span></a>
 </li>
 
+<li class="{{ Request::is('estadoCivils*') ? 'active' : '' }}">
+    <a href="{!! route('estadoCivils.index') !!}"><i class="fa fa-edit"></i><span>EstadoCivils</span></a>
+</li>
+
+
+<li class="{{ Request::is('zonaProcedencias*') ? 'active' : '' }}">
+    <a href="{!! route('zonaProcedencias.index') !!}"><i class="fa fa-edit"></i><span>ZonaProcedencias</span></a>
+</li>
+
