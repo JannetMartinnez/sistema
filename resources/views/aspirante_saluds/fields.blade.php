@@ -1,161 +1,195 @@
+
+<div class="row">
 <!-- Tipo Sangre Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('tipo_sangre', 'Tipo Sangre:') !!}
     {!! Form::text('tipo_sangre', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Baston Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('baston', 'Baston:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('baston', false) !!}
-        {!! Form::checkbox('baston', '1', null) !!} 1
+ <label class="rad">
+        {!! Form::label('baston', 'Si:') !!}
+        {!! Form::radio('baston',true ) !!}
+        {!! Form::label('baston', 'No:') !!}
+        {!! Form::radio('baston',false ) !!} 
     </label>
 </div>
 
 <!-- Muletas Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('muletas', 'Muletas:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('muletas', false) !!}
-        {!! Form::checkbox('muletas', '1', null) !!} 1
+    <label class="rad">
+        {!! Form::label('muletas', 'Si:') !!}
+        {!! Form::radio('muletas',true ) !!}
+        {!! Form::label('muletas', 'No:') !!}
+        {!! Form::radio('muletas',false ) !!} 
     </label>
 </div>
 
 <!-- Silla Ruedas Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('silla_ruedas', 'Silla Ruedas:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('silla_ruedas', false) !!}
-        {!! Form::checkbox('silla_ruedas', '1', null) !!} 1
+    <label class="rad">
+        {!! Form::label('silla_ruedas', 'Si:') !!}
+        {!! Form::radio('silla_ruedas',true ) !!}
+        {!! Form::label('silla_ruedas', 'No:') !!}
+        {!! Form::radio('silla_ruedas',false ) !!} 
     </label>
 </div>
 
 <!-- Calzado Especial Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('calzado_especial', 'Calzado Especial:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('calzado_especial', false) !!}
-        {!! Form::checkbox('calzado_especial', '1', null) !!} 1
+      <label class="rad">
+        {!! Form::label('calzado_especial', 'Si:') !!}
+        {!! Form::radio('calzado_especial',true ) !!}
+        {!! Form::label('calzado_especial', 'No:') !!}
+        {!! Form::radio('calzado_especial',false ) !!} 
     </label>
 </div>
 
 <!-- Otros Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('otros', 'Otros:') !!}
     {!! Form::text('otros', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Difi Escuchar Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('difi_escuchar', 'Difi Escuchar:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('difi_escuchar', false) !!}
-        {!! Form::checkbox('difi_escuchar', '1', null) !!} 1
+     <label class="rad">
+        {!! Form::label('difi_escuchar', 'Si:') !!}
+        {!! Form::radio('difi_escuchar',true ) !!}
+        {!! Form::label('difi_escuchar', 'No:') !!}
+        {!! Form::radio('difi_escuchar',false ) !!} 
     </label>
 </div>
 
 <!-- Apara Escuchar Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('apara_escuchar', 'Apara Escuchar:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('apara_escuchar', false) !!}
-        {!! Form::checkbox('apara_escuchar', '1', null) !!} 1
-    </label>
+       <label class="rad">
+        {!! Form::label('apara_escuchar', 'Si:') !!}
+        {!! Form::radio('apara_escuchar',true ) !!}
+        {!! Form::label('apara_escuchar', 'No:') !!}
+        {!! Form::radio('apara_escuchar',false ) !!} 
+       </label>
 </div>
 
 <!-- Proble Ver Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('proble_ver', 'Proble Ver:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('proble_ver', false) !!}
-        {!! Form::checkbox('proble_ver', '1', null) !!} 1
+            <label class="rad">
+        {!! Form::label('proble_ver', 'Si:') !!}
+        {!! Form::radio('proble_ver',true ) !!}
+        {!! Form::label('proble_ver', 'No:') !!}
+        {!! Form::radio('proble_ver',false ) !!} 
     </label>
 </div>
 
 <!-- Utiliza Lentes Field -->
-<div class="form-group col-sm-6">
+<div style="clear:both" class="form-group col-xs-6  form-inline sinp1">
     {!! Form::label('utiliza_lentes', 'Utiliza Lentes:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('utiliza_lentes', false) !!}
-        {!! Form::checkbox('utiliza_lentes', '1', null) !!} 1
+    <label class="rad">
+        {!! Form::label('utiliza_lentes', 'Si:') !!}
+        {!! Form::radio('utiliza_lentes',true ) !!}
+        {!! Form::label('utiliza_lentes', 'No:') !!}
+        {!! Form::radio('utiliza_lentes',false ) !!} 
     </label>
 </div>
 
 <!-- Enfer Cronode Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('enfer_cronode', 'Enfer Cronode:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('enfer_cronode', false) !!}
-        {!! Form::checkbox('enfer_cronode', '1', null) !!} 1
-    </label>
+        <label class="rad">
+        {!! Form::label('enfer_cronode', 'Si:') !!}
+        {!! Form::radio('enfer_cronode',true ) !!}
+        {!! Form::label('enfer_cronode', 'No:') !!}
+        {!! Form::radio('enfer_cronode',false ) !!} 
+        </label>
 </div>
 
 <!-- Enfer Infec Conta Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('enfer_infec_conta', 'Enfer Infec Conta:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('enfer_infec_conta', false) !!}
-        {!! Form::checkbox('enfer_infec_conta', '1', null) !!} 1
+   <label class="rad">
+        {!! Form::label('enfer_infec_conta', 'Si:') !!}
+        {!! Form::radio('enfer_infec_conta',true ) !!}
+        {!! Form::label('enfer_infec_conta', 'No:') !!}
+        {!! Form::radio('enfer_infec_conta',false ) !!} 
     </label>
 </div>
 
 <!-- Enfer Cance Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('enfer_cance', 'Enfer Cance:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('enfer_cance', false) !!}
-        {!! Form::checkbox('enfer_cance', '1', null) !!} 1
+   <label class="rad">
+        {!! Form::label('enfer_cance', 'Si:') !!}
+        {!! Form::radio('enfer_cance',true ) !!}
+        {!! Form::label('enfer_cance', 'No:') !!}
+        {!! Form::radio('enfer_cance',false ) !!} 
     </label>
 </div>
 
 <!-- Problema Lenguaje Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('problema_lenguaje', 'Problema Lenguaje:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('problema_lenguaje', false) !!}
-        {!! Form::checkbox('problema_lenguaje', '1', null) !!} 1
+   <label class="rad">
+        {!! Form::label('problema_lenguaje', 'Si:') !!}
+        {!! Form::radio('problema_lenguaje',true ) !!}
+        {!! Form::label('problema_lenguaje', 'No:') !!}
+        {!! Form::radio('problema_lenguaje',false ) !!} 
     </label>
 </div>
 
 <!-- Dificultad Aprender Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('dificultad_aprender', 'Dificultad Aprender:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('dificultad_aprender', false) !!}
-        {!! Form::checkbox('dificultad_aprender', '1', null) !!} 1
+   <label class="rad">
+        {!! Form::label('dificultad_aprender', 'Si:') !!}
+        {!! Form::radio('dificultad_aprender',true ) !!}
+        {!! Form::label('dificultad_aprender', 'No:') !!}
+        {!! Form::radio('dificultad_aprender',false ) !!} 
     </label>
 </div>
 
 <!-- Enfer Como Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('enfer_como', 'Enfer Como:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('enfer_como', false) !!}
-        {!! Form::checkbox('enfer_como', '1', null) !!} 1
+      <label class="rad">
+        {!! Form::label('enfer_comor', 'Si:') !!}
+        {!! Form::radio('enfer_como',true ) !!}
+        {!! Form::label('enfer_como', 'No:') !!}
+        {!! Form::radio('enfer_como',false ) !!} 
     </label>
 </div>
 
 <!-- Problemas Relacionarte Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('problemas_relacionarte', 'Problemas Relacionarte:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('problemas_relacionarte', false) !!}
-        {!! Form::checkbox('problemas_relacionarte', '1', null) !!} 1
+<div class="form-group col-xs-6 form-inline sinp1">
+{!! Form::label('problemas_relacionarte', 'Problemas Relacionarte:') !!}
+    <label class="rad">
+    {!! Form::label('problemas_relacionarte', 'Si:') !!}
+    {!! Form::radio('problemas_relacionarte',true ) !!}
+    {!! Form::label('problemas_relacionarte', 'No:') !!}
+    {!! Form::radio('problemas_relacionarte',false ) !!} 
     </label>
 </div>
 
 <!-- Tienes Fobia Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('tienes_fobia', 'Tienes Fobia:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('tienes_fobia', false) !!}
-        {!! Form::checkbox('tienes_fobia', '1', null) !!} 1
+         <label class="rad">
+    {!! Form::label('tienes_fobia', 'Si:') !!}
+    {!! Form::radio('tienes_fobia',true ) !!}
+    {!! Form::label('tienes_fobia', 'No:') !!}
+    {!! Form::radio('tienes_fobia',false ) !!} 
     </label>
 </div>
 
 <!-- Aspirantes Generales Id Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-xs-6 form-inline sinp1">
     {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
     {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
 </div>
@@ -164,4 +198,5 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('aspiranteSaluds.index') !!}" class="btn btn-default">Cancel</a>
+</div>
 </div>
