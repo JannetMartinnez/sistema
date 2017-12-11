@@ -1,13 +1,13 @@
 
 <div class="row">
 <!-- Tipo Sangre Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline">
     {!! Form::label('tipo_sangre', 'Tipo Sangre:') !!}
     {!! Form::text('tipo_sangre', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Baston Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('baston', 'Baston:') !!}
  <label class="rad">
         {!! Form::label('baston', 'Si:') !!}
@@ -18,7 +18,7 @@
 </div>
 
 <!-- Muletas Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('muletas', 'Muletas:') !!}
     <label class="rad">
         {!! Form::label('muletas', 'Si:') !!}
@@ -29,7 +29,7 @@
 </div>
 
 <!-- Silla Ruedas Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('silla_ruedas', 'Silla Ruedas:') !!}
     <label class="rad">
         {!! Form::label('silla_ruedas', 'Si:') !!}
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Calzado Especial Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('calzado_especial', 'Calzado Especial:') !!}
       <label class="rad">
         {!! Form::label('calzado_especial', 'Si:') !!}
@@ -51,13 +51,13 @@
 </div>
 
 <!-- Otros Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline sinp1">
     {!! Form::label('otros', 'Otros:') !!}
     {!! Form::text('otros', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Difi Escuchar Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('difi_escuchar', 'Difi Escuchar:') !!}
      <label class="rad">
         {!! Form::label('difi_escuchar', 'Si:') !!}
@@ -68,7 +68,7 @@
 </div>
 
 <!-- Apara Escuchar Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('apara_escuchar', 'Apara Escuchar:') !!}
        <label class="rad">
         {!! Form::label('apara_escuchar', 'Si:') !!}
@@ -79,7 +79,7 @@
 </div>
 
 <!-- Proble Ver Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('proble_ver', 'Proble Ver:') !!}
             <label class="rad">
         {!! Form::label('proble_ver', 'Si:') !!}
@@ -90,7 +90,7 @@
 </div>
 
 <!-- Utiliza Lentes Field -->
-<div style="clear:both" class="form-group col-xs-6  form-inline sinp1">
+<div style="clear:both" class="form-group col-xs-6 form-inline ">
     {!! Form::label('utiliza_lentes', 'Utiliza Lentes:') !!}
     <label class="rad">
         {!! Form::label('utiliza_lentes', 'Si:') !!}
@@ -101,7 +101,7 @@
 </div>
 
 <!-- Enfer Cronode Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('enfer_cronode', 'Enfer Cronode:') !!}
         <label class="rad">
         {!! Form::label('enfer_cronode', 'Si:') !!}
@@ -112,7 +112,7 @@
 </div>
 
 <!-- Enfer Infec Conta Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('enfer_infec_conta', 'Enfer Infec Conta:') !!}
    <label class="rad">
         {!! Form::label('enfer_infec_conta', 'Si:') !!}
@@ -123,7 +123,7 @@
 </div>
 
 <!-- Enfer Cance Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('enfer_cance', 'Enfer Cance:') !!}
    <label class="rad">
         {!! Form::label('enfer_cance', 'Si:') !!}
@@ -134,7 +134,7 @@
 </div>
 
 <!-- Problema Lenguaje Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('problema_lenguaje', 'Problema Lenguaje:') !!}
    <label class="rad">
         {!! Form::label('problema_lenguaje', 'Si:') !!}
@@ -145,7 +145,7 @@
 </div>
 
 <!-- Dificultad Aprender Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('dificultad_aprender', 'Dificultad Aprender:') !!}
    <label class="rad">
         {!! Form::label('dificultad_aprender', 'Si:') !!}
@@ -156,7 +156,7 @@
 </div>
 
 <!-- Enfer Como Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('enfer_como', 'Enfer Como:') !!}
       <label class="rad">
         {!! Form::label('enfer_comor', 'Si:') !!}
@@ -167,7 +167,7 @@
 </div>
 
 <!-- Problemas Relacionarte Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
 {!! Form::label('problemas_relacionarte', 'Problemas Relacionarte:') !!}
     <label class="rad">
     {!! Form::label('problemas_relacionarte', 'Si:') !!}
@@ -178,7 +178,7 @@
 </div>
 
 <!-- Tienes Fobia Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline ">
     {!! Form::label('tienes_fobia', 'Tienes Fobia:') !!}
          <label class="rad">
     {!! Form::label('tienes_fobia', 'Si:') !!}
@@ -189,7 +189,7 @@
 </div>
 
 <!-- Aspirantes Generales Id Field -->
-<div class="form-group col-xs-6 form-inline sinp1">
+<div class="form-group col-xs-6 col-sm-6 form-inline sinp1">
     {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
     {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
 </div>
