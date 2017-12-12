@@ -107,10 +107,6 @@ Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
 
 Route::resource('aspiranteSaluds', 'AspiranteSaludController');
 
-Route::resource('aspirantesDocumentos', 'AspirantesDocumentoController');
-
-Route::resource('docDigitalizadors', 'DocDigitalizadorController');
-
 Route::resource('aspirantesDocumentos', 'AspirantesDocumentosController');
 
 Route::resource('docDigitalizars', 'DocDigitalizarController');

@@ -164,8 +164,6 @@
     <a href="{!! route('aspiranteSaluds.index') !!}"><i class="fa fa-edit"></i><span>AspiranteSaluds</span></a>
 </li>
 
-
-
 <li class="{{ Request::is('aspirantesDocumentos*') ? 'active' : '' }}">
     <a href="{!! route('aspirantesDocumentos.index') !!}"><i class="fa fa-edit"></i><span>AspirantesDocumentos</span></a>
 </li>
