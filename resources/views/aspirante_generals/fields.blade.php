@@ -95,7 +95,7 @@ $(function() {
           <!-- Sexo Asp Field -->
           <div class="form-group col-sm-3">
             {!! Form::label('sexo_asp', 'Sexo:') !!}
-            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!};
+            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!}
           </div>
           <!-- Curp Asp Field -->
           <div class="form-group col-sm-3">

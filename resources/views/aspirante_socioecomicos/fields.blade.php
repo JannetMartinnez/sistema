@@ -11,8 +11,23 @@ function calcular_total() {
   );
   return false;
 }
+
+
 </script>
 
+@if($modo=='editar')
+<!--para que recuerde que esta trabajando con jquerry-->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<!--fin-->
+<script>
+$(function() {
+  setTimeout(function() {
+    calcular_total()
+  }, 100);
+});
+
+</script>
+@endif
 <div class="row">
 <!--FOTO DEL ASPIRANTE-->
 <div class="form-group col-xs-12 col-md-2">

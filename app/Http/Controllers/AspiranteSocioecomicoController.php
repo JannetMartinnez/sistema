@@ -69,8 +69,9 @@ class AspiranteSocioecomicoController extends AppBaseController
         
         $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
         $folio=$solicitud+1;
-
-        return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio'));
+        
+        $modo='crear';
+        return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','modo'));
          //}
     }
 
@@ -128,8 +129,26 @@ class AspiranteSocioecomicoController extends AppBaseController
 
             return redirect(route('aspiranteSocioecomicos.index'));
         }
+//
+        $estudios=EstudioPadre::orderBy('id')->pluck('descripcion','id');
+        $quienvives=QuienVivesActual::orderBy('id')->pluck('descripcion','id');
+       //
+        $ocupacionpadres=ocupacion_padres::orderBy('id')->pluck('desripcion','id');
+        //la tabla esta mal escrito el campo es descripcion en la tabla ocupacion__padres
+        $casavives=CasaVive::orderBy('id')->pluck('descripcion','id');
+        $numerospalabras=NumerosPalabras::orderBy('id')->pluck('descripcion','id');
+        $estadounion=EstadoUnionPadre::orderBy('id')->pluck('descripcion','id');
+        $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
+        //traer datos de otra tabla con el id//
+        $aspirante_general=AspiranteGeneral::where('id',174)->first();
+        //campos a traer{    
+        $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
 
-        return view('aspirante_socioecomicos.edit')->with('aspiranteSocioecomico', $aspiranteSocioecomico);
+
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $folio=$solicitud+1;
+         $modo='editar';
+        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','modo'));
     }
 
     /**

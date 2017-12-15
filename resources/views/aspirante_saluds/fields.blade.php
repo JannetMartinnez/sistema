@@ -1,64 +1,86 @@
-
 <div class="row">
+<!--FOTO DEL ASPIRANTE-->
+<div class="form-group col-xs-12 col-md-2">
+<center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
+</div>
+<div class ="form-group col-xs-12 col-md-10 ">
+        <center><h3 class="titulos sinp">Datos Generales</h3></center>      
+
+<div class ="form-group col-xs-12 col-md-4 sinp">
+{!!Form::label('apellido_paterno_aspirante','Apellido Paterno') !!}
+
+ {!! Form::text('apellido_paterno',$apellidopaterno, null,['class' => 'form-control']) !!}
+</div>
+<div class ="form-group col-xs-12 col-md-4 sinp">
+{!!Form::label('apellido_materno_aspirante', 'Apellido Materno') !!}
+ {!! Form::text('apellido_materno',$apellidomaterno,null, ['class' => 'form-control']) !!}
+</div>
+<div class ="form-group col-xs-12 col-md-4 sinp">
+{!!Form::label('apellido_paterno_aspirante', 'Nombre(s)') !!}
+ {!! Form::text('nombres(s)',$nombres,null, ['class' => 'form-control']) !!}
+</div>
+<div class ="form-group col-xs-12 col-md-4 sinp">
+{!!Form::label('numero_ss','Numero de Seguro Social') !!}
+
+ {!! Form::text('apellido_paterno',$numeross, null,['class' => 'form-control']) !!}
+</div>
 <!-- Tipo Sangre Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline">
+<div class="form-group col-xs-12 col-md-4 sinp">
     {!! Form::label('tipo_sangre', 'Tipo Sangre:') !!}
     {!! Form::text('tipo_sangre', null, ['class' => 'form-control']) !!}
 </div>
-
+<!-- Aspirantes Generales Id Field -->
+<div class="form-group col-xs-12 col-sm-4 sinp">
+    {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
+    {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+</div>
+<div class="row">
+<div class ="form-group col-xs-12 col-md-12 sinp ">
+        <center><h3 class="titulos sinp">Datos Especificos</h3></center> 
+</div>
+<div class="form-group col-xs-12 col-md-6">
 <!-- Baston Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('baston', 'Baston:') !!}
+   {!! Form::label('baston', '¿Utilizas algun aparato o protesis para realizar tus actividades?') !!}  
+<div class="form-group col-xs-12 col-md-3 sinp sep">
  <label class="rad">
-        {!! Form::label('baston', 'Si:') !!}
-        {!! Form::radio('baston',true ) !!}
-        {!! Form::label('baston', 'No:') !!}
-        {!! Form::radio('baston',false ) !!} 
-    </label>
+        {!! Form::label('baston', 'Baston') !!}
+        {!! Form::checkbox('baston',true ) !!}
+</label>
 </div>
-
 <!-- Muletas Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('muletas', 'Muletas:') !!}
-    <label class="rad">
-        {!! Form::label('muletas', 'Si:') !!}
-        {!! Form::radio('muletas',true ) !!}
-        {!! Form::label('muletas', 'No:') !!}
-        {!! Form::radio('muletas',false ) !!} 
-    </label>
+<div class="form-group col-xs-12 col-md-3 sinp sep">
+ <label class="rad">
+        {!! Form::label('muletas', 'Muletas') !!}
+        {!! Form::checkbox('muletas',true ) !!}       
+ </label>
+ </div>
+ <!-- Silla Ruedas Field -->
+ <div class="form-group col-xs-12 col-md-6 sinp sep">
+<label class="rad">
+        {!! Form::label('silla_ruedas', 'Silla de Ruedas') !!}
+        {!! Form::checkbox('silla_ruedas',true ) !!}        
+</label><br>
 </div>
-
-<!-- Silla Ruedas Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('silla_ruedas', 'Silla Ruedas:') !!}
-    <label class="rad">
-        {!! Form::label('silla_ruedas', 'Si:') !!}
-        {!! Form::radio('silla_ruedas',true ) !!}
-        {!! Form::label('silla_ruedas', 'No:') !!}
-        {!! Form::radio('silla_ruedas',false ) !!} 
-    </label>
-</div>
-
+<div class="form-group col-xs-12 col-md-5 sinp sep">
 <!-- Calzado Especial Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('calzado_especial', 'Calzado Especial:') !!}
-      <label class="rad">
-        {!! Form::label('calzado_especial', 'Si:') !!}
-        {!! Form::radio('calzado_especial',true ) !!}
-        {!! Form::label('calzado_especial', 'No:') !!}
-        {!! Form::radio('calzado_especial',false ) !!} 
-    </label>
+<label class="rad">
+        {!! Form::label('calzado_especial', 'Calzado Especial') !!}
+        {!! Form::checkbox('calzado_especial',true ) !!}      
+</label>
 </div>
-
+<div class="col-xs-12 col-md-7 form-inline sinp sep">
 <!-- Otros Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline sinp1">
     {!! Form::label('otros', 'Otros:') !!}
     {!! Form::text('otros', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Difi Escuchar Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('difi_escuchar', 'Difi Escuchar:') !!}
+
+</div>
+<div class="row">
+<div  class="col-xs-12 col-md-12">
+<!-- Difi Escuchar Field --> 
+    {!! Form::label('difi_escuchar','¿Tiene dificultada para escuchar?') !!}<br>   
      <label class="rad">
         {!! Form::label('difi_escuchar', 'Si:') !!}
         {!! Form::radio('difi_escuchar',true ) !!}
@@ -66,120 +88,92 @@
         {!! Form::radio('difi_escuchar',false ) !!} 
     </label>
 </div>
-
+</div>
 <!-- Apara Escuchar Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('apara_escuchar', 'Apara Escuchar:') !!}
+    {!! Form::label('apara_escuchar', '¿Tienes algun aparato para escuchar?') !!}<br>
        <label class="rad">
         {!! Form::label('apara_escuchar', 'Si:') !!}
         {!! Form::radio('apara_escuchar',true ) !!}
         {!! Form::label('apara_escuchar', 'No:') !!}
         {!! Form::radio('apara_escuchar',false ) !!} 
-       </label>
-</div>
-
+       </label><br>
 <!-- Proble Ver Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('proble_ver', 'Proble Ver:') !!}
+    {!! Form::label('proble_ver', '¿Tienes problemas para ver bien?') !!}<br>
             <label class="rad">
         {!! Form::label('proble_ver', 'Si:') !!}
         {!! Form::radio('proble_ver',true ) !!}
         {!! Form::label('proble_ver', 'No:') !!}
         {!! Form::radio('proble_ver',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Utiliza Lentes Field -->
-<div style="clear:both" class="form-group col-xs-6 form-inline ">
-    {!! Form::label('utiliza_lentes', 'Utiliza Lentes:') !!}
-    <label class="rad">
+    {!! Form::label('utiliza_lentes', '¿Utilizas lentes (Armazon o contacto)?') !!}<br>
+        <label class="rad">
         {!! Form::label('utiliza_lentes', 'Si:') !!}
         {!! Form::radio('utiliza_lentes',true ) !!}
         {!! Form::label('utiliza_lentes', 'No:') !!}
         {!! Form::radio('utiliza_lentes',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Enfer Cronode Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('enfer_cronode', 'Enfer Cronode:') !!}
+    {!! Form::label('enfer_cronode', '¿Padeces alguna enfermedad cronicodegenerativa (diabetes millitus,hipertension arterial sistematica, enfermedad renal cronica, otras)?') !!}<br>
         <label class="rad">
-        {!! Form::label('enfer_cronode', 'Si:') !!}
-        {!! Form::radio('enfer_cronode',true ) !!}
-        {!! Form::label('enfer_cronode', 'No:') !!}
-        {!! Form::radio('enfer_cronode',false ) !!} 
-        </label>
+    {!! Form::label('enfer_cronode', 'Si:') !!}
+    {!! Form::radio('enfer_cronode',true ) !!}
+    {!! Form::label('enfer_cronode', 'No:') !!}
+    {!! Form::radio('enfer_cronode',false ) !!} 
+    </label><br>    
 </div>
-
+<!--/////////////////////////////-->
+<div class="form-group col-xs-12 col-md-6 sinp">
 <!-- Enfer Infec Conta Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('enfer_infec_conta', 'Enfer Infec Conta:') !!}
+    {!! Form::label('enfer_infec_conta', '¿Tiene alguna enfermedad-contagiosa (VIH, SIDA; Tuberculosis , otras)?') !!}<br>
    <label class="rad">
         {!! Form::label('enfer_infec_conta', 'Si:') !!}
         {!! Form::radio('enfer_infec_conta',true ) !!}
         {!! Form::label('enfer_infec_conta', 'No:') !!}
         {!! Form::radio('enfer_infec_conta',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Enfer Cance Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('enfer_cance', 'Enfer Cance:') !!}
+    {!! Form::label('enfer_cance', '¿Padeces alguna enfermedad canserigena (tipo de cancer)?') !!}<br>
    <label class="rad">
         {!! Form::label('enfer_cance', 'Si:') !!}
         {!! Form::radio('enfer_cance',true ) !!}
         {!! Form::label('enfer_cance', 'No:') !!}
         {!! Form::radio('enfer_cance',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Problema Lenguaje Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('problema_lenguaje', 'Problema Lenguaje:') !!}
+    {!! Form::label('problema_lenguaje', '¿Tiene algun problema con el lenguaje?') !!}<br>
    <label class="rad">
         {!! Form::label('problema_lenguaje', 'Si:') !!}
         {!! Form::radio('problema_lenguaje',true ) !!}
         {!! Form::label('problema_lenguaje', 'No:') !!}
         {!! Form::radio('problema_lenguaje',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Dificultad Aprender Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('dificultad_aprender', 'Dificultad Aprender:') !!}
+    {!! Form::label('dificultad_aprender', '¿Tienes una dificultad Aprender?') !!}<br>
    <label class="rad">
         {!! Form::label('dificultad_aprender', 'Si:') !!}
         {!! Form::radio('dificultad_aprender',true ) !!}
         {!! Form::label('dificultad_aprender', 'No:') !!}
         {!! Form::radio('dificultad_aprender',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Enfer Como Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('enfer_como', 'Enfer Como:') !!}
+    {!! Form::label('enfer_como', '¿Padeces alguna enfermedad como:epilepsia,depresion,ezquisofrenia,otras?') !!}<br>
       <label class="rad">
-        {!! Form::label('enfer_comor', 'Si:') !!}
+        {!! Form::label('enfer_como', 'Si:') !!}
         {!! Form::radio('enfer_como',true ) !!}
         {!! Form::label('enfer_como', 'No:') !!}
         {!! Form::radio('enfer_como',false ) !!} 
-    </label>
-</div>
-
+    </label><br>
 <!-- Problemas Relacionarte Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-{!! Form::label('problemas_relacionarte', 'Problemas Relacionarte:') !!}
-    <label class="rad">
-    {!! Form::label('problemas_relacionarte', 'Si:') !!}
-    {!! Form::radio('problemas_relacionarte',true ) !!}
-    {!! Form::label('problemas_relacionarte', 'No:') !!}
-    {!! Form::radio('problemas_relacionarte',false ) !!} 
-    </label>
-</div>
-
+    {!! Form::label('problemas_relacionarte', '¿Tienes problemas para  relacionarte con otros?') !!}<br>
+        <label class="rad">
+        {!! Form::label('problemas_relacionarte', 'Si:') !!}
+        {!! Form::radio('problemas_relacionarte',true ) !!}
+        {!! Form::label('problemas_relacionarte', 'No:') !!}
+        {!! Form::radio('problemas_relacionarte',false ) !!} 
+        </label><br>
 <!-- Tienes Fobia Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline ">
-    {!! Form::label('tienes_fobia', 'Tienes Fobia:') !!}
+    {!! Form::label('tienes_fobia', '¿Tienes una fobia que te impida interactuar de alguna manera?') !!}<br>
          <label class="rad">
     {!! Form::label('tienes_fobia', 'Si:') !!}
     {!! Form::radio('tienes_fobia',true ) !!}
@@ -187,16 +181,10 @@
     {!! Form::radio('tienes_fobia',false ) !!} 
     </label>
 </div>
-
-<!-- Aspirantes Generales Id Field -->
-<div class="form-group col-xs-6 col-sm-6 form-inline sinp1">
-    {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
-    {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
 </div>
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('aspiranteSaluds.index') !!}" class="btn btn-default">Cancel</a>
 </div>
-</div>
+
