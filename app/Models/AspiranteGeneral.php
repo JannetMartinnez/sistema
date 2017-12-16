@@ -36,7 +36,7 @@ use Eloquent as Model;
  * @property integer municipio_proc_id
  * @property integer entidad_federativa_dom_actual_id
  * @property integer municipio_dom_actual_id
- * @property integer codigo_postal_dom_actual
+ * @property integer codigo_postal_dpaom_actual
  * @property string colonia_dom_actual
  * @property string correo_elect_dom_actual
  * @property string telefono_fijo_dom_actual
@@ -108,7 +108,8 @@ class AspiranteGeneral extends Model
         'apellido_paterno_tutor',
         'apellido_materno_tutor',
         'usuario_id',
-        'tipo_modalidad_id'
+        'tipo_modalidad_id',
+        'pais_asp_id'
     ];
 
     /**
@@ -161,6 +162,7 @@ class AspiranteGeneral extends Model
         'apellido_materno_tutor' => 'string',
         'usuario_id' => 'integer',
         'tipo_modalidad_id' => 'integer'
+
     ];
 
     /**
@@ -196,6 +198,15 @@ class AspiranteGeneral extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function pais()
+    {
+        return $this->belongsTo(\App\Models\Pais::class);
     }
 
 }

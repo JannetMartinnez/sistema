@@ -26,6 +26,7 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Silber\Bouncer\Bouncer;
 use Illuminate\Support\Facades\Auth;
 use \Validatore;
+use App\Models\AspiranteGeneral;
 
 class AspiranteGeneralController extends AppBaseController
 {
@@ -69,8 +70,11 @@ class AspiranteGeneralController extends AppBaseController
         $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
         $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
         $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
+        $modo='crear';
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $folio=$solicitud+1;
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','prepas','carr','edo_civil','zona_proc'));
+            'carreraOfertada','prepas','carr','edo_civil','zona_proc','modo','folio'));
     }
 
     /**
@@ -222,8 +226,11 @@ class AspiranteGeneralController extends AppBaseController
         $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
         $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
         $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
+        $modo='editar';
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $folio=$solicitud+1;
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio'));
     }
 
     /**
@@ -277,5 +284,26 @@ class AspiranteGeneralController extends AppBaseController
 
     public function registro(){
         return view('aspirante_generals.createRegistro');
+    }
+    public function referenciaB($ord,$pers,$cve_pago,$fechaLimite,$importe){
+        $cve_banco="3947"; //Clave del banco
+
+        //if($ord) $ordOext="01" else $ordOext="02";
+        // $dig_validador_imp=     //Digito validador del importe, a cada digito del importe
+                                //se le asigna de derecha a izquierda:7,3,1. Multiplicar y s
+                                //sumar, dividir entre 10 y el residuo es el digito
+                                //Fecha Juliana, al dia se resta 1, al mes se resta 1 y se  multiplica por 31, al año de 4 digitos le restamos 2013 y se multiplica por 372, se suman, esa es el resultado
+        //$fecha_jul=
+        //$dig_control=2 //Dado por el usario
+        //$ref=$cve_banco.$ord.$pers.$cve_pago.$fecha_jul.$dig_validador_imp.$dig_control;
+        // $digitos_verificadores=   //Digitos verificadores de línea, si la línea tiene caracteres alfabéticos, asignarles un valor númerico de acuerdo a la siguiente tabla:
+        //$letrasValor={"ABCDEFGHIJKLMNOPQRSTUVWXYZ};
+        //$numValor={"12345678912345678923456789"};
+        //A cada elemento se le agrega un digito de derecha a izquierda 11,13,17,19,23
+        //Multiplicar cada dígito por el valor que le corresponda, sumar y dividirlo entre 97, al residuo sumar 1
+        // $ref=$ref.$digitos_verificadores;
+        //$ref=$cve_banco.$ordOext.$pers.$cve_pago;
+        //return $ref;
+        return "";
     }
 }

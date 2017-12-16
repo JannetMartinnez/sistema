@@ -1,24 +1,24 @@
 <!-- Folio Solicitud Field -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script>
 $(function() {
-    $("#state").change(function(event){
+    $("#state_da").change(function(event){
         $.get("municipios/"+event.target.value+"",function(response,state){
             console.log(response);
-            $("#town").empty();
+            $("#town_da").empty();
             for(i=0;i<response.length; i++){
-                $("#town").append("<option value='"+response[i].id+"'> "+response[i].nombre_municipio+"</option>");
+                $("#town_da").append("<option value='"+response[i].id+"'> "+response[i].nombre_municipio+"</option>");
             }
         });
     });
-
 });
  
 </script>
 <script>
 $(function() {
-    $("#state_da").change(function(event){
-        $.get("municipios/"+event.target.value+"",function(response,state){
+    $("#state_da_edicion").change(function(event){
+        $.get("municipios2/"+event.target.value+"",function(response,state){
             console.log(response);
             $("#town_da").empty();
             for(i=0;i<response.length; i++){
@@ -44,25 +44,16 @@ $(function() {
  
 </script>
 
-   <br>
-   <div class="row">
-   <div class="col-md-12">    
+   <br>   
       <div role="tabpanel">
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab">Datos Generales</a></li>
-
-          <li role="presentation"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab">Datos Socioeconomicos</a></li>
-
-          <li role="presentation"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Datos de Salud</a></li> 
-        
-          <li role="presentation"><a href="#seccion4" aria-controls="seccion3" data-toggle="tab" role="tab">Documentos</a></li> 
+        <ul class="nav nav-tabs" >
+          <li class="active"><a >Datos Generales</a></li>
+          <li ><a href="http://localhost/7Dic14_56/public/aspiranteSocioecomicos/9/edit" class="btn btn-default">Datos Socioeconomicos</a>
+          <li ><a href="" >Datos de Salud</a></li> 
+          <li ><a href="" >Documentos</a></li> 
 
         </ul>
       </div> 
-   </div>
-   </div> 
-
-
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="seccion1"><br>
     <div class="row">
@@ -72,7 +63,7 @@ $(function() {
           <a href=""><center><caption><h6 <i class="fa fa-camera" aria-hidden="true"></i> Cambiar Imagen</h6></caption></center></a>
         </div>  
         <div class=" col-xs-12 col-md-10">
-          <center><h3 class="titulos" >Datos del aspirante</h3></center>
+          <center><h3 class="titulos" >Datos del aspirante  {!! Form::label('curp_asp',$modo) !!}</h3></center>
           <div  class="col-sm-12">
             <center>{!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante:') !!}</center>    
           </div>
@@ -87,15 +78,29 @@ $(function() {
           <div class="form-group col-sm-4">   
             {!! Form::text('nombres_aspirante', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
           </div>
-          <!-- Fecha Nacimiento Asp Field -->
-          <div class="form-group col-sm-3">
-              {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento:') !!}
-              {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
-          </div>
+
+
+        @if ($modo=='crear')
+         <!-- Fecha Nacimiento Asp Field -->
+        <div class="form-group col-sm-3">
+            {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento:') !!}
+            {!! Form::date('fecha_nacimiento_asp', null, ['class' => 'form-control']) !!}
+
+        </div>
+        @else
+        <!-- Fecha Nacimiento Asp Field -->
+        <div class="form-group col-sm-3">
+            {!! Form::label('fecha_nacimiento_asp', 'Fecha Nacimiento:') !!}
+            {!! Form::date('fecha_nacimiento_asp', $aspiranteGeneral->fecha_nacimiento_asp, ['class' => 'form-control']) !!}
+
+        </div>
+        @endif
+
+
           <!-- Sexo Asp Field -->
           <div class="form-group col-sm-3">
             {!! Form::label('sexo_asp', 'Sexo:') !!}
-            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!}
+            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!};
           </div>
           <!-- Curp Asp Field -->
           <div class="form-group col-sm-3">
@@ -139,12 +144,21 @@ $(function() {
       {!! Form::label('pais_asp_id', 'País:' )!!}<br>
       {!! Form::select('pais_asp_id',$paises,154,array('class'=>'form-control')) !!}
     </div>
-     
+
+    @if ($modo=='crear')     
     <!--Entidad Federativa Dom Actual Id Field-->
     <div class="form-group col-sm-3">
       {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa:') !!}
       {!! Form::select('entidad_federativa_dom_actual_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_da')) !!}
     </div>
+    @else
+    <!--Entidad Federativa Dom Actual Id Field-->
+    <div class="form-group col-sm-3">
+      {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa:') !!}
+      {!! Form::select('entidad_federativa_dom_actual_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_da_edicion')) !!}
+    </div>
+    @endif
+    
     <!--Municipio Dom Actual Id Field-->
     <div class="form-group col-sm-4">
        {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
@@ -168,9 +182,9 @@ $(function() {
       {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.San Antonio']) !!}
     </div>
     <div class="form-group col-sm-6">
-        {!! Form::label('zona_proc_aspirante_id', 'Zona Proc Aspirante:') !!}
+        {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}
         
-        {!! Form::select('zona_proc_aspirante_id',$zona_proc,null,array('class'=>'form-control')) !!}
+        {!! Form::select('zona_proc_aspirante',$zona_proc,null,array('class'=>'form-control')) !!}
     </div>
     <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
     <div class="col-sm-12">
@@ -275,7 +289,7 @@ $(function() {
     
     <div class="form-group col-sm-6">
         {!! Form::label('folio_solicitud', 'Folio Solicitud:') !!}
-        {!! Form::number('folio_solicitud', null, ['class' => 'form-control']) !!}
+        {!! Form::number('folio_solicitud', $folio, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('periodo', 'Periodo:') !!}

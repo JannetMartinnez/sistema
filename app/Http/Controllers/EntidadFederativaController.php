@@ -161,6 +161,13 @@ class EntidadFederativaController extends AppBaseController
            return response()->json($municipios);
        }
     }
+    public function getMunicipios2(Request $request,$id2,$id)
+    {
+       if($request->ajax()){
+           $municipios=Municipio::municipios($id);
+           return response()->json($municipios);
+       }
+    }
 
 
 }

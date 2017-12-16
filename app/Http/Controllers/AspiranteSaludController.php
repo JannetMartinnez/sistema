@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use App\Models\AspiranteGeneral;
+
 class AspiranteSaludController extends AppBaseController
 {
     /** @var  AspiranteSaludRepository */
@@ -43,17 +43,7 @@ class AspiranteSaludController extends AppBaseController
      */
     public function create()
     {
-
-  //traer datos de otra tabla con el id//
-        $aspirante_general=AspiranteGeneral::where('id',174)->first();
-        //campos a traer{    
-        $apellidopaterno=$aspirante_general->apellido_paterno_aspirante;
-        $apellidomaterno=$aspirante_general->apellido_materno_aspirante;
-        $nombres=$aspirante_general->nombres_aspirante;
-        
-        $numeross=$aspirante_general->numero_seguro_social;
-
-        return view('aspirante_saluds.create',compact('apellidopaterno','apellidomaterno','nombres','numeross'));
+        return view('aspirante_saluds.create');
     }
 
     /**

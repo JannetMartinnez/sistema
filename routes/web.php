@@ -42,7 +42,8 @@ Route::get('aspiranteGenerals/municipios/{id}', 'EntidadFederativaController@get
 
 //USado en el edit
 
-Route::get('aspiranteGenerals/176/municipios/{id}', 'EntidadFederativaController@getMunicipios');
+Route::get('aspiranteGenerals/{id2}/municipios2/{id}', 'EntidadFederativaController@getMunicipios2');
+
 
 //Usado en el create
 Route::get('aspiranteGenerals/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');

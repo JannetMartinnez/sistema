@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(CarreraSeeder::class);
         //$this->call(Preparatoria3Seeder::class);
         //$this->call(NivelSeeder::class);
+        $this->call(PeriodosEscolares::class);
     }
 }
