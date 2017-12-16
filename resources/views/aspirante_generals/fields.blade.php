@@ -216,17 +216,7 @@ $(function() {
         {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia:') !!}
         {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!} 
       </div>
-      <!--Modalidad Asp Field-->
-      <div class="form-group col-sm-4">
-         {!! Form::label('tipo_modalidad_id', 'Modalidad:') !!}
-          <select class='form-control'>
-          <option>Seleccione</option>
-          <option value="1">Escolarizada</option>
-          <option value="2">Educación Distancia</option>
-          <option value="3">Mixta</option>
-          <option value="4">Postgrado</option>
-          </select>
-      </div>
+     
       
       <!--Añio Termino Bachillerato Field-->
       <div class="form-group col-sm-4"> 
@@ -293,7 +283,7 @@ $(function() {
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('periodo', 'Periodo:') !!}
-        {!! Form::text('periodo', null, ['class' => 'form-control']) !!}
+        {!! Form::number('periodo', $periodo, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('ficha', 'Ficha:') !!}
@@ -303,6 +293,10 @@ $(function() {
     <div class="form-group col-sm-6">
         {!! Form::label('usuario_id', 'Usuario Id:') !!}
         {!! Form::number('usuario_id', null, ['class' => 'form-control']) !!}
+    </div>  
+    <div class="form-group col-sm-6">
+        {!! Form::label('tipo_modalidad_id', 'Modalidad Id:') !!}
+        {!! Form::number('tipo_modalidad_id', $modalidad, ['class' => 'form-control']) !!}
     </div>  
 </div>
 

@@ -66,7 +66,7 @@ Route::resource('preparatoriaProcedencias', 'PreparatoriaProcedenciaController')
 
 Route::resource('carreraOfertadas', 'CarreraOfertadaController');
 
-Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
+
 
 
 
@@ -107,3 +107,13 @@ Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
 
 
 Route::resource('aspiranteSaluds', 'AspiranteSaludController');
+
+
+
+
+
+
+
+Route::resource('tipoModalidads', 'TipoModalidadController');
+
+Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');

@@ -27,6 +27,8 @@ use Silber\Bouncer\Bouncer;
 use Illuminate\Support\Facades\Auth;
 use \Validatore;
 use App\Models\AspiranteGeneral;
+use App\Models\ConfigFechaInscripcion;
+use Carbon\Carbon;
 
 class AspiranteGeneralController extends AppBaseController
 {
@@ -73,8 +75,13 @@ class AspiranteGeneralController extends AppBaseController
         $modo='crear';
         $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
         $folio=$solicitud+1;
+        $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+        $periodo=$busca_periodo['periodo_entrada_id'];
+        $modalidad=$busca_periodo['tipo_modalidad_id'];
+        //$periodo=9;
+
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','prepas','carr','edo_civil','zona_proc','modo','folio'));
+            'carreraOfertada','prepas','carr','edo_civil','zona_proc','modo','folio','periodo','modalidad'));
     }
 
     /**

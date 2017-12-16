@@ -94,17 +94,8 @@
     <a href="{!! route('carreraOfertadas.index') !!}"><i class="fa fa-edit"></i><span>CarreraOfertadas</span></a>
 </li>
 
-<li class="{{ Request::is('configFechaInscripcions*') ? 'active' : '' }}">
-    <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
-</li>
 
-<li class="{{ Request::is('configFechaInscripcions*') ? 'active' : '' }}">
-    <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
-</li>
 
-<li class="{{ Request::is('configFechaInscripcions*') ? 'active' : '' }}">
-    <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
-</li>
 
  @endcan<li class="{{ Request::is('nivelEstudios*') ? 'active' : '' }}">
     <a href="{!! route('nivelEstudios.index') !!}"><i class="fa fa-edit"></i><span>NivelEstudios</span></a>
@@ -162,5 +153,16 @@
 
 <li class="{{ Request::is('aspiranteSaluds*') ? 'active' : '' }}">
     <a href="{!! route('aspiranteSaluds.index') !!}"><i class="fa fa-edit"></i><span>AspiranteSaluds</span></a>
+</li>
+
+
+
+
+<li class="{{ Request::is('tipoModalidads*') ? 'active' : '' }}">
+    <a href="{!! route('tipoModalidads.index') !!}"><i class="fa fa-edit"></i><span>TipoModalidads</span></a>
+</li>
+
+<li class="{{ Request::is('configFechaInscripcions*') ? 'active' : '' }}">
+    <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
 </li>
 
