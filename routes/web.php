@@ -117,3 +117,6 @@ Route::resource('aspiranteSaluds', 'AspiranteSaludController');
 Route::resource('tipoModalidads', 'TipoModalidadController');
 
 Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
+
+
+Route::get('llama','LlamaController@llama1');
