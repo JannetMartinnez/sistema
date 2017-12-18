@@ -100,7 +100,7 @@ $(function() {
           <!-- Sexo Asp Field -->
           <div class="form-group col-sm-3">
             {!! Form::label('sexo_asp', 'Sexo:') !!}
-            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!};
+            {!! Form::select('sexo_asp', array('M' => 'Masculino', 'F' => 'Femenino'),null,array('class'=>'form-control')) !!}
           </div>
           <!-- Curp Asp Field -->
           <div class="form-group col-sm-3">
@@ -182,9 +182,9 @@ $(function() {
       {!! Form::text('colonia_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.San Antonio']) !!}
     </div>
     <div class="form-group col-sm-6">
-        {!! Form::label('zona_proc_aspirante', 'Zona Proc Aspirante:') !!}
+        {!! Form::label('zona_proc_aspirante_id', 'Zona Proc Aspirante:') !!}
         
-        {!! Form::select('zona_proc_aspirante',$zona_proc,null,array('class'=>'form-control')) !!}
+        {!! Form::select('zona_proc_aspirante_id',$zona_proc,null,array('class'=>'form-control')) !!}
     </div>
     <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
     <div class="col-sm-12">

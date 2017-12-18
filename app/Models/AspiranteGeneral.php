@@ -27,7 +27,6 @@ use Eloquent as Model;
  * @property integer anio_termino_bachillerato
  * @property string calle_dom_actual
  * @property string municipio_nac
- * @property integer codigo_postal
  * @property integer carrera_op1_id
  * @property integer carrera_op2_id
  * @property string nacionalidad_asp
@@ -41,8 +40,7 @@ use Eloquent as Model;
  * @property string correo_elect_dom_actual
  * @property string telefono_fijo_dom_actual
  * @property string telefono_cel_aspirante
- * @property integer zona_proc_aspirante
- * @property boolean oportunidades_aspirante
+ * @property integer zona_proc_aspirante_id
  * @property string nombres_padre
  * @property string apellido_paterno_padre
  * @property string apellido_materno_padre
@@ -81,7 +79,6 @@ class AspiranteGeneral extends Model
         'anio_termino_bachillerato',
         'calle_dom_actual',
         'municipio_nac',
-        'codigo_postal',
         'carrera_op1_id',
         'carrera_op2_id',
         'nacionalidad_asp',
@@ -133,7 +130,6 @@ class AspiranteGeneral extends Model
         'anio_termino_bachillerato' => 'integer',
         'calle_dom_actual' => 'string',
         'municipio_nac' => 'string',
-        'codigo_postal' => 'integer',
         'carrera_op1_id' => 'integer',
         'carrera_op2_id' => 'integer',
         'nacionalidad_asp' => 'string',
@@ -147,8 +143,7 @@ class AspiranteGeneral extends Model
         'correo_elect_dom_actual' => 'string',
         'telefono_fijo_dom_actual' => 'string',
         'telefono_cel_aspirante' => 'string',
-        'zona_proc_aspirante' => 'integer',
-        'oportunidades_aspirante' => 'boolean',
+        'zona_proc_aspirante_id' => 'integer',
         'nombres_padre' => 'string',
         'apellido_paterno_padre' => 'string',
         'apellido_materno_padre' => 'string',
@@ -208,5 +203,18 @@ class AspiranteGeneral extends Model
     {
         return $this->belongsTo(\App\Models\Pais::class);
     }
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function zonaProcedencia()
+    {
+        return $this->belongsTo(\App\Models\ZonaProcedencia::class);
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function estadoCivil()
+    {
+        return $this->belongsTo(\App\Models\EstadoCivil::class);
+    }
 }

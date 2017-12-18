@@ -65,6 +65,8 @@ public static function consu(){
         return DB::table('carreras_ofertadas')
         ->join('carreras','carreras_ofertadas.carreras_id','=','carreras.id')
         ->select('carreras_ofertadas.*','carreras.nombre_carrera')
+        ->where('carreras_ofertadas.fecha_inicio','<',now())
+        ->where('carreras_ofertadas.feha_fin','>',now())
         ->orderby('carreras_id')->get();
 
 }
