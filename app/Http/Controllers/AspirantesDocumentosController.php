@@ -6,16 +6,21 @@ use App\Http\Requests\CreateAspirantesDocumentosRequest;
 use App\Http\Requests\UpdateAspirantesDocumentosRequest;
 use App\Repositories\AspirantesDocumentosRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\DocDigitalizar;
+use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
 
 class AspirantesDocumentosController extends AppBaseController
 {
     /** @var  AspirantesDocumentosRepository */
     private $aspirantesDocumentosRepository;
+
+
 
     public function __construct(AspirantesDocumentosRepository $aspirantesDocumentosRepo)
     {
@@ -45,9 +50,10 @@ class AspirantesDocumentosController extends AppBaseController
     public function create()
     {
        
-
+     $actuales=Storage::files('public');
+   
     $doc_digitalizar=DocDigitalizar::orderBy('id')->pluck('descrpcion','id');
-        return view('aspirantes_documentos.create',compact('doc_digitalizar'));
+        return view('aspirantes_documentos.create',compact('doc_digitalizar','actuales'));
     }
 
     /**
@@ -63,11 +69,30 @@ class AspirantesDocumentosController extends AppBaseController
 
         $aspirantesDocumentos = $this->aspirantesDocumentosRepository->create($input);
 
+          if($request->hasFile('file')){
+            //$request->file('file');
+            $filename=$request->file->getClientOriginalName();
+            //return $filesize=$request->file->getClientSize();
+            $filesize=$request->file->getClientSize();
+
+            $request->file->storeAs('public',$filename);
+            //Lista todos los archivo del directorio imagenes
+            $actuales=Storage::files('public');
+      
+        }else
+        {
+            return 'No ha seleccionado un archivo';
+        }
+
         Flash::success('Aspirantes Documentos saved successfully.');
+
+        
 
         return redirect(route('aspirantesDocumentos.index'));
     }
 
+
+         
     /**
      * Display the specified AspirantesDocumentos.
      *
@@ -77,7 +102,7 @@ class AspirantesDocumentosController extends AppBaseController
      */
     public function show($id)
     {
-        $aspirantesDocumentos = $this->aspirantesDocumentosRepository->findWithoutFail($id);
+        /*$aspirantesDocumentos = $this->aspirantesDocumentosRepository->findWithoutFail($id);
 
         if (empty($aspirantesDocumentos)) {
             Flash::error('Aspirantes Documentos not found');
@@ -86,7 +111,13 @@ class AspirantesDocumentosController extends AppBaseController
         }
 
         return view('aspirantes_documentos.show')->with('aspirantesDocumentos', $aspirantesDocumentos);
+        */
+        $url=Storage::url('estsela.jpg');
+
+
+        return view('verFile',['url'=>$url]);
     }
+
 
     /**
      * Show the form for editing the specified AspirantesDocumentos.
