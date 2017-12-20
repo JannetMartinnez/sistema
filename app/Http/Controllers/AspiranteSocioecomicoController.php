@@ -63,7 +63,7 @@ class AspiranteSocioecomicoController extends AppBaseController
         $estadounion=EstadoUnionPadre::orderBy('id')->pluck('descripcion','id');
         $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
         //traer datos de otra tabla con el id//
-        $aspirante_general=AspiranteGeneral::where('id',174)->first();
+        $aspirante_general=AspiranteGeneral::where('id',4)->first();
         //campos a traer{    
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
         

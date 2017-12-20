@@ -33,7 +33,7 @@ use Eloquent as Model;
 class AspiranteSalud extends Model
 {
 
-    public $table = 'aspirantes_salud';
+    public $table = 'aspirante_salud';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';

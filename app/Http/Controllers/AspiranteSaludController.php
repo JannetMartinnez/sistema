@@ -45,7 +45,7 @@ class AspiranteSaludController extends AppBaseController
     {
 
   //traer datos de otra tabla con el id//
-        $aspirante_general=AspiranteGeneral::where('id',174)->first();
+        $aspirante_general=AspiranteGeneral::where('id',72)->first();
         //campos a traer{    
         $apellidopaterno=$aspirante_general->apellido_paterno_aspirante;
         $apellidomaterno=$aspirante_general->apellido_materno_aspirante;
