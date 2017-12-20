@@ -39,6 +39,8 @@ Route::resource('municipios', 'MunicipioController');
 
 //Usado en el create
 Route::get('aspiranteGenerals/municipios/{id}', 'EntidadFederativaController@getMunicipios');
+//Usando para calcular la referencia bancaria
+Route::get('referenciaB/{pers}/{cve_pago}/{fechaLimite}/{importe}', 'AspiranteGeneralController@referenciaB');
 
 //USado en el edit
 

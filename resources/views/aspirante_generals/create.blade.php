@@ -21,6 +21,7 @@
     </div>
 <aside class="col-md-2">
     <h3 class="titulos">Avisos</h3>
+    <a href="{{URL::to('referenciaB/1010101/01999/2017-01-01/3520')}}">Referncia Bancaria</a>
 Aquí quiero que se vea la ayuda pero en la parte izquierda arriba de alguna imagen tenue y que de la siguiente información:
 
     El Instituto Tecnológico de San Luis Potosí te da la más cordial bienvenida. 

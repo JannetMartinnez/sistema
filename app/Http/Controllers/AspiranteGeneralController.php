@@ -292,10 +292,15 @@ class AspiranteGeneralController extends AppBaseController
     public function registro(){
         return view('aspirante_generals.createRegistro');
     }
-    public function referenciaB($ord,$pers,$cve_pago,$fechaLimite,$importe){
+    public function referenciaB($pers,$cve_pago,$fechaLimite,$importe){
         $cve_banco="3947"; //Clave del banco
+        echo "Clave banco ".$cve_banco."<br/>";
+        echo "Fecha limite es ".$fechaLimite."<br/>";
+        echo "Peresona".$pers."<br/";
+        echo "Peresona".$importe."<br/";   
 
-        //if($ord) $ordOext="01" else $ordOext="02";
+
+
         // $dig_validador_imp=     //Digito validador del importe, a cada digito del importe
                                 //se le asigna de derecha a izquierda:7,3,1. Multiplicar y s
                                 //sumar, dividir entre 10 y el residuo es el digito
@@ -311,6 +316,6 @@ class AspiranteGeneralController extends AppBaseController
         // $ref=$ref.$digitos_verificadores;
         //$ref=$cve_banco.$ordOext.$pers.$cve_pago;
         //return $ref;
-        return "";
+        return "Estamos trabajando";
     }
 }
