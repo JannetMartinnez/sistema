@@ -21,16 +21,11 @@
     </div>
 <aside class="col-md-2">
     <h3 class="titulos">Avisos</h3>
-    <a href="{{URL::to('referenciaB/1010101/01999/2017-01-01/3520')}}">Referncia Bancaria</a>
-Aquí quiero que se vea la ayuda pero en la parte izquierda arriba de alguna imagen tenue y que de la siguiente información:
-
+   
     El Instituto Tecnológico de San Luis Potosí te da la más cordial bienvenida. 
 En este momento eres ASPIRANTE a ingresar a éste INSTITUTO. 
-Si eres nuevo, deberas llenar los datos iniciales y obligatorios como son: el apellido paterno, materno, nombre del aspirante, número de seguro social y correo electrónico.
-NOTA: El correo electrónico es requerido ya que en el vas a recibir tu usuario y contraseña, referencia bancaria y ficha de exámen ingreso.
-Una vez que tengas tu usuario y contraseña, deberás continuar llenando tus datos generales, datos socioeconómicos y de salud.
-Más información en www.itslp.edu.mx en la sección de Aspirantes.
+Si eres nuevo, deberas llenar los apartados <b class="glyphicon glyphicon-pencil">Datos Generales</b>, <b class="glyphicon glyphicon-usd">Datos Socioeconómicos</b>", <b class="glyphicon glyphicon-lock">Datos de salud</b> y <b class="glyphicon glyphicon-picture">Digitalizar Documentos</b><br/>
+Una vez registrados podrás imprimir tu <b class="glyphicon glyphicon-share">referencia de pago</b>, que llevarás al Banco (Banamex) y realizar tu pago.
+En ésta sección y en tu correo electrónico encontrarás el aviso una vez detectado tu pago y proseguir tu proceso de inscripción.
 </aside>
 @endsection
-
-

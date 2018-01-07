@@ -29,6 +29,7 @@ use \Validatore;
 use App\Models\AspiranteGeneral;
 use App\Models\ConfigFechaInscripcion;
 use Carbon\Carbon;
+use PDF;
 
 class AspiranteGeneralController extends AppBaseController
 {
@@ -56,7 +57,7 @@ class AspiranteGeneralController extends AppBaseController
             ->with('aspiranteGenerals', $aspiranteGenerals);
     }
 
-    /**
+    /**fecha_limite_pago
      * Show the form for creating a new AspiranteGeneral.
      *
      * @return Response
@@ -78,10 +79,12 @@ class AspiranteGeneralController extends AppBaseController
         $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
         $periodo=$busca_periodo['periodo_entrada_id'];
         $modalidad=$busca_periodo['tipo_modalidad_id'];
-        //$periodo=9;
+        $cve_pago='01999';
+        $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
+        $importe=$busca_periodo['cantidad_pagar'];
 
         return view('aspirante_generals.create',compact('entidadesFederativas','paises','municipios',
-            'carreraOfertada','prepas','carr','edo_civil','zona_proc','modo','folio','periodo','modalidad'));
+            'carreraOfertada','prepas','carr','edo_civil','zona_proc','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe'));
     }
 
     /**
@@ -292,14 +295,105 @@ class AspiranteGeneralController extends AppBaseController
     public function registro(){
         return view('aspirante_generals.createRegistro');
     }
-    public function referenciaB($pers,$cve_pago,$fechaLimite,$importe){
+    public function referenciaB($pers,$cve_pago,$fechaLimite,$imp){
         $cve_banco="3947"; //Clave del banco
+        $ord='01';
+        $aux=$imp;
         echo "Clave banco ".$cve_banco."<br/>";
         echo "Fecha limite es ".$fechaLimite."<br/>";
         echo "Peresona".$pers."<br/";
-        echo "Peresona".$importe."<br/";   
+        echo "importe ".$imp."<br/"; 
+        echo "Tipo de pago ".$ord."<br/>";
+        echo "Auxiliar es el importe sin decimal".$aux."<br/>";
 
+        $valorasignado=array(1,3,7);
+        //Arreglo de longitud importe +2$importecompleto=strlen($importe)+2;
+        $n = strval($imp);
 
+        preg_match_all("/\d/", $n, $importe);
+        $i=count($importe[0])-1;
+        $j=count($importe[0])+2-1;
+        $k=count($valorasignado)-1;
+        $resultado=0;
+        $digitoverificador=0;
+        echo "i es la longitud del importe menos uno --->".$i."<br/>";
+        echo "j es la longitud del importe completo menos uno ---->".$j."<br/>";
+        echo "k es la longitud del valor asignado menos uno ---->".$k."<br/>";
+        echo "resultado es cero ".$resultado."<br/>";
+        echo "digitoverificador es cero ".$digitoverificador."<br/>";
+
+        //==================LLenado del arreglo
+        while($aux>0){
+            if($aux%10 >= 0){
+                $importecompleto[$i]=$aux%10;
+                $i--;
+            }
+            if($i<0){
+                $importecompleto[count($importecompleto)-2]=0;
+                $importecompleto[count($importecompleto)-1]=0;
+                break;
+            }
+            
+            $aux=$aux/10;
+        }
+        
+        //===================Sacar resultado
+
+        while($j>=0){
+            if($k<0){
+                $k=count($valorasignado)-1;
+            }
+            $resultado=$resultado+($importecompleto[$j]*$valorasignado[$k]);
+            $j--;
+            $k--;
+        }
+        
+        $digitoverificador=$resultado%10;
+        echo "Digito verificaor es: ----->".$digitoverificador."<br/>";      
+/*Dig Validador del importe
+        public static int digitoverificador(String importe){
+        int aux=Integer.parseInt(importe);
+        int valorasignado[]={1,3,7};
+        int importecompleto[]=new int [importe.length()+2];
+        int i=importe.length()-1;
+        int j=importecompleto.length-1;
+        int k=valorasignado.length-1;
+        int resultado = 0;
+        //int l=valorasignado.length;
+        int digitoverificador=0;
+        
+        
+        //==================LLenado del arreglo
+        while(aux>0){
+            if(aux%10 >= 0){
+                importecompleto[i]=aux%10;
+                i--;
+            }
+            if(i<0){
+                importecompleto[importecompleto.length-2]=0;
+                importecompleto[importecompleto.length-1]=0;
+                break;
+            }
+            
+            aux=aux/10;
+        }
+        //===================Sacar resultado
+        while(j>=0){
+            if(k<0){
+                k=valorasignado.length-1;
+            }
+            resultado=resultado+(importecompleto[j]*valorasignado[k]);
+            j--;
+            k--;
+        }
+        
+        digitoverificador=resultado%10;
+        return digitoverificador;
+    }//digitoverificador
+    
+*/
+
+  
 
         // $dig_validador_imp=     //Digito validador del importe, a cada digito del importe
                                 //se le asigna de derecha a izquierda:7,3,1. Multiplicar y s
@@ -317,5 +411,48 @@ class AspiranteGeneralController extends AppBaseController
         //$ref=$cve_banco.$ordOext.$pers.$cve_pago;
         //return $ref;
         return "Estamos trabajando";
+    }
+    public function referenciaC($pers,$cve_pago,$fechaLimite,$imp){
+
+        $cve_banco="3947"; //Clave del banco
+        $ord='01';
+
+        /* Digito validador del importe, a cada digito del importe se le asigna de derecha a izquierda:7,3,1. Multiplicar y sumar, dividir entre 10 y el residuo es el digito 
+        */
+        $n = strval($imp);
+        preg_match_all("/\d/", ($n.'00'), $importe);
+        $valor=array(7,3,1);
+        $d=0;$suma=0;
+        for($i=0;$i<count($importe[0]);$i++){
+            $suma=$suma+($importe[0][$i]*$valor[$d]);
+            if($d==2)$d=0; else $d++;
+        }
+        $digitoverificador=$suma%10;
+        /*Fecha Juliana, al dia se resta 1, al mes se resta 1 y se  multiplica por 31, al año de 4 digitos le restamos 2013 y se multiplica por 372, se suman, esa es el resultado */
+        $dia=substr($fechaLimite,8,2);
+        $mes=(int)(substr($fechaLimite,5,2));
+        $año=substr($fechaLimite,0,4);
+        $fechajuliana=($dia-1)+(($mes-1)*31)+(($año-2013)*372);
+        $dig_control=2; //Dado por el usario 2 significa que si se verifique la fecha límite de pago
+        $ref=$cve_banco.$ord.$pers.$fechajuliana.$digitoverificador.$dig_control;
+        // Digitos verificadores de línea, si la línea tiene caracteres alfabéticos, asignarles un valor númerico de acuerdo a la siguiente tabla:
+        // "ABCDEFGHIJKLMNOPQRSTUVWXYZ", con el valor de la siguiente tabla "12345678912345678923456789"
+        // A cada elemento se le agrega un digito de derecha a izquierda 11,13,17,19,23
+        //Multiplicar cada dígito por el valor que le corresponda, sumar y dividirlo entre 97, al residuo sumar 1
+        $n = strval($ref);
+        preg_match_all("/\d/", ($n.'00'), $referencia);
+        $valor=array(11,13,17,19,23);
+        $d=0;$suma=0;
+        for($i=0;$i<count($referencia[0]);$i++){
+            $suma=$suma+($referencia[0][$i]*$valor[$d]);
+            if($d==4)$d=0; else $d++;
+        }
+        $digitosverificadores=($suma%97)+1;
+        $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
+             "Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $referenciafinal=$ref.$digitosverificadores;
+        $fechaLimite=$dia."/".$mesesN[$mes]."/".$año;
+        $pdf=PDF::loadView('llama',array('referenciafinal'=>$referenciafinal,'importe'=>$imp,'fechaLimite'=>$fechaLimite));
+        return $pdf->download('llama.pdf');
     }
 }
