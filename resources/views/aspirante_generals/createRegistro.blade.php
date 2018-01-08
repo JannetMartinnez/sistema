@@ -60,7 +60,18 @@
                     {!! Form::submit('Guardar', ['class' => 'btn btn-itslp']) !!}
                     <a href="{!! route('aspiranteGenerals.index') !!}" class="btn btn-default">Cancelar</a>
                 </div>
-
+                <div class="form-group col-sm-6">
+                    {!! Form::label('folio_solicitud', 'Folio Solicitud:') !!}
+                    {!! Form::number('folio_solicitud', $folio, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-sm-6">
+                    {!! Form::label('periodo', 'Periodo:') !!}
+                    {!! Form::number('periodo', $periodo, ['class' => 'form-control']) !!}
+                </div> 
+                <div class="form-group col-sm-6">
+                    {!! Form::label('tipo_modalidad_id', 'Modalidad Id:') !!}
+                    {!! Form::number('tipo_modalidad_id', $modalidad, ['class' => 'form-control']) !!}
+                </div> 
             {!! Form::close() !!}
     </div>
 <aside class="col-md-2">

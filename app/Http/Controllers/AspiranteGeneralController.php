@@ -111,7 +111,8 @@ class AspiranteGeneralController extends AppBaseController
             'apellido_materno_aspirante'=>'required',
             'nombres_aspirante'=>'required',
             'numero_seguro_social'=>'required',
-            'correo_elect_dom_actual' => 'required|min:6|required'
+            'correo_elect_dom_actual' => 'required|min:6||unique:aspirantes_generales'
+
         ]);
         }
         else{
@@ -122,7 +123,7 @@ class AspiranteGeneralController extends AppBaseController
                 'nombres_aspirante'=>'required',
                 'numero_seguro_social'=>'required',
                 'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
-                'correo_elect_dom_actual' => 'required|min:6|required', 
+                'correo_elect_dom_actual' => 'required|min:6||unique:aspirantes_generales', 
                 'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual'
             ]);  
         }
@@ -154,7 +155,7 @@ class AspiranteGeneralController extends AppBaseController
         $user->assign($role);
         $id=$user->id;
         $input['usuario_id']=$id;
-        
+
         //Crea un aspirante
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
 
@@ -239,8 +240,14 @@ class AspiranteGeneralController extends AppBaseController
         $modo='editar';
         $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
         $folio=$solicitud+1;
+        $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+        $periodo=$busca_periodo['periodo_entrada_id'];
+        $modalidad=$busca_periodo['tipo_modalidad_id'];
+        $cve_pago='01999';
+        $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
+        $importe=$busca_periodo['cantidad_pagar'];
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe'));
     }
 
     /**
@@ -293,7 +300,13 @@ class AspiranteGeneralController extends AppBaseController
     }
 
     public function registro(){
-        return view('aspirante_generals.createRegistro');
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $folio=$solicitud+1;
+        $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+        $periodo=$busca_periodo['periodo_entrada_id'];
+        $modalidad=$busca_periodo['tipo_modalidad_id'];
+
+        return view('aspirante_generals.createRegistro',compact('folio','periodo','modalidad'));
     }
     public function referenciaB($pers,$cve_pago,$fechaLimite,$imp){
         $cve_banco="3947"; //Clave del banco

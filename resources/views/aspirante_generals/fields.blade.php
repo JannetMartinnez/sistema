@@ -49,7 +49,7 @@ $(function() {
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
           <li class="active"><a ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-          <li ><a href="http://localhost/7Dic14_56/public/aspiranteSocioecomicos/9/edit" class="btn btn-default"><b class="glyphicon glyphicon-usd">Socioeconomicos</b></a>
+          <li ><a href="http://localhost/7Ene/public/aspiranteSocioecomicos/189/edit" class="btn btn-default"><b class="glyphicon glyphicon-usd">Socioeconomicos</b></a>
           <li ><a href="" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
           <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
           <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>$cve_pago,'fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
