@@ -166,3 +166,7 @@
     <a href="{!! route('configFechaInscripcions.index') !!}"><i class="fa fa-edit"></i><span>ConfigFechaInscripcions</span></a>
 </li>
 
+<li class="{{ Request::is('periodoEscolars*') ? 'active' : '' }}">
+    <a href="{!! route('periodoEscolars.index') !!}"><i class="fa fa-edit"></i><span>PeriodoEscolars</span></a>
+</li>
+

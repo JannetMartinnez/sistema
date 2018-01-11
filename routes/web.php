@@ -123,3 +123,5 @@ Route::resource('configFechaInscripcions', 'ConfigFechaInscripcionController');
 
 
 Route::get('llama','LlamaController@llama1');
+
+Route::resource('periodoEscolars', 'PeriodoEscolarController');

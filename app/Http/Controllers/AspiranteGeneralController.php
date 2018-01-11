@@ -5,7 +5,6 @@ use DB;
 use App\Http\Requests\CreateAspiranteGeneralRequest;
 use App\Http\Requests\StroreAspiranteGeneralRequest;
 use App\Http\Requests\UpdateAspiranteGeneralRequest;
-use App\Repositories\AspiranteGeneralRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -27,6 +26,11 @@ use Silber\Bouncer\Bouncer;
 use Illuminate\Support\Facades\Auth;
 use \Validatore;
 use App\Models\AspiranteGeneral;
+use App\Repositories\AspiranteGeneralRepository;
+use App\Models\AspiranteSocioecomico;              
+use App\Repositories\AspiranteSocioecomicoRepository;
+use App\Models\AspiranteSalud;
+use App\Repositories\AspiranteSaludRepository;
 use App\Models\ConfigFechaInscripcion;
 use Carbon\Carbon;
 use PDF;
@@ -110,8 +114,8 @@ class AspiranteGeneralController extends AppBaseController
             'apellido_paterno_aspirante'=>'required',
             'apellido_materno_aspirante'=>'required',
             'nombres_aspirante'=>'required',
-            'numero_seguro_social'=>'required',
-            'correo_elect_dom_actual' => 'required|min:6||unique:aspirantes_generales'
+            'numero_seguro_social'=>'required|unique:aspirantes_generales',
+            'correo_elect_dom_actual' => 'required|min:6|unique:aspirantes_generales'
 
         ]);
         }
@@ -121,9 +125,9 @@ class AspiranteGeneralController extends AppBaseController
                 'apellido_paterno_aspirante'=>'required',
                 'apellido_materno_aspirante'=>'required',
                 'nombres_aspirante'=>'required',
-                'numero_seguro_social'=>'required',
+                'numero_seguro_social'=>'required|unique:aspirantes_generales',
                 'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
-                'correo_elect_dom_actual' => 'required|min:6||unique:aspirantes_generales', 
+                'correo_elect_dom_actual' => 'required|min:6|unique:aspirantes_generales', 
                 'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual'
             ]);  
         }
@@ -156,9 +160,23 @@ class AspiranteGeneralController extends AppBaseController
         $id=$user->id;
         $input['usuario_id']=$id;
 
-        //Crea un aspirante
+        //Crea un aspirante generales
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
+        //Conocer el id que genero del aspirante general
+        $asp=AspiranteGeneral::where('folio_solicitud',$input['folio_solicitud'])->first();
+        $idAspGral=$asp->id;
 
+        //Crea un aspirante socioeconómicos
+        $inputSocio= new AspiranteSocioecomico();
+        $inputSocio->aspirantes_generales_id=$idAspGral;
+        $inputSocio->save();
+        //Crea un aspirante salud
+        $inputSalud= new AspiranteSalud();
+        $inputSalud->aspirantes_generales_id=$idAspGral;
+        $inputSalud->save();
+
+        //Crea un aspirante documento
+        //$aspiranteGeneralDoc = $this->aspiranteGeneralRepository->create($input);
         //Enviar correo electrónico al usuario
         //Creamos un arreglo asociativo con los daatos que vamos a enviar
         /*$data['email']=$input['correo_elect_dom_actual'];
@@ -232,22 +250,23 @@ class AspiranteGeneralController extends AppBaseController
 
         $carrerasOf=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
-         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
+        $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
 
         $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
         $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
         $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
         $modo='editar';
-        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
-        $folio=$solicitud+1;
+        $folio=$aspiranteGeneral->folio_solicitud;
         $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
         $periodo=$busca_periodo['periodo_entrada_id'];
         $modalidad=$busca_periodo['tipo_modalidad_id'];
         $cve_pago='01999';
         $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
         $importe=$busca_periodo['cantidad_pagar'];
+        $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
+        $idSoc=$asp_soc->id;
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc'));
     }
 
     /**

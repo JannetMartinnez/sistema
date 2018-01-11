@@ -48,7 +48,7 @@ $(function() {
 </div>
 <div class ="col-xs-12 col-md-2 sepizq">
         <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
-        <center>{!! Form::label('curp_asp', 'AGO-DIC/2017') !!}</center>
+        <center>{{$desPeriodo}}</center>
 </div>
 <div class ="col-xs-12 col-md-5 sep">
         <center><h3 class="titulos sinp">Carrera</h3></center>

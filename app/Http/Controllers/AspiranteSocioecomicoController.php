@@ -19,6 +19,7 @@ use App\Models\NumerosPalabras;
 use App\Models\EstadoUnionPadre;
 use App\Models\DeQuienDepende;
 use App\Models\AspiranteGeneral;
+use App\Models\PeriodoEscolar;
 //
 class AspiranteSocioecomicoController extends AppBaseController
 {
@@ -129,7 +130,7 @@ class AspiranteSocioecomicoController extends AppBaseController
 
             return redirect(route('aspiranteSocioecomicos.index'));
         }
-//
+        
         $estudios=EstudioPadre::orderBy('id')->pluck('descripcion','id');
         $quienvives=QuienVivesActual::orderBy('id')->pluck('descripcion','id');
        //
@@ -140,15 +141,20 @@ class AspiranteSocioecomicoController extends AppBaseController
         $estadounion=EstadoUnionPadre::orderBy('id')->pluck('descripcion','id');
         $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
         //traer datos de otra tabla con el id//
-        $aspirante_general=AspiranteGeneral::where('id',174)->first();
+        $aspirante_general=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         //campos a traer{    
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
+        $modo='editar';
+        $folio=$aspirante_general->folio_solicitud;
+        $idPeriodo=$aspirante_general->periodo;
+
+        $periodo=PeriodoEscolar::where('id',$idPeriodo)->first();
+        //print_r($periodo);
+        $desPeriodo=$periodo['identificacion_larga'];
+        //$desPeriodo="hola";
 
 
-        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
-        $folio=$solicitud+1;
-         $modo='editar';
-        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','modo'));
+        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','desPeriodo','modo'));
     }
 
     /**
