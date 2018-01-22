@@ -62,13 +62,13 @@
                 </div>
 
                     {!! Form::hidden('folio_solicitud', $folio, ['class' => 'form-control']) !!}
-                    {!! Form::hidden('periodo', $periodo, ['class' => 'form-control']) !!}
+                    {!! Form::hidden('periodo_id', $periodo, ['class' => 'form-control']) !!}
                     {!! Form::hidden('tipo_modalidad_id', $modalidad, ['class' => 'form-control']) !!}
 
             {!! Form::close() !!}
     </div>
 <aside class="col-md-2">
-    Aquí quiero que se vea la ayuda pero en la parte izquierda arriba de alguna imagen tenue y que de la siguiente información:
+
 
     El Instituto Tecnológico de San Luis Potosí te da la más cordial bienvenida.
 En este momento eres ASPIRANTE a ingresar a éste INSTITUTO.

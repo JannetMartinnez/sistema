@@ -11,6 +11,13 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\AspiranteGeneral;
+use App\Models\PeriodoEscolar;
+use App\Models\AspiranteSocioecomico; 
+use App\Models\ConfigFechaInscripcion;
+use Carbon\Carbon;
+use PDF;
+
+
 class AspiranteSaludController extends AppBaseController
 {
     /** @var  AspiranteSaludRepository */
@@ -110,8 +117,29 @@ class AspiranteSaludController extends AppBaseController
 
             return redirect(route('aspiranteSaluds.index'));
         }
+              
+        $aspirante_general=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();   
+        $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
+        $numero_ss=$aspirante_general->numero_seguro_social;
+        $idAspGral=$aspiranteSalud->aspirantes_generales_id;
+        $folio=$aspirante_general->folio_solicitud;
+        $idPeriodo=$aspirante_general->periodo_id;
 
-        return view('aspirante_saluds.edit')->with('aspiranteSalud', $aspiranteSalud);
+        $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$idAspGral)->first();
+        $idSoc=$asp_soc->id;
+
+        $modo='editar';
+
+        $periodoE=PeriodoEscolar::where('id',$idPeriodo)->first();
+        $desPeriodo=$periodoE->identificacion_larga;
+
+        $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+        $periodo=$busca_periodo['periodo_entrada_id'];
+        $modalidad=$busca_periodo['tipo_modalidad_id'];
+        $cve_pago='01999';
+        $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
+        $importe=$busca_periodo['cantidad_pagar'];
+        return view('aspirante_saluds.edit',compact('aspiranteSalud','idAspGral','nombre','numero_ss','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','desPeriodo'));
     }
 
     /**

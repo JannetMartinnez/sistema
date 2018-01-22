@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-//
+use App\Models\AspiranteSalud;
 use App\Models\EstudioPadre;
 use App\Models\QuienVivesActual;
 use App\Models\ocupacion_padres;
@@ -19,7 +19,10 @@ use App\Models\NumerosPalabras;
 use App\Models\EstadoUnionPadre;
 use App\Models\DeQuienDepende;
 use App\Models\AspiranteGeneral;
+use App\Models\ConfigFechaInscripcion;
 use App\Models\PeriodoEscolar;
+use Carbon\Carbon;
+use PDF;
 //
 class AspiranteSocioecomicoController extends AppBaseController
 {
@@ -144,17 +147,25 @@ class AspiranteSocioecomicoController extends AppBaseController
         $aspirante_general=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         //campos a traer{    
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
+        $idAspGral=$aspiranteSocioecomico->aspirantes_generales_id;
         $modo='editar';
         $folio=$aspirante_general->folio_solicitud;
         $idPeriodo=$aspirante_general->periodo;
-
         $periodo=PeriodoEscolar::where('id',$idPeriodo)->first();
-        //print_r($periodo);
         $desPeriodo=$periodo['identificacion_larga'];
-        //$desPeriodo="hola";
 
 
-        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','desPeriodo','modo'));
+        $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+        $periodo=$busca_periodo['periodo_entrada_id'];
+        $modalidad=$busca_periodo['tipo_modalidad_id'];
+        $cve_pago='01999';
+        $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
+        $importe=$busca_periodo['cantidad_pagar'];
+        //Id de salud para generar en la vista el hipervínculo
+        $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
+        $idSal=$asp_sal->id;
+
+        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','desPeriodo','modo','periodo','modalidad','cve_pago','fechaLimite','importe','idAspGral','idSal'));
     }
 
     /**

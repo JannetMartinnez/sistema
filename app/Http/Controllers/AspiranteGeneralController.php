@@ -18,20 +18,20 @@ use App\Models\Carrera;
 use App\Models\EstadoCivil;
 use App\Models\PreparatoriaProcedencia;
 use App\Models\ZonaProcedencia;
+use App\Models\EntidadFederativa;
+use App\Models\AspiranteGeneral;
+use App\Models\AspiranteSocioecomico; 
+use App\Models\AspiranteSalud;
+use App\Models\ConfigFechaInscripcion;
+use App\Repositories\AspiranteGeneralRepository;
+use App\Repositories\AspiranteSocioecomicoRepository;
+use App\Repositories\AspiranteSaludRepository;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use App\Models\EntidadFederativa;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Silber\Bouncer\Bouncer;
 use Illuminate\Support\Facades\Auth;
 use \Validatore;
-use App\Models\AspiranteGeneral;
-use App\Repositories\AspiranteGeneralRepository;
-use App\Models\AspiranteSocioecomico;              
-use App\Repositories\AspiranteSocioecomicoRepository;
-use App\Models\AspiranteSalud;
-use App\Repositories\AspiranteSaludRepository;
-use App\Models\ConfigFechaInscripcion;
 use Carbon\Carbon;
 use PDF;
 
@@ -265,8 +265,10 @@ class AspiranteGeneralController extends AppBaseController
         $importe=$busca_periodo['cantidad_pagar'];
         $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
         $idSoc=$asp_soc->id;
+        $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$id)->first();
+        $idSal=$asp_sal->id;
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal'));
     }
 
     /**
@@ -319,7 +321,7 @@ class AspiranteGeneralController extends AppBaseController
     }
 
     public function registro(){
-        $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
+        $solicitud=AspiranteGeneral::where('folio_solicitud','>=',1)->max('folio_solicitud');
         $folio=$solicitud+1;
         $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
         $periodo=$busca_periodo['periodo_entrada_id'];
@@ -485,6 +487,6 @@ class AspiranteGeneralController extends AppBaseController
         $referenciafinal=$ref.$digitosverificadores;
         $fechaLimite=$dia."/".$mesesN[$mes]."/".$año;
         $pdf=PDF::loadView('llama',array('referenciafinal'=>$referenciafinal,'importe'=>$imp,'fechaLimite'=>$fechaLimite));
-        return $pdf->download('llama.pdf');
+        return $pdf->download('referencia.pdf');
     }
 }

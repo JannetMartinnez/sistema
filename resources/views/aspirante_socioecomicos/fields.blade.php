@@ -28,41 +28,41 @@ $(function() {
 
 </script>
 @endif
+
+  <br>   
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" >
+          <li><a href="http://localhost/18Ene/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
+          <li ><a href="http://localhost/18Ene/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
+          <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+        </ul>
+      </div>
+
+
 <div class="row">
-<!--FOTO DEL ASPIRANTE-->
-<div class="form-group col-xs-12 col-md-2">
-<center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
-</div>
-<br>
-<div class ="col-xs-12 col-md-2 sep">
-         <center><h3 class="titulos sinp">No.Solicitud</h3></center>
-         <center>{!! Form::label('curp_asp',$folio) !!}<center>      
-</div>
-<div class ="col-xs-12 col-md-4 sep">
-        <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
-        <center>{!! Form::label('curp_asp',$nombre) !!}</center>       
-</div>
-<div class ="col-xs-12 col-md-2 sep">
-        <center><h3 class="titulos sinp">Semestre</h3></center>
-        <center>{!! Form::label('curp_asp', '1') !!}</center>      
-</div>
-<div class ="col-xs-12 col-md-2 sepizq">
-        <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
-        <center>{{$desPeriodo}}</center>
-</div>
-<div class ="col-xs-12 col-md-5 sep">
-        <center><h3 class="titulos sinp">Carrera</h3></center>
-        <center>{!! Form::label('curp_asp', 'TECNOLOGIAS DE LA INFORMACION Y DE LAS COMUNICACIO') !!}</center>
-</div>
-<div class ="col-xs-12 col-md-5 sepizq">
-        <center><h3 class="titulos sinp">Especialidad</h3></center>
-        <center>{!! Form::label('curp_asp','INGENIERÍA EN SISTEMAS COMPUTACIONALES') !!}</center>
-</div>
+  <!--FOTO DEL ASPIRANTE-->
+  <div class="form-group col-xs-12 col-md-2">
+  <center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
+  </div>
+  <br>
+  <div class ="col-xs-12 col-md-2 sep">
+           <center><h3 class="titulos sinp">No.Solicitud</h3></center>
+           <center>{!! Form::label('curp_asp',$folio) !!}<center>      
+  </div>
+  <div class ="col-xs-12 col-md-4 sep">
+          <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
+          <center>{!! Form::label('curp_asp',$nombre) !!}</center>       
+  </div>
+  <div class ="col-xs-12 col-md-4 sepizq">
+          <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
+          <center>{{$desPeriodo}}</center>
+  </div>
 </div>
 <!--Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido -->
 <div class="row">
-<div class="form-group col-xs-12 col-sm-6 sepder">
-<center><h3 class="titulos">Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido</h3></center>
+  <div class="form-group col-xs-12 col-sm-6 sepder">
+  <center><h3 class="titulos">Nivel máximo de estudios alcanzado por tus padres aunque hayan fallecido</h3></center>
        <!-- Nivel Estudios Padres Id Field -->
        <div class="form-group col-xs-12 col-sm-12 sep">
        <h3 class="titulos">Padre</h3>
@@ -72,7 +72,7 @@ $(function() {
        <div class="form-group col-xs-12 col-sm-12 sep">
        <h3 class="titulos">Madre</h3>
        {!! Form::select('nivel_estudios_madres_id',$estudios,null,array('class'=>'form-control')) !!}      
-</div>
+        </div>
 </div>
 
 <div class="form-group col-xs-12 col-sm-2 sep">

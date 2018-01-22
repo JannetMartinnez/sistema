@@ -15,7 +15,7 @@ use Eloquent as Model;
  * @property \App\Models\EntidadesFederativa entidadesFederativa
  * @property \App\Models\User user
  * @property integer folio_solicitud
- * @property string periodo
+ * @property integer periodo_id
  * @property integer ficha
  * @property string apellido_paterno_aspirante
  * @property string apellido_materno_aspirante
@@ -66,7 +66,7 @@ class AspiranteGeneral extends Model
 
     public $fillable = [
         'folio_solicitud',
-        'periodo',
+        'periodo_id',
         'ficha',
         'numero_seguro_social',
         'apellido_paterno_aspirante',
@@ -117,7 +117,7 @@ class AspiranteGeneral extends Model
     protected $casts = [
         'id' => 'integer',
         'folio_solicitud' => 'integer',
-        'periodo' => 'string',
+        'periodo_id' => 'integer',
         'ficha' => 'integer',
         'numero_seguro_social'=> 'string',
         'apellido_paterno_aspirante' => 'string',
@@ -217,4 +217,13 @@ class AspiranteGeneral extends Model
     {
         return $this->belongsTo(\App\Models\EstadoCivil::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function periodosEscolare()
+    {
+        return $this->belongsTo(\App\Models\PeriodosEscolare::class);
+    }
+
 }

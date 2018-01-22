@@ -48,9 +48,8 @@ $(function() {
    <br>   
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li class="active"><a ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-          <li ><a href="http://localhost/7Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit" class="btn btn-default"><b class="glyphicon glyphicon-usd">Socioeconomicos</b></a>
-          <li ><a href="" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li ><a href="http://localhost/18Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+          <li ><a href="http://localhost/18Ene/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
           <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
           <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
         </ul>
@@ -64,7 +63,7 @@ $(function() {
           <a href=""><center><caption><h6 <i class="fa fa-camera" aria-hidden="true"></i> Cambiar Imagen</h6></caption></center></a>
         </div>  
         <div class=" col-xs-12 col-md-10">
-          <center><h3 class="titulos" >Datos del aspirante {!! Form::label('curp_asp',$modo) !!}</h3></center>
+          <center><h3 class="titulos" >Datos del aspirante</h3></center>
           <div  class="col-sm-12">
             <center>{!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante:') !!}</center>    
           </div>
@@ -280,8 +279,8 @@ $(function() {
     
 
     <div class="form-group col-sm-6">
-        {!! Form::label('periodo', 'Periodo:') !!}
-        {!! Form::number('periodo', $periodo, ['class' => 'form-control']) !!}
+        {!! Form::label('periodo_id', 'Periodo:') !!}
+        {!! Form::number('periodo_id', $periodo, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('ficha', 'Ficha:') !!}

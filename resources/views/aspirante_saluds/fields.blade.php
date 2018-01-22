@@ -1,82 +1,89 @@
+
+  <br>   
+<div role="tabpanel">
+    <ul class="nav nav-tabs" >
+      <li><a href="http://localhost/18Ene/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
+      <li ><a href="http://localhost/18Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+      <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
+      <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+    </ul>
+</div>
+
+    <!--FOTO DEL ASPIRANTE-->
+  <div class="form-group col-xs-12 col-md-2">
+  <center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
+  </div>
+  <br>
+  <div class ="col-xs-12 col-md-2 sep">
+           <center><h3 class="titulos sinp">No.Solicitud</h3></center>
+           <center>{!! Form::label('curp_asp',$folio) !!}<center>      
+  </div>
+  <div class ="col-xs-12 col-md-4 sep">
+          <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
+          <center>{!! Form::label('curp_asp',$nombre) !!}</center>       
+  </div>
+  <div class ="col-xs-12 col-md-4 sepizq">
+          <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
+          <center>{{$desPeriodo}}</center>
+  </div>
+
 <div class="row">
-<!--FOTO DEL ASPIRANTE-->
-<div class="form-group col-xs-12 col-md-2">
-<center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
-</div>
-<div class ="form-group col-xs-12 col-md-10 ">
-        <center><h3 class="titulos sinp">Datos Generales</h3></center>      
+  
 
-<div class ="form-group col-xs-12 col-md-4 sinp">
-{!!Form::label('apellido_paterno_aspirante','Apellido Paterno') !!}
+<div class ="form-group col-xs-12 col-md-12 ">
+    <center><h3 class="titulos sinp">Datos específicosrrr</h3></center>      
+    <div class ="form-group col-xs-12 col-md-4 sinp">
+    {!!Form::label('numero_ss','Numero de Seguro Social') !!}
+    <center>{!! Form::label('numero_ss',$numero_ss) !!}<center> 
+    </div>
+    <!-- Tipo Sangre Field -->
+    <div class="form-group col-xs-12 col-md-4 sinp">
+        {!! Form::label('tipo_sangre', 'Tipo Sangre:') !!}
+        {!! Form::text('tipo_sangre', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
 
- {!! Form::text('apellido_paterno',$apellidopaterno, null,['class' => 'form-control']) !!}
-</div>
-<div class ="form-group col-xs-12 col-md-4 sinp">
-{!!Form::label('apellido_materno_aspirante', 'Apellido Materno') !!}
- {!! Form::text('apellido_materno',$apellidomaterno,null, ['class' => 'form-control']) !!}
-</div>
-<div class ="form-group col-xs-12 col-md-4 sinp">
-{!!Form::label('apellido_paterno_aspirante', 'Nombre(s)') !!}
- {!! Form::text('nombres(s)',$nombres,null, ['class' => 'form-control']) !!}
-</div>
-<div class ="form-group col-xs-12 col-md-4 sinp">
-{!!Form::label('numero_ss','Numero de Seguro Social') !!}
-
- {!! Form::text('apellido_paterno',$numeross, null,['class' => 'form-control']) !!}
-</div>
-<!-- Tipo Sangre Field -->
-<div class="form-group col-xs-12 col-md-4 sinp">
-    {!! Form::label('tipo_sangre', 'Tipo Sangre:') !!}
-    {!! Form::text('tipo_sangre', null, ['class' => 'form-control']) !!}
-</div>
-<!-- Aspirantes Generales Id Field -->
-<div class="form-group col-xs-12 col-sm-4 sinp">
-    {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
-    {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
-</div>
-</div>
-</div>
 <div class="row">
-<div class ="form-group col-xs-12 col-md-12 sinp ">
-        <center><h3 class="titulos sinp">Datos Especificos</h3></center> 
+  <div class="form-group col-xs-12 col-md-6">
+  <!-- Baston Field -->
+     {!! Form::label('baston', '¿Utilizas algún aparato o protesis para realizar tus actividades?') !!} 
+  </div>
 </div>
-<div class="form-group col-xs-12 col-md-6">
-<!-- Baston Field -->
-   {!! Form::label('baston', '¿Utilizas algun aparato o protesis para realizar tus actividades?') !!}  
-<div class="form-group col-xs-12 col-md-3 sinp sep">
- <label class="rad">
-        {!! Form::label('baston', 'Baston') !!}
-        {!! Form::checkbox('baston',true ) !!}
-</label>
+<div class="row">   
+  <div class="form-group col-xs-12 col-md-2 sinp sep">
+   <label class="rad">
+          {!! Form::label('baston', 'Baston') !!}
+          {!! Form::checkbox('baston',true ) !!}
+  </label>
+  </div>
+  <!-- Muletas Field -->
+  <div class="form-group col-xs-12 col-md-2 sinp sep">
+   <label class="rad">
+          {!! Form::label('muletas', 'Muletas') !!}
+          {!! Form::checkbox('muletas',true ) !!}       
+   </label>
+   </div>
+   <!-- Silla Ruedas Field -->
+   <div class="form-group col-xs-12 col-md-2 sinp sep">
+  <label class="rad">
+          {!! Form::label('silla_ruedas', 'Silla de Ruedas') !!}
+          {!! Form::checkbox('silla_ruedas',true ) !!}        
+  </label>
+  </div>
+  <div class="form-group col-xs-12 col-md-2 sinp sep">
+  <!-- Calzado Especial Field -->
+  <label class="rad">
+          {!! Form::label('calzado_especial', 'Calzado Especial') !!}
+          {!! Form::checkbox('calzado_especial',true ) !!}      
+  </label>
+  </div>
+  <div class="col-xs-12 col-md-4 form-inline sinp sep">
+  <!-- Otros Field -->
+      {!! Form::label('otros', 'Otros:') !!}
+      {!! Form::text('otros', null, ['class' => 'form-control']) !!}
+  </div>
 </div>
-<!-- Muletas Field -->
-<div class="form-group col-xs-12 col-md-3 sinp sep">
- <label class="rad">
-        {!! Form::label('muletas', 'Muletas') !!}
-        {!! Form::checkbox('muletas',true ) !!}       
- </label>
- </div>
- <!-- Silla Ruedas Field -->
- <div class="form-group col-xs-12 col-md-6 sinp sep">
-<label class="rad">
-        {!! Form::label('silla_ruedas', 'Silla de Ruedas') !!}
-        {!! Form::checkbox('silla_ruedas',true ) !!}        
-</label><br>
-</div>
-<div class="form-group col-xs-12 col-md-5 sinp sep">
-<!-- Calzado Especial Field -->
-<label class="rad">
-        {!! Form::label('calzado_especial', 'Calzado Especial') !!}
-        {!! Form::checkbox('calzado_especial',true ) !!}      
-</label>
-</div>
-<div class="col-xs-12 col-md-7 form-inline sinp sep">
-<!-- Otros Field -->
-    {!! Form::label('otros', 'Otros:') !!}
-    {!! Form::text('otros', null, ['class' => 'form-control']) !!}
 
-
-</div>
 <div class="row">
 <div  class="col-xs-12 col-md-12">
 <!-- Difi Escuchar Field --> 
