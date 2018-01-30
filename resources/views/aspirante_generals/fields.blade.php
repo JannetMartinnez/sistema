@@ -48,8 +48,8 @@ $(function() {
    <br>   
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li ><a href="http://localhost/18Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
-          <li ><a href="http://localhost/18Ene/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li ><a href="http://localhost/29Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+          <li ><a href="http://localhost/29Ene/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
           <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
           <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
         </ul>
@@ -117,7 +117,7 @@ $(function() {
     <!-- Correo Elect Dom Actual Field -->
     <div class="form-group col-sm-3">
     {!! Form::label('correo_elect_dom_actual', 'Correo Electrónico:') !!}
-    {!! Form::text('correo_elect_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ejemplo@hotmail.com']) !!}
+    <h4>{{$aspiranteGeneral->correo_elect_dom_actual}}</h4>
     </div>
     <!-- %%Telefono Fijo Dom Actual Field -->
     <div class="form-group col-sm-3">
@@ -132,7 +132,7 @@ $(function() {
     <!-- Numero del seguro social fields%%%%-->
     <div class="form-group col-sm-2">
     {!! Form::label('numero_seguro_social', 'N.S.S') !!}
-    {!! Form::text('numero_seguro_social', null, ['class' => 'form-control','placeholder'=>'Ej.63 84 92 0482 2']) !!}
+    <h4>{{$aspiranteGeneral->numero_seguro_social}}</h4>
     </div>
     <!--DIRECCION ACTUAL/////////////////////////////////////////////////-->
 
