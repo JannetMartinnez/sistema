@@ -31,7 +31,7 @@
   
 
 <div class ="form-group col-xs-12 col-md-12 ">
-    <center><h3 class="titulos sinp">Datos específicosrrr</h3></center>      
+    <center><h3 class="titulos sinp">Datos específicos</h3></center>      
     <div class ="form-group col-xs-12 col-md-4 sinp">
     {!!Form::label('numero_ss','Numero de Seguro Social') !!}
     <center>{!! Form::label('numero_ss',$numero_ss) !!}<center> 

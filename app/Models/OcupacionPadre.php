@@ -17,7 +17,7 @@ class OcupacionPadre extends Model
 {
 
     public $table = 'ocupacion_padres';
-
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -43,7 +43,7 @@ class OcupacionPadre extends Model
      * @var array
      */
     public static $rules = [
-
+        
     ];
 
     /**
@@ -54,5 +54,11 @@ class OcupacionPadre extends Model
         return $this->hasMany(\App\Models\AspiranteSocioeconomico::class);
     }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function aspiranteSocioeconomicos()
+    {
+        return $this->hasMany(\App\Models\AspiranteSocioeconomico::class);
+    }
 }
