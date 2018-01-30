@@ -53,6 +53,8 @@ use Eloquent as Model;
  * @property string apellido_paterno_tutor
  * @property string apellido_materno_tutor
  * @property integer usuario_id
+ * @property integer estado_civil_asp_id
+ * @property integer pais_asp_id
  */
 class AspiranteGeneral extends Model
 {
@@ -106,7 +108,8 @@ class AspiranteGeneral extends Model
         'apellido_materno_tutor',
         'usuario_id',
         'tipo_modalidad_id',
-        'pais_asp_id'
+        'pais_asp_id',
+        'estado_civil_asp_id'
     ];
 
     /**

@@ -2,8 +2,8 @@
   <br>   
 <div role="tabpanel">
     <ul class="nav nav-tabs" >
-      <li><a href="http://localhost/29Ene/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-      <li ><a href="http://localhost/29Ene/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+      <li><a href="http://localhost/29EneFin/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
+      <li ><a href="http://localhost/29EneFin/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
       <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
       <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
     </ul>
@@ -31,7 +31,7 @@
   
 
 <div class ="form-group col-xs-12 col-md-12 ">
-    <center><h3 class="titulos sinp">Datos específicosrrr</h3></center>      
+    <center><h3 class="titulos sinp">Datos específicos</h3></center>      
     <div class ="form-group col-xs-12 col-md-4 sinp">
     {!!Form::label('numero_ss','Numero de Seguro Social') !!}
     <center>{!! Form::label('numero_ss',$numero_ss) !!}<center> 
@@ -194,4 +194,3 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('aspiranteSaluds.index') !!}" class="btn btn-default">Cancel</a>
 </div>
-

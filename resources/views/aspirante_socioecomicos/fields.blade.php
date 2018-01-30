@@ -32,8 +32,8 @@ $(function() {
   <br>   
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li><a href="http://localhost/29Ene/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-          <li ><a href="http://localhost/29Ene/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li><a href="http://localhost/29EneFin/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
+          <li ><a href="http://localhost/29EneFin/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
           <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
           <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
         </ul>
