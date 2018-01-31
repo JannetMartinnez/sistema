@@ -246,7 +246,10 @@ class AspiranteGeneralController extends AppBaseController
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
         
-        $municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
+
+        //$municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
+        $idEntFed=$aspiranteGeneral->entidad_federativa_dom_actual_id;
+        $municipios=Municipio::municipios($idEntFed)->pluck('nombre_municipio','id');
 
         $carrerasOf=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 

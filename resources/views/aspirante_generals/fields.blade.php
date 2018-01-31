@@ -48,9 +48,9 @@ $(function() {
    <br>   
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li ><a href="http://localhost/29EneFin/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
-          <li ><a href="http://localhost/29EneFin/public/aspiranteSaluds/{{$idSal}}/edit" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
-          <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
+          <li ><a href="#"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+          <li ><a href="#" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li ><a href="#" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
           <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
         </ul>
       </div> 
@@ -159,11 +159,20 @@ $(function() {
     </div>
     @endif
     
+    <!--Si tiene un valor el municipio se genera la lista de municipios de su etidad y se selecciona su valor, el evento de cambio será cuando selecciona otro municipio o selecciona entidad y tenddrá que seleccionar un municipio-->
+    @if ($aspiranteGeneral->municipio_dom_actual_id > 0)
+     <!--Municipio Dom Actual Id Field-->
+    <div class="form-group col-sm-4">
+       {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
+       {!! Form::select('municipio_dom_actual_id',$municipios,null,array('class'=>'form-control','id'=>'town_da')) !!}
+    </div>
+    @else    
     <!--Municipio Dom Actual Id Field-->
     <div class="form-group col-sm-4">
        {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
        {!! Form::select('municipio_dom_actual_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'town_da')) !!}
-    </div> 
+    </div>
+    @endif 
     <div class="col-sm-10">
        <!-- Calle Dom Actual Field -->
       {!! Form::label('calle_dom_actual', 'Calle con Número:') !!}
