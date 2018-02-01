@@ -1,18 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
-  <section class="content-header">
-        <h1>
-            Aspirante - Datos Salud
-        </h1>
-   </section>
    <div class="content">
        @include('adminlte-templates::common.errors')
    <div class="col-md-10">
     <div class="panel panel-default">
        <div class="panel-heading text-center">
             <a href="{{ route('aspiranteGenerals.index') }}" class="btn_reg pull-left"  data-toggle="tooltip" data-placement="right" title="Regresar"><i class="fa fa-arrow-circle-left"></i></a>
-            <strong><i class="fa fa-plus" aria-hidden="true"></i> @yield('title')</strong>
+            <strong> Aspirante - Datos Salud</strong>
         </div>
         <div class="panel-body">
                    {!! Form::model($aspiranteSalud, ['route' => ['aspiranteSaluds.update', $aspiranteSalud->id], 'method' => 'patch']) !!}
