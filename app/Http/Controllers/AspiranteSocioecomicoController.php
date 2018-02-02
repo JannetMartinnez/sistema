@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Requests\CreateAspiranteSocioecomicoRequest;
 use App\Http\Requests\UpdateAspiranteSocioecomicoRequest;
 use App\Repositories\AspiranteSocioecomicoRepository;
+use App\Repositories\AspiranteGeneralRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -179,6 +180,13 @@ class AspiranteSocioecomicoController extends AppBaseController
     public function update($id, UpdateAspiranteSocioecomicoRequest $request)
     {
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->findWithoutFail($id);
+        $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
+        $status=$aspiranteGeneral->status_asp;
+        if($status<3 or $status==null){
+            DB::table('aspirantes_generales')
+            ->where('id',$aspiranteSocioecomico->aspirantes_generales_id)
+            ->update(['status_asp' => 3]);
+        }
 
         if (empty($aspiranteSocioecomico)) {
             Flash::error('Aspirante Socioecomico not found');
@@ -186,7 +194,11 @@ class AspiranteSocioecomicoController extends AppBaseController
             return redirect(route('aspiranteSocioecomicos.index'));
         }
 
+
+
+
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->update($request->all(), $id);
+      
 
         Flash::success('Aspirante Socioecomico updated successfully.');
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Requests\CreateAspiranteSaludRequest;
 use App\Http\Requests\UpdateAspiranteSaludRequest;
 use App\Repositories\AspiranteSaludRepository;
@@ -151,8 +151,18 @@ class AspiranteSaludController extends AppBaseController
      * @return Response
      */
     public function update($id, UpdateAspiranteSaludRequest $request)
-    {
+    {   
         $aspiranteSalud = $this->aspiranteSaludRepository->findWithoutFail($id);
+        
+        $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
+        $status=$aspiranteGeneral->status_asp;
+        if($status<4 or $status==null){
+            DB::table('aspirantes_generales')
+            ->where('id',$aspiranteSalud->aspirantes_generales_id)
+            ->update(['status_asp' => 4]);
+        }
+
+        
 
         if (empty($aspiranteSalud)) {
             Flash::error('Aspirante Salud not found');

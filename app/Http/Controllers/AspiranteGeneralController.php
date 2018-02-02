@@ -159,7 +159,7 @@ class AspiranteGeneralController extends AppBaseController
         $user->assign($role);
         $id=$user->id;
         $input['usuario_id']=$id;
-
+        $input['status_asp']=1;
         //Crea un aspirante generales
         $aspiranteGeneral = $this->aspiranteGeneralRepository->create($input);
         //Conocer el id que genero del aspirante general
@@ -291,7 +291,11 @@ class AspiranteGeneralController extends AppBaseController
 
             return redirect(route('aspiranteGenerals.index'));
         }
-
+        $status=$aspiranteGeneral->status_asp;
+        print_r($status);
+        if($status < 2 or $status == NULL){
+            $aspiranteGeneral->status_asp=2;
+        }
         $aspiranteGeneral = $this->aspiranteGeneralRepository->update($request->all(), $id);
 
         Flash::success('Aspirante General updated successfully.');
@@ -319,7 +323,7 @@ class AspiranteGeneralController extends AppBaseController
         $this->aspiranteGeneralRepository->delete($id);
 
         Flash::success('Aspirante General deleted successfully.');
-
+        
         return redirect(route('aspiranteGenerals.index'));
     }
 
