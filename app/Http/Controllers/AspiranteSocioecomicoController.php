@@ -180,13 +180,22 @@ class AspiranteSocioecomicoController extends AppBaseController
     public function update($id, UpdateAspiranteSocioecomicoRequest $request)
     {
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->findWithoutFail($id);
+        //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
         $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         $status=$aspiranteGeneral->status_asp;
-        if($status<3 or $status==null){
-            DB::table('aspirantes_generales')
-            ->where('id',$aspiranteSocioecomico->aspirantes_generales_id)
-            ->update(['status_asp' => 3]);
+        $v=$status;
+        if($status==1 or $status==null){
+           $v=13;   
+        }else
+        {
+            $value = str_contains($v, '3');
+            if($value==false){
+                $v = str_finish($v,'3');
+            }
         }
+        DB::table('aspirantes_generales')
+            ->where('id',$aspiranteSocioecomico->aspirantes_generales_id)
+            ->update(['status_asp' =>$v]);
 
         if (empty($aspiranteSocioecomico)) {
             Flash::error('Aspirante Socioecomico not found');

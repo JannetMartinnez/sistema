@@ -291,12 +291,26 @@ class AspiranteGeneralController extends AppBaseController
 
             return redirect(route('aspiranteGenerals.index'));
         }
-        $status=$aspiranteGeneral->status_asp;
-        print_r($status);
-        if($status < 2 or $status == NULL){
-            $aspiranteGeneral->status_asp=2;
-        }
+        
         $aspiranteGeneral = $this->aspiranteGeneralRepository->update($request->all(), $id);
+
+
+        //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
+        $aspiranteGeneral=AspiranteGeneral::where('id',$id)->first();
+        $status=$aspiranteGeneral->status_asp;
+        $v=$status;
+        if($status==1 or $status==null){
+           $v=12;   
+        }else{
+            $value = str_contains($v, '2');
+            if($value==false){
+                $v = str_finish($v,'2');
+            }
+        }
+
+        DB::table('aspirantes_generales')
+            ->where('id',$id)
+            ->update(['status_asp' =>$v]);
 
         Flash::success('Aspirante General updated successfully.');
 

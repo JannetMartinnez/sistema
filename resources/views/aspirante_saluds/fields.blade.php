@@ -2,8 +2,8 @@
   <br>   
 <div role="tabpanel">
     <ul class="nav nav-tabs" >
-      <li><a href="http://localhost/nuevo/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-      <li ><a href="http://localhost/nuevo/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
+      <li><a href="http://localhost/3Feb/public/aspiranteGenerals/{{$idAspGral}}/edit"" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
+      <li ><a href="http://localhost/3Feb/public/aspiranteSocioecomicos/{{$idSoc}}/edit"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a>
       <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
       <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
     </ul>

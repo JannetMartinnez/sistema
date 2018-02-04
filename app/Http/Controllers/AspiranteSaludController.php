@@ -154,14 +154,23 @@ class AspiranteSaludController extends AppBaseController
     {   
         $aspiranteSalud = $this->aspiranteSaludRepository->findWithoutFail($id);
         
+
+        //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
         $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
         $status=$aspiranteGeneral->status_asp;
-        if($status<4 or $status==null){
-            DB::table('aspirantes_generales')
-            ->where('id',$aspiranteSalud->aspirantes_generales_id)
-            ->update(['status_asp' => 4]);
+        $v=$status;
+        if($status==1 or $status==null){
+           $v=14;   
+        }else
+        {
+            $value = str_contains($v, '4');
+            if($value==false){
+                $v = str_finish($v,'4');
+            }
         }
-
+        DB::table('aspirantes_generales')
+            ->where('id',$aspiranteSalud->aspirantes_generales_id)
+            ->update(['status_asp' =>$v]);
         
 
         if (empty($aspiranteSalud)) {
