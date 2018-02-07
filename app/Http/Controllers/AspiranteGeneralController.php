@@ -201,7 +201,7 @@ class AspiranteGeneralController extends AppBaseController
         }
         else
         {
-            return redirect(route('aspiranteGenerals.index'));     
+           return redirect(route('aspiranteGenerals.index'));   
         }
         
 
@@ -312,9 +312,13 @@ class AspiranteGeneralController extends AppBaseController
             ->where('id',$id)
             ->update(['status_asp' =>$v]);
 
+        //Consulta que id es el registro de socioeconómico para redireccionarlo
+        $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
+        $idSoc=$asp_soc->id;           
+
         Flash::success('Aspirante General updated successfully.');
 
-        return redirect(route('aspiranteGenerals.index'));
+       return redirect(route('aspiranteSocioecomicos.edit',[$idSoc]));
     }
 
     /**

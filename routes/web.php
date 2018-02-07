@@ -31,6 +31,16 @@ Route::resource('aspiranteGenerals', 'AspiranteGeneralController');
 
 Route::get('registro', 'AspiranteGeneralController@registro');
 
+Route::resource('aspiranteSocioecomicos', 'AspiranteSocioecomicoController');
+
+Route::resource('aspiranteSaluds', 'AspiranteSaludController');
+
+
+//Usando para calcular la referencia bancaria
+Route::get('referenciaB/{pers}/{cve_pago}/{fechaLimite}/{importe}', 'AspiranteGeneralController@referenciaC');
+
+
+
 Route::resource('entidadFederativas', 'EntidadFederativaController');
 
 Route::resource('pais', 'PaisController');
@@ -39,14 +49,9 @@ Route::resource('municipios', 'MunicipioController');
 
 //Usado en el create
 Route::get('aspiranteGenerals/municipios/{id}', 'EntidadFederativaController@getMunicipios');
-
-//Usando para calcular la referencia bancaria
-Route::get('referenciaB/{pers}/{cve_pago}/{fechaLimite}/{importe}', 'AspiranteGeneralController@referenciaC');
-
 //USado en el edit
 
 Route::get('aspiranteGenerals/{id2}/municipios2/{id}', 'EntidadFederativaController@getMunicipios2');
-
 
 //Usado en el create
 Route::get('aspiranteGenerals/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
@@ -54,24 +59,13 @@ Route::get('aspiranteGenerals/prepas/{id}', 'PreparatoriaProcedenciaController@g
 //Usado en el edit
 Route::get('aspiranteGenerals/176/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
 
-//http://localhost/28Nov/public/aspiranteGenerals/176/prepas/21
-Route::resource('organigramas', 'OrganigramaController');
-
-
-
 Route::resource('organigramas', 'OrganigramaController');
 
 Route::resource('carreras', 'CarreraController');
 
-
-
 Route::resource('preparatoriaProcedencias', 'PreparatoriaProcedenciaController');
 
 Route::resource('carreraOfertadas', 'CarreraOfertadaController');
-
-
-
-
 
 Route::resource('nivelEstudios', 'NivelEstudioController');
 
@@ -87,35 +81,17 @@ Route::resource('estadoUnionPadres', 'EstadoUnionPadreController');
 
 Route::resource('estudioPadres', 'EstudioPadreController');
 
-Route::resource('aspiranteSocioecomicos', 'AspiranteSocioecomicoController');
-
-
-
 Route::resource('estadoCivils', 'EstadoCivilController');
 
 Route::resource('numerosPalabras', 'NumerosPalabrasController');
 
-
-
 Route::resource('estadoCivils', 'EstadoCivilController');
-
-
 
 Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
 
 Route::resource('estadoCivils', 'EstadoCivilController');
 
 Route::resource('zonaProcedencias', 'ZonaProcedenciaController');
-
-
-
-Route::resource('aspiranteSaluds', 'AspiranteSaludController');
-
-
-
-
-
-
 
 Route::resource('tipoModalidads', 'TipoModalidadController');
 

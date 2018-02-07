@@ -183,7 +183,10 @@ class AspiranteSaludController extends AppBaseController
 
         Flash::success('Aspirante Salud updated successfully.');
 
-        return redirect(route('aspiranteSaluds.index'));
+        //Redirecciona a generales
+        $aspirante_general=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
+        $idAspGral= $aspirante_general->id;
+        return redirect(route('aspiranteGenerals.edit',[$idAspGral]));
     }
 
     /**

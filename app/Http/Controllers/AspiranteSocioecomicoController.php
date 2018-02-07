@@ -203,15 +203,13 @@ class AspiranteSocioecomicoController extends AppBaseController
             return redirect(route('aspiranteSocioecomicos.index'));
         }
 
-
-
-
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->update($request->all(), $id);
       
-
+        //Redirecciona a registro de salud
+        $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
+        $idSal=$asp_sal->id;
         Flash::success('Aspirante Socioecomico updated successfully.');
-
-        return redirect(route('aspiranteSocioecomicos.index'));
+        return redirect(route('aspiranteSaluds.edit',[$idSal]));
     }
 
     /**
