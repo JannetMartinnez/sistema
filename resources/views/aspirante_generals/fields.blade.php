@@ -43,13 +43,31 @@ $(function() {
 });
  
 </script>
+
    <br>   
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li ><a href="{{URL::to('aspiranteSocioecomicos/'.$idSoc.'/edit')}}"><b class="glyphicon glyphicon-usd">Socioeconómicos</b></a></li>
-          <li ><a href="{{URL::to('aspiranteSaluds/'.$idSal.'/edit')}}"><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
+          <li ><a href="{{URL::to('aspiranteSocioecomicos/'.$idSoc.'/edit')}}">
+            @if ($captura_generales)
+              <u class="glyphicon glyphicon-usd subraya">Socioeconómicos</u>
+            @else
+              <b class="glyphicon glyphicon-usd">Socioeconómicos</b>
+            @endif
+            </a>
+          </li>
+          <li ><a href="{{URL::to('aspiranteSaluds/'.$idSal.'/edit')}}">
+            @if ($captura_salud)
+              <b class="glyphicon glyphicon-lock subraya"> Salud</b>
+            @else
+              <b class="glyphicon glyphicon-lock"> Salud</b>
+            @endif
+          </a></li> 
           <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
-          <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+  
+          @if ($captura_generales and $captura_socioeco and $captura_salud)
+            <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+          @endif
+
         </ul>
       </div>  
 <div class="tab-content">

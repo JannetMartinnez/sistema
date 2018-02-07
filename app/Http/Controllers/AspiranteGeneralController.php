@@ -270,8 +270,13 @@ class AspiranteGeneralController extends AppBaseController
         $idSoc=$asp_soc->id;
         $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$id)->first();
         $idSal=$asp_sal->id;
+        $status_asp=$aspiranteGeneral->status_asp;
+        $captura_generales = str_contains($status_asp, '2');
+        $captura_socioeco = str_contains($status_asp, '3');
+        $captura_salud = str_contains($status_asp, '4');
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal'));
+
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal','captura_generales','captura_socioeco','captura_salud'));
     }
 
     /**
