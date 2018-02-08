@@ -12,7 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\AspiranteGeneral;
 use App\Models\PeriodoEscolar;
-use App\Models\AspiranteSocioecomico; 
+use App\Models\AspiranteSocioecomico;
 use App\Models\ConfigFechaInscripcion;
 use Carbon\Carbon;
 use PDF;
@@ -53,11 +53,11 @@ class AspiranteSaludController extends AppBaseController
 
   //traer datos de otra tabla con el id//
         $aspirante_general=AspiranteGeneral::where('id',72)->first();
-        //campos a traer{    
+        //campos a traer{
         $apellidopaterno=$aspirante_general->apellido_paterno_aspirante;
         $apellidomaterno=$aspirante_general->apellido_materno_aspirante;
         $nombres=$aspirante_general->nombres_aspirante;
-        
+
         $numeross=$aspirante_general->numero_seguro_social;
 
         return view('aspirante_saluds.create',compact('apellidopaterno','apellidomaterno','nombres','numeross'));
@@ -117,8 +117,8 @@ class AspiranteSaludController extends AppBaseController
 
             return redirect(route('aspiranteSaluds.index'));
         }
-              
-        $aspirante_general=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();   
+
+        $aspirante_general=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
         $numero_ss=$aspirante_general->numero_seguro_social;
         $idAspGral=$aspiranteSalud->aspirantes_generales_id;
@@ -139,7 +139,13 @@ class AspiranteSaludController extends AppBaseController
         $cve_pago='01999';
         $fechaLimite=substr($busca_periodo['fecha_limite_pago'],0,10);
         $importe=$busca_periodo['cantidad_pagar'];
-        return view('aspirante_saluds.edit',compact('aspiranteSalud','idAspGral','nombre','numero_ss','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','desPeriodo'));
+
+        $status_asp=$aspirante_general->status_asp;
+        $captura_generales = str_contains($status_asp, '2');
+        $captura_socioeco = str_contains($status_asp, '3');
+        $captura_salud = str_contains($status_asp, '4');
+
+        return view('aspirante_saluds.edit',compact('aspiranteSalud','idAspGral','nombre','numero_ss','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','desPeriodo','captura_generales','captura_socioeco','captura_salud'));
     }
 
     /**
@@ -151,16 +157,44 @@ class AspiranteSaludController extends AppBaseController
      * @return Response
      */
     public function update($id, UpdateAspiranteSaludRequest $request)
-    {   
+    {
+        //se busca el AspiranteSalud con el id recibido
         $aspiranteSalud = $this->aspiranteSaludRepository->findWithoutFail($id);
+        //si no se encuentra redirecciona a otra ruta y retorna el flash de error
+        if (empty($aspiranteSalud)) {
+          Flash::error('Aspirante Salud not found');
+          return redirect(route('aspiranteSaluds.index'));
+        }
+        //si se encuentra realiza la actualizacion de AspiranteSalud
+        $aspiranteSalud = $this->aspiranteSaludRepository->update($request->all(), $id);
+        //Se busca el AspiranteGeneral para su actualizacion de estatus
+        $aspiranteGeneral=AspiranteGeneral::find($aspiranteSalud->aspirantes_generales_id);
+        $status=$aspiranteGeneral->status_asp;
+
+        if($status==1 or $status==null){
+           $aspiranteGeneral->status_asp=14;
+
+        }else if (str_contains($status, '4')==false) {
+          $aspiranteGeneral->status_asp=str_finish($status,'4');
+
+        }
+        $aspiranteGeneral->update();
         
+        Flash::success('Datos de salud actualizados con éxito');
+
+        return redirect(route('aspiranteGenerals.edit',[$aspiranteGeneral->id]));
+
+
+
+
+/*
 
         //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
         $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
         $status=$aspiranteGeneral->status_asp;
         $v=$status;
         if($status==1 or $status==null){
-           $v=14;   
+           $v=14;
         }else
         {
             $value = str_contains($v, '4');
@@ -171,15 +205,9 @@ class AspiranteSaludController extends AppBaseController
         DB::table('aspirantes_generales')
             ->where('id',$aspiranteSalud->aspirantes_generales_id)
             ->update(['status_asp' =>$v]);
-        
 
-        if (empty($aspiranteSalud)) {
-            Flash::error('Aspirante Salud not found');
 
-            return redirect(route('aspiranteSaluds.index'));
-        }
 
-        $aspiranteSalud = $this->aspiranteSaludRepository->update($request->all(), $id);
 
         Flash::success('Aspirante Salud updated successfully.');
 
@@ -187,6 +215,8 @@ class AspiranteSaludController extends AppBaseController
         $aspirante_general=AspiranteGeneral::where('id',$aspiranteSalud->aspirantes_generales_id)->first();
         $idAspGral= $aspirante_general->id;
         return redirect(route('aspiranteGenerals.edit',[$idAspGral]));
+
+        */
     }
 
     /**

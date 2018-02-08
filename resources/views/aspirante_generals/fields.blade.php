@@ -13,7 +13,7 @@ $(function() {
         });
     });
 });
- 
+
 </script>
 <script>
 $(function() {
@@ -27,7 +27,7 @@ $(function() {
         });
     });
 });
- 
+
 </script>
 <script>
 $(function() {
@@ -41,35 +41,23 @@ $(function() {
         });
     });
 });
- 
+
 </script>
 
-   <br>   
+   <br>
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li ><a href="{{URL::to('aspiranteSocioecomicos/'.$idSoc.'/edit')}}">
-            @if ($captura_generales)
-              <u class="glyphicon glyphicon-usd subraya">Socioeconómicos</u>
-            @else
-              <b class="glyphicon glyphicon-usd">Socioeconómicos</b>
-            @endif
-            </a>
-          </li>
-          <li ><a href="{{URL::to('aspiranteSaluds/'.$idSal.'/edit')}}">
-            @if ($captura_salud)
-              <b class="glyphicon glyphicon-lock subraya"> Salud</b>
-            @else
-              <b class="glyphicon glyphicon-lock"> Salud</b>
-            @endif
-          </a></li> 
-          <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
-  
-          @if ($captura_generales and $captura_socioeco and $captura_salud)
-            <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+
+          <li ><a href="{{route('aspiranteSocioecomicos.edit',['aspiranteSocioecomico'=>$idSoc])}}" class="{{$captura_socioeco?'valido':'invalido'}}"><b class="glyphicon glyphicon-usd ">Socioeconómicos</b></a>
+          <li ><a href="{{route('aspiranteSaluds.edit',['aspiranteSalud'=>$idSal])}}" class="{{$captura_salud?'valido':'invalido'}}"><b class="glyphicon glyphicon-lock "> Salud</b></a></li>
+          <li ><a href="" class="{{false?'valido':'invalido'}}"><b class="glyphicon glyphicon-picture"> Documentos</b></a></li>
+
+          @if ($captura_salud and $captura_socioeco and  $captura_salud )
+            <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" class="valido"><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
           @endif
 
         </ul>
-      </div>  
+      </div>
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="seccion1"><br>
     <div class="row">
@@ -77,11 +65,11 @@ $(function() {
           <center><img class="img-responsive img-circle yimg" src="{{ url('img/descarga.png') }}"></center>
           <!--texto y icono de la imagen-->
           <a href=""><center><caption><h6 <i class="fa fa-camera" aria-hidden="true"></i> Cambiar Imagen</h6></caption></center></a>
-        </div>  
+        </div>
         <div class=" col-xs-12 col-md-10">
           <center><h3 class="titulos" >Datos del aspirante</h3></center>
           <div  class="col-sm-12">
-            <center>{!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante:') !!}</center>    
+            <center>{!! Form::label('apellido_paterno_aspirante', 'Nombre del Aspirante:') !!}</center>
           </div>
           <div  style="clear:both;" class="form-group col-sm-4">
             {!! Form::text('apellido_paterno_aspirante', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}
@@ -91,7 +79,7 @@ $(function() {
             {!! Form::text('apellido_materno_aspirante', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}
           </div>
           <!-- Nombres Aspirante Field -->
-          <div class="form-group col-sm-4">   
+          <div class="form-group col-sm-4">
             {!! Form::text('nombres_aspirante', null, ['class' => 'form-control','placeholder'=>'Nombre(s)']) !!}
           </div>
 
@@ -142,7 +130,7 @@ $(function() {
       {!! Form::label('correo_elect_dom_actual', 'Correo Electrónico:') !!}
       <h4>{{$aspiranteGeneral->correo_elect_dom_actual}}</h4>
       </div>
-    @endif 
+    @endif
 
     <!-- %%Telefono Fijo Dom Actual Field -->
     <div class="form-group col-sm-3">
@@ -167,20 +155,20 @@ $(function() {
       {!! Form::label('numero_seguro_social', 'N.S.S') !!}
       <h4>{{$aspiranteGeneral->numero_seguro_social}}</h4>
       </div>
-    @endif 
-    
+    @endif
+
     <!--DIRECCION ACTUAL/////////////////////////////////////////////////-->
 
     <div class="col-sm-12">
          <center><h3 class="titulos">Dirección Actual</h3></center>
-    </div>  
+    </div>
     <!-- pais-->
     <div class="form-group  col-sm-2">
       {!! Form::label('pais_asp_id', 'País:' )!!}<br>
       {!! Form::select('pais_asp_id',$paises,154,array('class'=>'form-control')) !!}
     </div>
 
-    @if ($modo=='crear')     
+    @if ($modo=='crear')
     <!--Entidad Federativa Dom Actual Id Field-->
     <div class="form-group col-sm-3">
       {!! Form::label('entidad_federativa_dom_actual_id', 'Entidad Federativa:') !!}
@@ -193,21 +181,21 @@ $(function() {
       {!! Form::select('entidad_federativa_dom_actual_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_da_edicion')) !!}
     </div>
     @endif
-    
+
     <!--Si tiene un valor el municipio se genera la lista de municipios de su etidad y se selecciona su valor, el evento de cambio será cuando selecciona otro municipio o selecciona entidad y tenddrá que seleccionar un municipio-->
     @if ($aspiranteGeneral->municipio_dom_actual_id > 0)
      <!--Municipio Dom Actual Id Field-->
     <div class="form-group col-sm-4">
-       {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
+       {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}
        {!! Form::select('municipio_dom_actual_id',$municipios,null,array('class'=>'form-control','id'=>'town_da')) !!}
     </div>
-    @else    
+    @else
     <!--Municipio Dom Actual Id Field-->
     <div class="form-group col-sm-4">
-       {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}         
+       {!! Form::label('municipio_dom_actual_id', 'Municipio:') !!}
        {!! Form::select('municipio_dom_actual_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'town_da')) !!}
     </div>
-    @endif 
+    @endif
     <div class="col-sm-10">
        <!-- Calle Dom Actual Field -->
       {!! Form::label('calle_dom_actual', 'Calle con Número:') !!}
@@ -219,7 +207,7 @@ $(function() {
       {!! Form::label('codigo_postal_dom_actual', 'Código Postal:') !!}
       {!! Form::text('codigo_postal_dom_actual', null, ['class' => 'form-control','placeholder'=>'Ej.19823']) !!}
     </div>
-   
+
     <!-- Colonia Dom Actual Field -->
     <div class="form-group col-sm-3">
       {!! Form::label('colonia_dom_actual', 'Colonia:') !!}
@@ -227,13 +215,13 @@ $(function() {
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('zona_proc_aspirante_id', 'Zona Proc Aspirante:') !!}
-        
+
         {!! Form::select('zona_proc_aspirante_id',$zona_proc,null,array('class'=>'form-control')) !!}
     </div>
     <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
     <div class="col-sm-12">
       <center><h3 class="titulos">Carreras en Orden de Preferencia</h3></center>
-      <!--Carrera Op1 Id Field--> 
+      <!--Carrera Op1 Id Field-->
       <div class="form-group col-sm-6 form-inline">
       {!! Form::label('carrera_op1_id', 'Opción 1:') !!}
       {!! Form::select('carrera_op1_id',$carr) !!}
@@ -253,22 +241,22 @@ $(function() {
       <div class="col-sm-6">
         {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa:') !!}
 
-        {!! Form::select('entidad_federativa_proc_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_p')) !!}   
+        {!! Form::select('entidad_federativa_proc_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_p')) !!}
       </div>
       <!--Escuela Procedencia Id Field-->
       <div class="col-sm-6">
         {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia:') !!}
-        {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!} 
+        {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!}
       </div>
-     
-      
+
+
       <!--Añio Termino Bachillerato Field-->
-      <div class="form-group col-sm-4"> 
+      <div class="form-group col-sm-4">
         {!! Form::label('anio_termino_bachillerato', 'Año de Egreso') !!}
         {!! Form::text('anio_termino_bachillerato', null, ['class' => 'form-control','placeholder'=>'ej. 1980']) !!}
       </div>
-      
-      <!--Promedio Bachillerato Field--> 
+
+      <!--Promedio Bachillerato Field-->
       <div class="form-group col-sm-4">
         {!! Form::label('promedio_bachillerato', 'Promedio Bachillerato:') !!}
         {!! Form::text('promedio_bachillerato', null, ['class' => 'form-control','placeholder'=>'Ej. 8.5']) !!}
@@ -276,7 +264,7 @@ $(function() {
     </div>
 
     <!--datos del padre-->
-    <div class="form-gropup col-sm-4"> 
+    <div class="form-gropup col-sm-4">
        <center><h3 class="titulos" >Datos del padre</h3>
        </center>
        {!! Form::text('apellido_paterno_padre', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
@@ -294,7 +282,7 @@ $(function() {
         </div>
      </div>
      <!--datos de la madre-->
-     <div class="form-gropup col-sm-4"> 
+     <div class="form-gropup col-sm-4">
            <center><h3 class="titulos">Datos de la madre</h3></center>
            {!! Form::text('apellido_paterno_madre', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
            {!! Form::text('apellido_materno_madre', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
@@ -312,15 +300,15 @@ $(function() {
             </div>
     </div>
     <!--datos del tutor-->
-    <div class="form-gropup col-sm-4"> 
+    <div class="form-gropup col-sm-4">
            <center><h3 class="titulos">Datos del tutor</h3>
            </center>
            {!! Form::text('apellido_paterno_tutor', null, ['class' => 'form-control','placeholder'=>'Apellido paterno']) !!}<br>
            {!! Form::text('apellido_materno_tutor', null, ['class' => 'form-control','placeholder'=>'Apellido materno']) !!}<br>
-           {!! Form::text('nombres_tutor', null, ['class' => 
+           {!! Form::text('nombres_tutor', null, ['class' =>
            'form-control','placeholder'=>'Nombre(s)']) !!}
     </div>
-    
+
 
     <div class="form-group col-sm-6">
         {!! Form::label('periodo_id', 'Periodo:') !!}
@@ -334,11 +322,11 @@ $(function() {
     <div class="form-group col-sm-6">
         {!! Form::label('usuario_id', 'Usuario Id:') !!}
         {!! Form::number('usuario_id', null, ['class' => 'form-control']) !!}
-    </div>  
+    </div>
     <div class="form-group col-sm-6">
         {!! Form::label('tipo_modalidad_id', 'Modalidad Id:') !!}
         {!! Form::number('tipo_modalidad_id', $modalidad, ['class' => 'form-control']) !!}
-    </div>  
+    </div>
 </div>
 
 
@@ -346,4 +334,4 @@ $(function() {
         {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
         <a href="{!! route('aspiranteGenerals.index') !!}" class="btn btn-default">Cancel</a>
     </div>
-</div>    
+</div>

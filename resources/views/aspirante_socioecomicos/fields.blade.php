@@ -29,13 +29,17 @@ $(function() {
 </script>
 @endif
 
-  <br>   
+  <br>
       <div role="tabpanel">
         <ul class="nav nav-tabs" >
-          <li><a href="{{URL::to('aspiranteGenerals/'.$idAspGral.'/edit')}}" ><b class="glyphicon glyphicon-pencil"> Generales</b></a></li>
-          <li ><a href="{{URL::to('aspiranteSaluds/'.$idSal.'/edit')}}" ><b class="glyphicon glyphicon-lock"> Salud</b></a></li> 
-          <li ><a href="" ><b class="glyphicon glyphicon-picture"> Documentos</b></a></li> 
-          <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+
+          <li ><a href="{{route('aspiranteGenerals.edit',['aspiranteGeneral'=>$idAspGral])}}" class="{{$captura_generales?'valido':'invalido'}}"><b class="glyphicon glyphicon-lock ">Generales</b></a></li>
+          <li ><a href="{{route('aspiranteSaluds.edit',['aspiranteSalud'=>$idSal])}}" class="{{$captura_salud?'valido':'invalido'}}"><b class="glyphicon glyphicon-lock ">Salud</b></a></li>
+          <li ><a href="" class="{{false?'valido':'invalido'}}"><b class="glyphicon glyphicon-picture"> Documentos</b></a></li>
+          @if ($captura_salud and $captura_socioeco and  $captura_salud )
+            <li ><a href="{{URL::to('referenciaB',['pers'=>$folio,'cve_pago'=>'01999','fechaLimite'=>$fechaLimite,'importe'=>$importe])}}" class="valido" ><b class="glyphicon glyphicon-share"> Referencia de Pago</b></a></li>
+          @endif
+
         </ul>
       </div>
 
@@ -48,11 +52,11 @@ $(function() {
   <br>
   <div class ="col-xs-12 col-md-2 sep">
            <center><h3 class="titulos sinp">No.Solicitud</h3></center>
-           <center>{!! Form::label('curp_asp',$folio) !!}<center>      
+           <center>{!! Form::label('curp_asp',$folio) !!}<center>
   </div>
   <div class ="col-xs-12 col-md-4 sep">
           <center><h3 class="titulos sinp">Nombre del Alumno</h3></center>
-          <center>{!! Form::label('curp_asp',$nombre) !!}</center>       
+          <center>{!! Form::label('curp_asp',$nombre) !!}</center>
   </div>
   <div class ="col-xs-12 col-md-4 sepizq">
           <center><h3 class="titulos sinp">Periodo Escolar</h3></center>
@@ -66,12 +70,12 @@ $(function() {
        <!-- Nivel Estudios Padres Id Field -->
        <div class="form-group col-xs-12 col-sm-12 sep">
        <h3 class="titulos">Padre</h3>
-       {!! Form::select('nivel_estudios_padres_id',$estudios,null,array('class'=>'form-control')) !!}      
+       {!! Form::select('nivel_estudios_padres_id',$estudios,null,array('class'=>'form-control')) !!}
        </div>
        <!-- Nivel Estudios Madres Id Field -->
        <div class="form-group col-xs-12 col-sm-12 sep">
        <h3 class="titulos">Madre</h3>
-       {!! Form::select('nivel_estudios_madres_id',$estudios,null,array('class'=>'form-control')) !!}      
+       {!! Form::select('nivel_estudios_madres_id',$estudios,null,array('class'=>'form-control')) !!}
         </div>
 </div>
 
@@ -161,7 +165,7 @@ $(function() {
 <div  class="col-xs-12 col-sm-3 sep">
    <center><h3 class="titulos ">¿Cuántos cuartos tiene la casa?</h3></center>
     {!! Form::select('cuartos_personas_id',$numerospalabras,null,array('class' => 'form-control')) !!}
-</div>   
+</div>
 
 
     <!-- Personas Casas Id Field -->
@@ -179,12 +183,12 @@ $(function() {
 
 
 
-<!-- Aspirantes Generales Id Field 
+<!-- Aspirantes Generales Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('aspirantes_generales_id', 'Aspirantes Generales Id:') !!}
     {!! Form::number('aspirantes_generales_id', null, ['class' => 'form-control']) !!}
 </div>
-Estado Union Padres Id Field 
+Estado Union Padres Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('estado_union_padres_id', 'Estado Union Padres Id:') !!}
     {!! Form::select('estado_union_padres_id',$estadounion,null,array('class' => 'form-control')) !!}

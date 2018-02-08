@@ -69,12 +69,12 @@ class AspiranteSocioecomicoController extends AppBaseController
         $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
         //traer datos de otra tabla con el id//
         $aspirante_general=AspiranteGeneral::where('id',4)->first();
-        //campos a traer{    
+        //campos a traer{
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
-        
+
         $solicitud=AspiranteGeneral::where('folio_solicitud','>',1)->max('folio_solicitud');
         $folio=$solicitud+1;
-        
+
         $modo='crear';
         return view('aspirante_socioecomicos.create',compact('estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','modo'));
          //}
@@ -134,7 +134,7 @@ class AspiranteSocioecomicoController extends AppBaseController
 
             return redirect(route('aspiranteSocioecomicos.index'));
         }
-        
+
         $estudios=EstudioPadre::orderBy('id')->pluck('descripcion','id');
         $quienvives=QuienVivesActual::orderBy('id')->pluck('descripcion','id');
        //
@@ -146,7 +146,7 @@ class AspiranteSocioecomicoController extends AppBaseController
         $quiendependes=DeQuienDepende::orderBy('id')->pluck('descripcion','id');
         //traer datos de otra tabla con el id//
         $aspirante_general=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
-        //campos a traer{    
+        //campos a traer{
         $nombre=$aspirante_general->apellido_paterno_aspirante.' '.$aspirante_general->apellido_materno_aspirante.' '.$aspirante_general->nombres_aspirante;
         $idAspGral=$aspiranteSocioecomico->aspirantes_generales_id;
         $modo='editar';
@@ -166,7 +166,14 @@ class AspiranteSocioecomicoController extends AppBaseController
         $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         $idSal=$asp_sal->id;
 
-        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','desPeriodo','modo','periodo','modalidad','cve_pago','fechaLimite','importe','idAspGral','idSal'));
+        $status_asp=$aspirante_general->status_asp;
+        $captura_generales = str_contains($status_asp, '2');
+        $captura_socioeco = str_contains($status_asp, '3');
+        $captura_salud = str_contains($status_asp, '4');
+
+
+
+        return view('aspirante_socioecomicos.edit',compact('aspiranteSocioecomico','estudios','quienvives','ocupacionpadres','casavives','numerospalabras','estadounion','quiendependes','nombre','folio','desPeriodo','modo','periodo','modalidad','cve_pago','fechaLimite','importe','idAspGral','idSal','captura_generales','captura_socioeco','captura_salud'));
     }
 
     /**
@@ -180,12 +187,53 @@ class AspiranteSocioecomicoController extends AppBaseController
     public function update($id, UpdateAspiranteSocioecomicoRequest $request)
     {
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->findWithoutFail($id);
+
+        if (empty($aspiranteSocioecomico)) {
+            Flash::error('Aspirante Socioecomico not found');
+            return redirect(route('aspiranteSocioecomicos.index'));
+        }
+        
+        $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->update($request->all(), $id);
+        $aspiranteGeneral=AspiranteGeneral::find($aspiranteSocioecomico->aspirantes_generales_id);
+        //Se busca el AspiranteGeneral para su actualizacion de estatus
+        $status=$aspiranteGeneral->status_asp;
+
+        if($status==1 or $status==null){
+           $aspiranteGeneral->status_asp=13;
+
+        }else if (str_contains($status, '3')==false) {
+          $aspiranteGeneral->status_asp=str_finish($status,'3');
+
+        }
+        $aspiranteGeneral->update();
+        //Redirecciona a registro de salud
+        $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
+
+        Flash::success('Datos Socioeconómicos actualizados con éxito');
+        return redirect(route('aspiranteSaluds.edit',['aspiranteSalud'=> $asp_sal->id]));
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
         //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
         $aspiranteGeneral=AspiranteGeneral::where('id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         $status=$aspiranteGeneral->status_asp;
         $v=$status;
         if($status==1 or $status==null){
-           $v=13;   
+           $v=13;
         }else
         {
             $value = str_contains($v, '3');
@@ -204,12 +252,13 @@ class AspiranteSocioecomicoController extends AppBaseController
         }
 
         $aspiranteSocioecomico = $this->aspiranteSocioecomicoRepository->update($request->all(), $id);
-      
+
         //Redirecciona a registro de salud
         $asp_sal=AspiranteSalud::where('aspirantes_generales_id',$aspiranteSocioecomico->aspirantes_generales_id)->first();
         $idSal=$asp_sal->id;
         Flash::success('Aspirante Socioecomico updated successfully.');
         return redirect(route('aspiranteSaluds.edit',[$idSal]));
+        */
     }
 
     /**

@@ -20,7 +20,7 @@ use App\Models\PreparatoriaProcedencia;
 use App\Models\ZonaProcedencia;
 use App\Models\EntidadFederativa;
 use App\Models\AspiranteGeneral;
-use App\Models\AspiranteSocioecomico; 
+use App\Models\AspiranteSocioecomico;
 use App\Models\AspiranteSalud;
 use App\Models\ConfigFechaInscripcion;
 use App\Repositories\AspiranteGeneralRepository;
@@ -100,7 +100,7 @@ class AspiranteGeneralController extends AppBaseController
      */
     public function store(Request $request)
     {
-    
+
         $user = Auth::user();
         //Si es aspirante validar doble el seguro y correo
         //Validar datos en laravel 5.5
@@ -127,9 +127,9 @@ class AspiranteGeneralController extends AppBaseController
                 'nombres_aspirante'=>'required',
                 'numero_seguro_social'=>'required|unique:aspirantes_generales',
                 'numero_seguro_social_confirmation' => 'required|min:6|same:numero_seguro_social',
-                'correo_elect_dom_actual' => 'required|min:6|unique:aspirantes_generales', 
+                'correo_elect_dom_actual' => 'required|min:6|unique:aspirantes_generales',
                 'correo_elect_dom_actual_confirmation' => 'required|min:6|same:correo_elect_dom_actual'
-            ]);  
+            ]);
         }
 
 
@@ -195,15 +195,15 @@ class AspiranteGeneralController extends AppBaseController
 
         $ojo='Aspirante Genereal guardado éxitosamente '.$email;
         Flash::success($ojo);
-        if($user->allow('alta_preregistro')){ 
+        if($user->allow('alta_preregistro')){
             return redirect('http://www.itslp.edu.mx/index.php/aspirantes/educacion-presencial/proceso-de-admision');
 
         }
         else
         {
-           return redirect(route('aspiranteGenerals.index'));   
+           return redirect(route('aspiranteGenerals.index'));
         }
-        
+
 
     }
 
@@ -245,7 +245,7 @@ class AspiranteGeneralController extends AppBaseController
         }
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
-        
+
 
         //$municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
         $idEntFed=$aspiranteGeneral->entidad_federativa_dom_actual_id;
@@ -276,6 +276,7 @@ class AspiranteGeneralController extends AppBaseController
         $captura_salud = str_contains($status_asp, '4');
 
 
+
         return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal','captura_generales','captura_socioeco','captura_salud'));
     }
 
@@ -296,16 +297,39 @@ class AspiranteGeneralController extends AppBaseController
 
             return redirect(route('aspiranteGenerals.index'));
         }
-        
+
         $aspiranteGeneral = $this->aspiranteGeneralRepository->update($request->all(), $id);
 
+        //Se busca el AspiranteGeneral para su actualizacion de estatus
+        $status=$aspiranteGeneral->status_asp;
+
+        if($status==1 or $status==null){
+           $aspiranteGeneral->status_asp=12;
+
+        }else if (str_contains($status, '2')==false) {
+          $aspiranteGeneral->status_asp=str_finish($status,'2');
+
+        }
+        $aspiranteGeneral->update();
+
+
+        //Consulta que id es el registro de socioeconómico para redireccionarlo
+        $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
+        
+
+        Flash::success('Datos generales actualizados con éxito');
+        return redirect(route('aspiranteSocioecomicos.edit',['aspiranteSocioecomico'=>$asp_soc->id]));
+
+
+
+/*
 
         //Actualiza el status del aspirante "Datos - Socioeconómicos capturados"
         $aspiranteGeneral=AspiranteGeneral::where('id',$id)->first();
         $status=$aspiranteGeneral->status_asp;
         $v=$status;
         if($status==1 or $status==null){
-           $v=12;   
+           $v=12;
         }else{
             $value = str_contains($v, '2');
             if($value==false){
@@ -319,11 +343,12 @@ class AspiranteGeneralController extends AppBaseController
 
         //Consulta que id es el registro de socioeconómico para redireccionarlo
         $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
-        $idSoc=$asp_soc->id;           
+        $idSoc=$asp_soc->id;
 
         Flash::success('Aspirante General updated successfully.');
 
        return redirect(route('aspiranteSocioecomicos.edit',[$idSoc]));
+*/
     }
 
     /**
@@ -346,7 +371,7 @@ class AspiranteGeneralController extends AppBaseController
         $this->aspiranteGeneralRepository->delete($id);
 
         Flash::success('Aspirante General deleted successfully.');
-        
+
         return redirect(route('aspiranteGenerals.index'));
     }
 
@@ -366,7 +391,7 @@ class AspiranteGeneralController extends AppBaseController
         echo "Clave banco ".$cve_banco."<br/>";
         echo "Fecha limite es ".$fechaLimite."<br/>";
         echo "Peresona".$pers."<br/";
-        echo "importe ".$imp."<br/"; 
+        echo "importe ".$imp."<br/";
         echo "Tipo de pago ".$ord."<br/>";
         echo "Auxiliar es el importe sin decimal".$aux."<br/>";
 
@@ -397,10 +422,10 @@ class AspiranteGeneralController extends AppBaseController
                 $importecompleto[count($importecompleto)-1]=0;
                 break;
             }
-            
+
             $aux=$aux/10;
         }
-        
+
         //===================Sacar resultado
 
         while($j>=0){
@@ -411,9 +436,9 @@ class AspiranteGeneralController extends AppBaseController
             $j--;
             $k--;
         }
-        
+
         $digitoverificador=$resultado%10;
-        echo "Digito verificaor es: ----->".$digitoverificador."<br/>";      
+        echo "Digito verificaor es: ----->".$digitoverificador."<br/>";
 /*Dig Validador del importe
         public static int digitoverificador(String importe){
         int aux=Integer.parseInt(importe);
@@ -425,8 +450,8 @@ class AspiranteGeneralController extends AppBaseController
         int resultado = 0;
         //int l=valorasignado.length;
         int digitoverificador=0;
-        
-        
+
+
         //==================LLenado del arreglo
         while(aux>0){
             if(aux%10 >= 0){
@@ -438,7 +463,7 @@ class AspiranteGeneralController extends AppBaseController
                 importecompleto[importecompleto.length-1]=0;
                 break;
             }
-            
+
             aux=aux/10;
         }
         //===================Sacar resultado
@@ -450,14 +475,14 @@ class AspiranteGeneralController extends AppBaseController
             j--;
             k--;
         }
-        
+
         digitoverificador=resultado%10;
         return digitoverificador;
     }//digitoverificador
-    
+
 */
 
-  
+
 
         // $dig_validador_imp=     //Digito validador del importe, a cada digito del importe
                                 //se le asigna de derecha a izquierda:7,3,1. Multiplicar y s
@@ -481,7 +506,7 @@ class AspiranteGeneralController extends AppBaseController
         $cve_banco="3947"; //Clave del banco
         $ord='01';
 
-        /* Digito validador del importe, a cada digito del importe se le asigna de derecha a izquierda:7,3,1. Multiplicar y sumar, dividir entre 10 y el residuo es el digito 
+        /* Digito validador del importe, a cada digito del importe se le asigna de derecha a izquierda:7,3,1. Multiplicar y sumar, dividir entre 10 y el residuo es el digito
         */
         $n = strval($imp);
         preg_match_all("/\d/", ($n.'00'), $importe);
