@@ -38,7 +38,9 @@ class AspiranteSaludRepository extends BaseRepository
         'enfer_como',
         'problemas_relacionarte',
         'tienes_fobia',
-        'aspirantes_generales_id'
+        'aspirantes_generales_id',
+        'update_at',
+        'create_at'
     ];
 
     /**

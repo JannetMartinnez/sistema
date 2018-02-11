@@ -72,12 +72,10 @@ class AspiranteSaludController extends AppBaseController
      */
     public function store(CreateAspiranteSaludRequest $request)
     {
+
         $input = $request->all();
-
         $aspiranteSalud = $this->aspiranteSaludRepository->create($input);
-
         Flash::success('Aspirante Salud saved successfully.');
-
         return redirect(route('aspiranteSaluds.index'));
     }
 
@@ -114,7 +112,6 @@ class AspiranteSaludController extends AppBaseController
 
         if (empty($aspiranteSalud)) {
             Flash::error('Aspirante Salud not found');
-
             return redirect(route('aspiranteSaluds.index'));
         }
 
@@ -134,6 +131,7 @@ class AspiranteSaludController extends AppBaseController
         $desPeriodo=$periodoE->identificacion_larga;
 
         $busca_periodo=ConfigFechaInscripcion::where('sol_asp_fi','<',Carbon::now())->Where('sol_asp_ff','>',Carbon::now())->first();
+
         $periodo=$busca_periodo['periodo_entrada_id'];
         $modalidad=$busca_periodo['tipo_modalidad_id'];
         $cve_pago='01999';
@@ -158,9 +156,11 @@ class AspiranteSaludController extends AppBaseController
      */
     public function update($id, UpdateAspiranteSaludRequest $request)
     {
+      
         //se busca el AspiranteSalud con el id recibido
         $aspiranteSalud = $this->aspiranteSaludRepository->findWithoutFail($id);
         //si no se encuentra redirecciona a otra ruta y retorna el flash de error
+
         if (empty($aspiranteSalud)) {
           Flash::error('Aspirante Salud not found');
           return redirect(route('aspiranteSaluds.index'));
@@ -179,7 +179,7 @@ class AspiranteSaludController extends AppBaseController
 
         }
         $aspiranteGeneral->update();
-        
+
         Flash::success('Datos de salud actualizados con éxito');
 
         return redirect(route('aspiranteGenerals.edit',[$aspiranteGeneral->id]));

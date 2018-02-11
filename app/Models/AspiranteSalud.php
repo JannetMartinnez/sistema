@@ -34,7 +34,7 @@ class AspiranteSalud extends Model
 {
 
     public $table = 'aspirante_salud';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -59,7 +59,9 @@ class AspiranteSalud extends Model
         'enfer_como',
         'problemas_relacionarte',
         'tienes_fobia',
-        'aspirantes_generales_id'
+        'aspirantes_generales_id',
+        'update_at',
+        'create_at'
     ];
 
     /**
@@ -96,7 +98,7 @@ class AspiranteSalud extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

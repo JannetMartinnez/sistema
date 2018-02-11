@@ -56,11 +56,8 @@ class AspirantesDocumentoController extends AppBaseController
     public function store(CreateAspirantesDocumentoRequest $request)
     {
         $input = $request->all();
-
         $aspirantesDocumento = $this->aspirantesDocumentoRepository->create($input);
-
         Flash::success('Aspirantes Documento saved successfully.');
-
         return redirect(route('aspirantesDocumentos.index'));
     }
 
