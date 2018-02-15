@@ -57,7 +57,7 @@ Route::get('aspiranteGenerals/{id2}/municipios2/{id}', 'EntidadFederativaControl
 Route::get('aspiranteGenerals/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
 
 //Usado en el edit
-Route::get('aspiranteGenerals/176/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
+Route::get('aspiranteGenerals/{aspiranteGeneral}/prepas/{id}', 'PreparatoriaProcedenciaController@getPreparatoria');
 
 Route::resource('organigramas', 'OrganigramaController');
 

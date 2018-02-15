@@ -154,8 +154,9 @@ class PreparatoriaProcedenciaController extends AppBaseController
 
         return redirect(route('preparatoriaProcedencias.index'));
     }
-    public function getPreparatoria(Request $request,$id)
-    {       
+    public function getPreparatoria(Request $request,$aspiranteGeneral,$id)
+    {
+      
        if($request->ajax()){
            /*$preparatorias=PreparatoriaProcedencia::entidades($id);*/
              $preparatorias=PreparatoriaProcedencia::where('entidades_federativas_id',$id)->get();

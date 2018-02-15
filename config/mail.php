@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'aletse00@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'ITSLP'),
+        'address' => env('MAIL_FROM_ADDRESS', 'MAIL_FROM_ADDRESS'),
+        'name' => env('MAIL_FROM_NAME', 'MAIL_FROM_NAME'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,6 +100,16 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+
+
+    'stream' => [
+    'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

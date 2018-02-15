@@ -215,7 +215,6 @@ $(function() {
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('zona_proc_aspirante_id', 'Zona Proc Aspirante:') !!}
-
         {!! Form::select('zona_proc_aspirante_id',$zona_proc,null,array('class'=>'form-control')) !!}
     </div>
     <!--CARRERAS EN ORDEN PREFERENCIAL/////////////////////////////////-->
@@ -239,14 +238,15 @@ $(function() {
 
       <!--Entidad Federativa Proc Id Field-->
       <div class="col-sm-6">
-        {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa:') !!}
 
+        {!! Form::label('entidad_federativa_proc_id', 'Entidad Federativa:') !!}
         {!! Form::select('entidad_federativa_proc_id',$entidadesFederativas, null,array('class' => 'form-control','id'=>'state_p')) !!}
+
       </div>
       <!--Escuela Procedencia Id Field-->
       <div class="col-sm-6">
         {!! Form::label('escuela_procedencia_id', 'Escuela Procedencia:') !!}
-        {!! Form::select('escuela_procedencia_id',['placeholder'=>'Seleccione'], null,array('class' => 'form-control','id'=>'prepas_p')) !!}
+        {!! Form::select('escuela_procedencia_id',$escuela_procedencia, null,array('class' => 'form-control','id'=>'prepas_p')) !!}
       </div>
 
 

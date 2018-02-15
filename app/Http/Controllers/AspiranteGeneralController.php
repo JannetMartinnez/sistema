@@ -137,6 +137,7 @@ class AspiranteGeneralController extends AppBaseController
         //Obtenemos el email del aspirante
         $email=$input['correo_elect_dom_actual'];
 
+
         $nombre=Str::Upper(trim($input['apellido_paterno_aspirante'].' '.$input['apellido_materno_aspirante'].' '.$input['nombres_aspirante']));
         function aleatorio($cantidad){
         	$caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -179,19 +180,19 @@ class AspiranteGeneralController extends AppBaseController
         //$aspiranteGeneralDoc = $this->aspiranteGeneralRepository->create($input);
         //Enviar correo electrónico al usuario
         //Creamos un arreglo asociativo con los daatos que vamos a enviar
-        /*$data['email']=$input['correo_elect_dom_actual'];
+        $data['email']=$input['correo_elect_dom_actual'];
         //$data['password']= aleatorio(10);
         $data['password']= '123';
 
         Mail::send('emails.message',$data, function ($message) use ($data){
             //$message->from('contacto@itslp.edu.mx', 'ITSLP');
-            $message->from('aletse00@gmail.com', 'ITSLP');
+            //$message->from('aletse00@gmail.com', 'ITSLP');
             $message->subject('Usuario y contraseña ITSLP');
 
             //$message->to($request->email);
-            $message->to($data['email'],'Computo');
+            $message->to($data['email'],'Computo ITSLP');
 
-        });*/
+        });
 
         $ojo='Aspirante Genereal guardado éxitosamente '.$email;
         Flash::success($ojo);
@@ -243,19 +244,32 @@ class AspiranteGeneralController extends AppBaseController
 
             return redirect(route('aspiranteGenerals.index'));
         }
+        //$prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
         $entidadesFederativas=EntidadFederativa::orderBy('nombre_entidad')->pluck('nombre_entidad','id');
         $paises=Pais::orderBy('pais')->pluck('pais','id');
 
 
-        //$municipios=Municipio::orderBy('nombre_municipio')->pluck('nombre_municipio','id');
+
+
         $idEntFed=$aspiranteGeneral->entidad_federativa_dom_actual_id;
         $municipios=Municipio::municipios($idEntFed)->pluck('nombre_municipio','id');
+
+        //$escuela_procedencia=PreparatoriaProcedencia::preparatoria($aspiranteGeneral->escuela_procedencia_id)->pluck('nombre_preparatoria','id');
+        $escuela_procedencia=PreparatoriaProcedencia::where('entidades_federativas_id',$aspiranteGeneral->entidad_federativa_proc_id)->pluck('nombre_preparatoria','id');
+        
+
+
+
+        //dd($escuela_procedencia->nombre_preparatoria);
+        //$escuela_procedencia_id=PreparatoriaProcedencia::find($aspiranteGeneral->escuela_procedencia_id)->id;
+        //dd($escuela_procedencia_id);
+      //  dd($escuela_procedencia->nombre_preparatoria);
 
         $carrerasOf=CarreraOfertada::orderBy('carreras_id')->pluck('carreras_id','id');
 
         $carr=CarreraOfertada::consu()->pluck('nombre_carrera','id');
 
-        $prepas=PreparatoriaProcedencia::orderBy('nombre_preparatoria')->pluck('nombre_preparatoria','id');
+
         $edo_civil=EstadoCivil::orderBy('id')->pluck('descripcion','id');
         $zona_proc=ZonaProcedencia::orderBy('id')->pluck('descripcion','id');
         $modo='editar';
@@ -277,7 +291,7 @@ class AspiranteGeneralController extends AppBaseController
 
 
 
-        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal','captura_generales','captura_socioeco','captura_salud'));
+        return view('aspirante_generals.edit',compact('entidadesFederativas','paises','municipios','carrerasOf','prepas','carr','edo_civil','zona_proc','aspiranteGeneral','modo','folio','periodo','modalidad','cve_pago','fechaLimite','importe','idSoc','idSal','captura_generales','captura_socioeco','captura_salud','escuela_procedencia'));
     }
 
     /**
@@ -315,7 +329,7 @@ class AspiranteGeneralController extends AppBaseController
 
         //Consulta que id es el registro de socioeconómico para redireccionarlo
         $asp_soc=AspiranteSocioecomico::where('aspirantes_generales_id',$id)->first();
-        
+
 
         Flash::success('Datos generales actualizados con éxito');
         return redirect(route('aspiranteSocioecomicos.edit',['aspiranteSocioecomico'=>$asp_soc->id]));
